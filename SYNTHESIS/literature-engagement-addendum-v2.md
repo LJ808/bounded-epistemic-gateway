@@ -9,230 +9,131 @@ written_in_e_prime: true
 tags: [resilience]
 ---
 
-# Literature Engagement Addendum v2
-## What Anthropic's Global Workspace Paper Means for This Submission
+# A Third Outside Paper — What Anthropic's New AI Research Means for Our Project
 
-A third external paper now bears directly on the theoretical foundations this vault rests on.
+A third real paper now speaks directly to the theoretical foundation our whole project rests on.
 
-Gurnee, Sofroniew et al. (2026), "Verbalizable Representations Form a Global Workspace in
-Language Models," published July 6, 2026, introduces a new AI interpretability technique
-called the Jacobian lens — shortened here to J-lens. The J-lens lets researchers look inside
-an AI model's reasoning process while it runs. It identifies a privileged region of the
-model's internal state that the paper calls the J-space.
+Gurnee, Sofroniew, and others (2026), "Verbalizable Representations Form a Global Workspace in Language Models," published July 6, 2026, introduces a new way to look inside an AI model while it works — the researchers call their tool the J-lens. The J-lens lets researchers watch an AI model's actual reasoning process while the model runs, in real time. It finds one specific, important part of the model's internal state, which the paper calls the J-space.
 
-Per this vault's standing convention, new evidence that speaks to this submission's claims
-receives plain statement — not quiet absorption, not selective quotation of only favorable
-results. This document states what the J-space paper shows, where its findings strengthen
-this submission, where they provide a mechanistic resolution the v1 addendum lacked, and
-where they open new adversarial questions judges may now reasonably raise.
+Our standing rule here: new evidence that speaks to our project's claims gets stated plainly — not quietly folded in, and not selectively quoted to only show the parts that make us look good. This document states exactly what the J-space paper shows, exactly where its findings make our project stronger, where it gives us a real mechanical explanation we didn't have before, and where it opens new tough questions a judge might now reasonably ask.
 
 ---
 
-## A plain-language note for judges
+## A plain-language note before we go further
 
-AI models generate text through many internal layers — think of them as processing stages.
-Early layers handle basic pattern recognition. Middle layers handle reasoning and inference.
-Late layers select the actual words to output.
+AI models generate text by passing information through many internal processing steps, one after another — think of them like stages in an assembly line. Early stages handle basic pattern recognition. Middle stages handle actual reasoning and inference. Late stages pick the specific words the model finally writes down.
 
-The J-lens, developed by Anthropic researchers, makes the middle-layer reasoning readable
-for the first time at scale. It reveals a specific region — the J-space — where concepts
-relevant to a task appear and influence what the model eventually outputs.
+The J-lens, built by Anthropic's researchers, makes that middle stage's reasoning readable, for the first time, at real scale. It reveals one specific area — the J-space — where the ideas relevant to a task show up and actually shape what the model eventually writes.
 
-This matters for this submission because this vault's core claim concerns what hides in the
-middle of a reasoning chain — in a written sentence, not in a model's internals. The J-space
-paper shows the same hiding-and-detection dynamic at the model level. Both find the same
-structure in different media.
+This matters for our project because our whole project's core claim concerns exactly this: what hides in the middle of a chain of reasoning — inside a written sentence, in our case, not inside a model's internal machinery. This new paper shows the exact same hide-and-detect pattern happening at the level of the model itself. Both find the same underlying structure, just in two completely different places.
 
 ---
 
-## Source 3: Gurnee, Sofroniew, Pearce et al. (2026), Anthropic
+## Outside Paper 3: Gurnee, Sofroniew, Pearce, and others (2026), Anthropic
 
 **"Verbalizable Representations Form a Global Workspace in Language Models"**
 Published July 6, 2026. https://transformer-circuits.pub/2026/workspace/index.html
 
-The J-lens works by computing, for each processing layer, how much influence an intermediate
-internal state has on the model's eventual word choices — now and later — averaged across a
-large number of examples. That averaging step separates durable, purposeful reasoning from
-incidental activation.
+The J-lens works by measuring, for each processing stage inside the model, how much influence that stage's internal state actually has on the words the model picks — both right away and later on — averaged across a large number of examples. That averaging step separates real, purposeful reasoning from random, incidental noise.
 
-The resulting J-space carries several properties worth naming here:
+The resulting J-space carries several properties worth naming plainly:
 
-- The model can report J-space contents if asked. ("What are you thinking about?")
-- External instructions can modify J-space contents. ("Ignore that information.")
-- J-space contents causally produce the model's conclusions. Remove J-space content; the
-  conclusion changes.
-- J-space activates only for non-automatic tasks — simple pattern-matching bypasses it
-  entirely.
+- The model can describe what sits in its J-space, if you simply ask it. ("What are you thinking about right now?")
+- Outside instructions can actually change what sits in the J-space. ("Ignore that piece of information.")
+- What sits in the J-space actually causes the model's final conclusions. Take away that content, and the conclusion itself changes.
+- The J-space only activates for tasks that require real thought — simple pattern-matching skips it entirely.
 
-Removing J-space access left text fluency and shallow classification intact. Multi-step
-reasoning, flexible composition, and self-report all degraded sharply. The J-space carries
-the reasoning. The surface output can survive without it — and still read as coherent prose.
+Blocking a model's access to its own J-space left basic fluency and simple classification tasks working fine. Multi-step reasoning, flexible combination of ideas, and the model's ability to describe its own thinking all broke down badly. The J-space carries the actual reasoning. The surface-level output can survive without it — and still read as smooth, coherent writing.
 
 ---
 
-## Finding 1: The J-space validates this vault's core claim — now with a mechanistic account
+## Finding 1: This new paper backs up our core claim — and now gives us a real mechanical reason why
 
-This vault's core argument in [[insight-contribution-v1]] runs as follows.
+Our whole project's core argument, laid out in [[insight-contribution-v1]], works like this.
 
-A written sentence can absorb a hidden dependency — a methodological assumption, an
-evidential chain, a scope restriction — in a way that reads as fact. "There is an
-association between eggs and heart disease" reads as a statement about eggs. It actually
-holds only given a specific statistical model with specific adjustment choices.
+A written sentence can absorb a hidden condition — a research-method choice, a chain of evidence, a boundary on where a claim actually applies — in a way that reads like plain fact. "There is an association between eggs and heart disease" reads like a fact about eggs themselves. It actually only holds true given one specific statistical setup, with one specific set of adjustment choices.
 
-E-Prime rewriting forces the dependency into view. The sentence must name what it rests on,
-because "is an association" cannot survive the rewrite without doing so.
+Rewriting in E-Prime forces that hidden condition into view. The sentence has to name what it rests on, because the phrase "is an association" can't survive the rewrite without exactly doing that.
 
-The J-space paper provides the first mechanistic account of why that hiding-and-detection
-dynamic works at a deeper level.
+This new J-space paper gives us, for the first time, a real mechanical reason why that hide-and-reveal pattern actually works at a deeper level.
 
-The paper shows that a model's intermediate reasoning steps appear in the J-space in the
-order the computation requires — before the answer appears in the output. Those steps
-causally mediate the final word choices. Modify the J-space representation of an
-intermediate concept; the conclusion changes.
+The paper shows that a model's actual intermediate reasoning steps show up in its J-space in the same order the underlying computation requires them — before the model's final answer ever appears in its output. Those steps actually cause the model's final word choices. Change the J-space's representation of one idea partway through, and the model's conclusion changes along with it.
 
-This converges on this vault's claim from inside the model. This vault shows that E-Prime
-rewriting forces a written claim to expose its hidden dependency at the prose level. The
-J-space paper shows that models already hold the analogous structure internally — an unspoken
-working representation of what the conclusion rests on — in a form that the J-lens can read
-and modify.
+This confirms our project's claim, but from inside the model itself. Our project shows that rewriting in E-Prime forces a written claim to expose its hidden condition, at the level of the actual prose. This new paper shows that AI models already hold an equivalent structure internally — an unspoken, working version of what their conclusion actually depends on — in a form the J-lens can read, and even change.
 
-Both projects locate the same structure in different places. The J-lens finds it inside the
-model. E-Prime forces it into the text where a reader can find it.
+Both projects find the exact same underlying structure, just in two different places. The J-lens finds it inside the model itself. E-Prime forces it out into the text, where any human reader can find it too.
 
-This vault did not previously have a mechanistic account of why "is an association" hides a
-covariate-model dependency from a reader without statistical training. The J-space paper
-supplies that account: fluent, grammatically correct output can proceed through pathways that
-never surface the intermediate reasoning content to any human-readable layer. The J-space
-paper documents exactly this in its language-identity experiment — a model can continue a
-Spanish passage correctly without the concept "Spanish" ever appearing in a causally active
-form in its J-space. The surface output proceeded. The underlying representation stayed
-hidden.
+Before this paper came out, our project had no real mechanical explanation for *why* a phrase like "is an association" hides a statistical-method dependency from a reader with no statistics training. This new paper supplies exactly that explanation: smooth, grammatically correct writing can get produced through internal pathways that never surface the actual underlying reasoning to any part of the model a human could read. The paper documents this directly, in one of its own experiments: a model can correctly continue a passage written in Spanish, without the actual concept "Spanish" ever showing up as an active, causally important part of its J-space. The surface output came out fine. The underlying reasoning stayed completely hidden.
 
-E-Prime rewriting functions as an external forcing mechanism that pushes the dependency into
-the readable layer — the same move the J-lens performs internally.
+Rewriting in E-Prime works as an outside forcing mechanism that pushes a hidden condition into the readable layer of a sentence — the exact same move the J-lens performs from inside a model.
 
 ---
 
-## Finding 2: A mechanistic resolution of the E-Prime accuracy-gain puzzle from v1
+## Finding 2: A real mechanical explanation for a puzzling result from our first outside-paper document
 
-The v1 addendum had to absorb an uncomfortable finding from Jehu-Appiah (2026): E-Prime
-produced the *smallest* accuracy gain of four tested constraints at the generation stage.
-A simple filler-word ban produced the largest.
+Our first outside-paper document had to deal with an uncomfortable finding from Jehu-Appiah (2026): E-Prime produced the *smallest* improvement in accuracy, out of four rules tested, at the writing stage. A simple filler-word ban produced the biggest improvement.
 
-The v1 addendum resolved this at the functional level: E-Prime targets the disclosure
-stage; the filler-word ban targets the generation stage. Two different jobs at two different
-points in a pipeline.
+Our first document explained this at a practical level: E-Prime does its job at the revealing stage. The filler-word ban does its job at the writing stage. Two different jobs, at two different points in the process.
 
-The J-space paper now provides the mechanistic account underneath that functional explanation.
+This new J-space paper now gives us the actual mechanical reason underneath that practical explanation.
 
-The J-space activates in the model's middle processing layers — roughly the middle third of
-the model's depth, between early pattern-recognition and late word-selection. E-Prime
-operates entirely *after* those layers. It modifies the surface text that the late
-word-selection layers produce. It does not touch the middle-layer reasoning that produced
-the conclusion the text expresses.
+The J-space activates in a model's middle processing stages — roughly the middle third of the model's overall depth, sitting between early pattern-recognition and late word-selection. E-Prime operates entirely *after* those middle stages finish. It changes the surface text that the late, word-picking stages already produced. It never touches the middle-stage reasoning that actually generated the idea the text expresses.
 
-A filler-word ban operates differently. It applies a live compliance burden throughout
-generation — a persistent self-editing pressure. That pressure operates closer to the
-middle-layer reasoning stage itself. The paper shows that explicit instructions to "focus on"
-or "ignore" a concept modify J-space occupancy directly. A live vocabulary ban functions as
-a persistent implicit instruction, and its effect plausibly routes through the same mechanism.
+A filler-word ban works completely differently. It applies an ongoing compliance burden throughout the entire writing process — constant self-editing pressure. That pressure operates much closer to the actual middle-stage reasoning itself. The paper shows that a direct instruction to "focus on" or "ignore" a concept can change what actually sits in the J-space. An ongoing vocabulary ban functions like a constant, implicit version of that same kind of instruction, and its effect very plausibly works through the same underlying mechanism.
 
-The architecture explains the result. E-Prime cannot improve generation-stage accuracy
-because it acts after reasoning ends. The filler-word ban's larger gain follows because it
-acts during reasoning. Neither result reflects on E-Prime's effect at the disclosure stage,
-where E-Prime acts on an already-completed reasoning product and forces its hidden dependency
-into human-readable form.
+This mechanical picture explains the whole result. E-Prime can't improve accuracy at the writing stage, because it only acts after the model's reasoning has already finished. The filler-word ban's bigger improvement follows because it acts while the reasoning happens. Neither result says anything bad about E-Prime's actual job at the revealing stage, where E-Prime acts on reasoning the model already finished, and forces its hidden condition into a form a human can read.
 
-The two-layer architecture proposed in the v1 addendum — filler-word ban for generation,
-E-Prime for disclosure — now carries a mechanistic warrant. Each constraint applies at the
-computational stage where it demonstrably acts.
+The two-part system our first outside-paper document proposed — a filler-word ban for writing, E-Prime for revealing — now carries a real mechanical justification. Each rule applies at exactly the stage where the evidence shows it actually works.
 
 ---
 
-## Finding 3: Alignment auditing and this vault's Criterion 6 claim
+## Finding 3: What this means for our toughest self-check, Criterion 6
 
-The v1 addendum identified adversarial robustness (Criterion 6) as the weakest section of
-the original submission.
+Our first outside-paper document named our toughest self-check (adversarial robustness, FLF's Criterion 6) as the weakest section of our original project.
 
-The J-space paper's alignment-auditing section offers the strongest external validation this
-submission has yet received for the disclosure-mechanism claim this vault makes.
+This new paper's section on catching AI models doing something wrong gives our project the strongest outside support we've received yet for our core claim about revealing hidden things.
 
-The paper documents a striking finding. When a model processes a prompt containing a hidden
-manipulation attempt — embedded inside a search result — the model's J-space already contains
-the concepts "injection" and "fake" before the model produces any output. The model flagged
-the adversarial input internally. That flag never appeared in its response.
+The paper documents a striking finding. When a model processes a prompt that contains a hidden attempt to manipulate it — buried inside a search result, for instance — the model's J-space already holds the concepts "injection attempt" and "fake" before the model ever produces a single word of output. The model caught the manipulation attempt internally. That internal catch never showed up anywhere in its actual response.
 
-This mirrors exactly the claim this vault makes in [[adversarial-robustness-criterion-6]]:
-a relevant epistemic assessment can proceed internally without surfacing to any human-readable
-layer. The J-lens makes that internal flag visible. E-Prime rewriting makes the analogous
-concealment visible at the prose level.
+This matches, almost exactly, the claim our project makes in [[adversarial-robustness-criterion-6]]: a real, relevant judgment can happen entirely inside a system, without ever surfacing anywhere a human could read it. The J-lens makes that internal catch visible. Rewriting in E-Prime makes the equivalent hidden problem visible, at the level of written prose.
 
-The paper documents a second finding in the same section. After safety training, a model
-processing a roleplay instruction holds the concepts "fictional" and "disclaimer" in its
-J-space while generating the response — before writing a single word. The model flagged its
-own departure from its default mode. That flag also never appeared in the output.
+The paper documents a second finding in that same section. After safety training, a model asked to do a roleplay task holds the concepts "fictional" and "disclaimer" in its J-space while it writes its response — before it writes a single word. The model flagged, internally, that it had switched away from its normal default mode. That flag also never showed up anywhere in the actual output.
 
-This vault's claim in [[adversarial-robustness-criterion-6]] Part C — that a claim schema
-with explicit provenance and dependency fields functions as an external structural parallel
-to safety self-monitoring — now carries a mechanistic warrant from the J-space paper. Both
-push assessments from the internal, hidden layer to the surfaced, auditable layer. The
-J-lens surfaces them inside the model. The vault's schema surfaces them in the written claim.
+Our project's claim in [[adversarial-robustness-criterion-6]] Part C — that a claim record with clearly labeled source and dependency information works as an outside, visible parallel to a model's own internal safety self-checking — now carries a real mechanical justification from this new paper. Both approaches push a hidden judgment from an internal, invisible layer out to a visible, checkable one. The J-lens surfaces it from inside the model. Our project's own claim format surfaces it inside the written claim itself.
 
 ---
 
-## One new adversarial question this paper opens
+## One new tough question this paper raises
 
-Judges familiar with the J-space paper may now reasonably raise the following challenge:
+A judge familiar with this new paper might now reasonably raise the following challenge:
 
-*If an AI model's internal reasoning space already holds the intermediate step that E-Prime
-rewriting would expose, why does the external rewriting step add anything? A judge with
-J-lens tooling could audit hidden dependencies directly — making E-Prime redundant.*
+*If an AI model's own internal reasoning space already holds the exact hidden step that E-Prime rewriting would reveal, why does the outside rewriting step add anything at all? A judge equipped with J-lens tools could just check hidden conditions directly inside the model — making E-Prime pointless.*
 
-This challenge deserves direct engagement rather than deflection. Two responses, stated plainly.
+This challenge deserves a direct answer, not a dodge. Two real answers, stated plainly.
 
-**First: the J-lens requires access to the model's internal processing states.**
-That access does not transfer to human readers, to downstream AI models without
-interpretability tooling, or to anyone operating on text alone. The vault's disclosure
-mechanism operates on the output text — in a form any reader can audit without special tools.
-The J-space paper confirms that a fluent output can suppress its own internal reasoning
-content entirely and still read as coherent, convincing prose. E-Prime rewriting forces
-that suppressed content into the text where text-only readers can find it.
+**First: the J-lens needs direct access to a model's own internal processing states.** That kind of access doesn't extend to human readers, to other AI models without special interpretability tools, or to anyone working from text alone. Our project's whole method operates on the actual output text — in a form any reader can check, with no special tools required at all. This new paper itself confirms that smooth, fluent output can completely hide its own internal reasoning and still read as coherent, convincing writing. Rewriting in E-Prime forces that hidden reasoning into the text itself, where anyone working from text alone can actually find it.
 
-**Second: the J-lens currently handles only single-word concepts.**
-The paper names this limitation explicitly. The hidden dependencies this vault's typology
-targets — "the specific covariate-adjustment model the analysts chose," "whether Hawking
-radiation applies at the relevant energy scale" — span many words and represent structured
-commitments, not single concepts. E-Prime operates on predicate structure, which can surface
-multi-word dependency descriptions. The J-lens cannot yet reach those.
+**Second: the J-lens, right now, only handles single-word ideas.** The paper states this limit directly, itself. The hidden conditions our project's whole typing system targets — "which specific statistical adjustment the researchers chose," "whether a specific physics process actually applies at the relevant energy level" — span many words, and represent whole structured commitments, not single ideas. E-Prime works at the level of sentence structure, which can reveal multi-word hidden conditions just fine. The J-lens can't reach that level yet.
 
-The challenge therefore identifies a real limitation of text-level disclosure in the
-presence of advanced interpretability tooling — not a refutation. Future infrastructure
-combining J-lens auditing with E-Prime disclosure would outperform either alone.
+This challenge, in the end, names a real limit of text-based revealing, in a world where advanced AI-interpretability tools now exist — not a real disproof of our method. A future system combining J-lens checking with E-Prime's text-level revealing would outperform either one alone.
 
 ---
 
-## What this addendum does not claim
+## What this document does not claim
 
-This vault has not run any new claims through the ingestion pipeline in response to this
-paper. The nine existing claim files remain unchanged. No claim in this submission rests on
-the J-space paper's findings. This addendum adds theoretical grounding to claims the vault
-already made on independent evidence — not new empirical claims derived from the paper.
+We haven't run any new claims through our actual process in response to this new paper. Our eight existing claim files stay exactly as they were. No claim in our project depends on this new paper's findings. This document adds theoretical backing to claims our project already made based on independent evidence — not new factual claims that come from this paper itself.
 
-The J-space paper also does not validate the specific dependency typology this vault
-proposes (model-dependency, chain-dependency, scope-dependency). That typology derives from
-three executed case studies and a stated, tested prediction in [[insight-contribution-v1]].
-The J-space paper supports the mechanism this vault relies on. It does not independently
-test the typology this vault derives from applying that mechanism.
+This new paper also doesn't prove our specific three-part typing system (study-design dependency, reasoning-chain dependency, boundary dependency) correct on its own. That three-part system comes from three real, executed case studies and one stated, tested prediction, laid out in [[insight-contribution-v1]]. This new paper backs up the underlying mechanism our project relies on. It doesn't independently test the specific three-part system we built by applying that mechanism.
 
 ---
 
-## Summary Table: What v2 Adds to the Submission's Claim Structure
+## What This New Document Adds to Our Project's Overall Claim
 
-| Item | Status after v2 addendum |
+| Item | Status after this document |
 |---|---|
-| Core claim ("E-Prime makes evaluative-language smuggling structurally visible") | Strengthened — now carries a mechanistic warrant from the J-space architecture, not only a functional argument. |
-| v1 E-Prime accuracy-gain resolution (generation vs. disclosure stage distinction) | Deepened — the functional distinction now maps to a mechanistic one: E-Prime acts after the reasoning layers complete; generation-stage constraints act within those layers. |
-| Two-layer architecture (filler-word ban for generation, E-Prime for disclosure) | Now carries mechanistic warrant: each constraint maps to the computational stage where it demonstrably acts. |
-| Criterion 6 (adversarial robustness) claim | Strongest external validation yet: the J-space paper's alignment-auditing findings provide a direct mechanistic parallel to this vault's provenance-schema claim. |
-| New adversarial question raised | Named and engaged directly: J-lens tooling could in principle audit hidden dependencies without E-Prime, but requires internal model access unavailable to text-level readers and currently handles only single-word concepts. |
-| Nine existing claim files | Unchanged. |
+| Our core claim ("E-Prime makes a hidden judgment call visible in the text itself") | Strengthened — now carries a real mechanical justification from how AI models actually work internally, not just a practical argument. |
+| Our earlier resolution of the E-Prime accuracy-gain puzzle (writing stage versus revealing stage) | Deepened — that practical distinction now maps onto a real mechanical one: E-Prime acts after a model's reasoning stages finish; writing-stage rules act while those stages run. |
+| Our two-part system (filler-word ban for writing, E-Prime for revealing) | Now carries real mechanical justification: each rule maps to the exact stage where the evidence shows it actually works. |
+| Our toughest self-check (Criterion 6, adversarial robustness) | Strongest outside support we've received yet: this new paper's findings on catching AI models internally give a direct mechanical parallel to our own claim-record approach. |
+| The new tough question this paper raises | Named and directly answered: J-lens tools could, in principle, check hidden conditions without E-Prime, but that access doesn't extend to text-only readers, and currently only handles single-word ideas. |
+| Our eight existing claim files | Unchanged. |

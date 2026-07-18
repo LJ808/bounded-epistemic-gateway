@@ -36,3 +36,5 @@ A reader committed to lab-leak could use this self-undermining detection-rate ga
 
 ## Related Claims
 - [[covid-002]] — Saar's specific case-level rebuttal (Mr. Chen) operating within this same disputed timing framework
+- [[covid-004]] — an independent judge's own verdict, reached through population-distance modeling rather than case-count back-extrapolation, corroborating this claim's zoonotic-timing conclusion through a completely different method
+- [[covid-005]] — the second independent judge's own verdict, reached through market-visit traffic-share modeling rather than case-count back-extrapolation or population-distance modeling, corroborating this claim's zoonotic-timing conclusion through a third independent method

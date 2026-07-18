@@ -1,149 +1,152 @@
 ---
 synthesis_type: reader_side_attack_vector_breakdown
 framework: e_prime_defense_against_motivated_misreading
-claims_covered: 9
+claims_covered: 8
 companion_to: adversarial-robustness-criterion-6.md
 date_executed: "2026-06-17"
 tags: [resilience]
 ---
-# Per-Claim Attack-Vector Breakdown
-## Part A Detail — Reader-Side Gaming, Worked Per Claim
+# Every Claim, Checked Against All Ten Ways a Reader Could Misread It
+## The Detailed Version of Part A in Our Toughest Test
 
-`adversarial-robustness-criterion-6.md` Part A states a condensed ten-vector pattern and promises this detail file. This document supplies it: for each of the nine claims, which of the ten reader-side attack vectors apply, and how the E-Prime rewrite in that claim's own file actually handles each one — citing the claim file's own Analysis/Ambiguity Flags/Adversarial Interpretation sections rather than restating new analysis.
+`adversarial-robustness-criterion-6.md` gives the short version of our ten-check pattern and promises this file as the detailed version. Here it is: for each of our eight claims, which of the ten checks actually apply, and how that claim's own rewrite already handles each one. We quote each claim file's own write-up directly, rather than making up new analysis here.
 
-Not every vector applies with equal force to every claim. Where a vector doesn't meaningfully apply to a given claim, this file says so rather than padding the count.
+Not every check applies with equal force to every claim. Where a check doesn't really apply to a given claim, we say so plainly, instead of padding the list to look complete.
 
-The ten vectors, as named in the parent document:
-1. Causality inversion
-2. Selective citation / CI narrowing
-3. Evaluative-language smuggling
-4. Model-dependence erasure
-5. Geometric/parametric conflation
-6. Selection bias (flagged, not closed)
-7. Underpowering (flagged, not closed)
-8. Missing evidence (flagged, not closed)
-9. Speculative theory (flagged, not closed)
-10. Absent source information (flagged, not closed)
+A quick note on abbreviations: RR means "risk ratio" (how much more or less likely something happens in one group versus another). HR means "hazard ratio" (a similar idea, used for risk over time). CI means "confidence interval" (the range the true number probably falls in — a wide range means less certainty).
 
----
+The ten checks, using the same plain names from our toughest-test file:
 
-## eggs-001 (Li 2013 meta-analysis)
-
-**Strong vectors:**
-- **#2 Selective citation/CI narrowing** — rewrite forces RR 1.19 (CI 1.02–1.38) and RR 1.68 (CI 1.41–2.00) into the same sentence as the claim itself, blocking a reader from citing the point estimate alone while dropping the interval.
-- **#3 Evaluative-language smuggling** — "there is a dose-response positive association" collapses into a specific pooled RR; the rewrite forces the magnitude question that "is" let the reader skip.
-
-**Flagged-not-closed vectors:**
-- **#1 Causality inversion** — claim file's own Ambiguity Flags name this directly: "association" leaves causal direction unaddressed; the rewrite cannot resolve whether egg consumption causes CVD risk or reflects a shared upstream factor — it only prevents the original phrasing from implying causation for free.
-- **#10 Absent source information** — the claim file's Adversarial Interpretation notes the pooled analysis shares none of eggs-002's covariate adjustment, making a head-to-head comparison incomplete; the rewrite surfaces this as a named gap rather than letting "association" imply comparability.
-
-**Doesn't meaningfully apply:** #5 (no geometric/parametric content in this claim), #9 (not a speculative-theory claim).
+1. Turning "happened together" into "caused it"
+2. Cherry-picking the number, dropping the uncertainty
+3. Hiding a judgment call inside a small word
+4. Citing a result without saying how researchers got it
+5. Mixing up which assumption actually does the work
+6. Not knowing who actually took part in the study (flagged, not solved)
+7. Too few people to trust the result (flagged, not solved)
+8. Studies nobody ever ran (flagged, not solved)
+9. A claim resting on an unsettled theory (flagged, not solved)
+10. Leaving out where information came from (flagged, not solved)
 
 ---
 
-## eggs-002 (Zhong/Drouin-Chartier 2020)
+## eggs-001 (the Li 2013 combined study)
 
-**Strong vectors:**
-- **#3 Evaluative-language smuggling** — "was not associated" sounds like a stable property; rewrite forces naming the mechanism (multivariable adjustment) that produced the null, the claim file's central move.
-- **#4 Model-dependence erasure** — rewrite anchors the null result to "adjustment for lifestyle and dietary factors," blocking citation of "not associated" as if it held independent of model choice.
+**Checks this claim passes strongly:**
+- **#2, cherry-picking the number.** Our rewrite forces both risk ratios into the same sentence: 1.19 (range 1.02–1.38) and 1.68 (range 1.41–2.00). Nobody can quote just the headline number and drop the range — the sentence itself won't allow it.
+- **#3, hiding a judgment call.** The phrase "there is a dose-response positive association" collapses into one specific combined number. The rewrite forces the actual size of the effect into view, which the word "is" let a reader skip past.
 
-**Flagged-not-closed vectors:**
-- **#6 Selection bias / #10 Absent source information** — claim file's Ambiguity Flags state plainly that the source never specifies whether BMI/statin use got treated as confounders or mediators; the rewrite cannot supply this missing methodological detail, only make its absence visible as the open crux.
-- **#1 Causality inversion (source-side variant)** — Adversarial Interpretation section states directly: a source motivated to find eggs safe could select an adjustment model that removes true signal by mistreating mediators as confounders — "nothing in this abstract rules that out." This shows the claim file naming its own blind spot, not claiming a success.
+**Checks this claim flags, but can't fully solve:**
+- **#1, turning correlation into causation.** The claim file's own notes on unresolved questions say this directly: the word "association" leaves the direction of cause and effect unanswered. Our rewrite can't determine whether eating eggs causes heart risk, or whether some other factor causes both. It only stops the original wording from implying causation for free.
+- **#10, leaving out where information came from.** The claim file's own notes on possible misuse point out that this combined study never adjusted for the same factors eggs-002 did, so comparing the two directly doesn't fully work. Our rewrite names this gap instead of letting the word "association" imply the two studies compare cleanly.
 
-**Doesn't meaningfully apply:** #2 (no CI-narrowing risk; nobody selectively cites the null result's CI), #5, #9.
-
----
-
-## eggs-003 (Díez-Espino/PREDIMED 2017)
-
-**Strong vectors:**
-- **#3 Evaluative-language smuggling** — this gives the vault's clearest single case. "No evidence of interaction" forced into HR 1.33 (CI 0.72–2.46) vs HR 0.96 (CI 0.33–2.76) exposes a 38% point-estimate gap sitting under wide, overlapping intervals. Claim file rates this rewrite_confidence: high and confidence_score: 5 for exactly this reason.
-- **#7 Underpowering** — directly named: the claim file's own Analysis states "no evidence of interaction" actually means "underpowered to detect an interaction," not "detected absence of interaction" — flagged, not resolved, since the rewrite cannot manufacture statistical power the original study lacked.
-
-**Flagged-not-closed vectors:**
-- **#8 Missing evidence** — claim file notes the ambiguity "lives entirely in the source's plain-language conclusion," meaning a larger, adequately powered subgroup study stands as the only thing that would actually close this gap; the rewrite makes the absence visible, not solved.
-
-**Doesn't meaningfully apply:** #1 (no causal-direction ambiguity here — it's a subgroup-interaction question, not an association claim), #2 (the CI already sits in the rewrite, not selectively dropped), #4, #5, #9, #10.
+**Doesn't really apply here:** #5 (this claim involves no hidden technical assumption of that kind) and #9 (this claim doesn't rest on any unsettled theory).
 
 ---
 
-## covid-001 (Peter, epidemiological-timing)
+## eggs-002 (the Zhong/Drouin-Chartier 2020 study)
 
-**Strong vectors:**
-- **#3 Evaluative-language smuggling** — "seems epidemiologically impossible" forced into "implies 256× the case count actually observed," which the claim file notes "cannot be delivered with the same rhetorical confidence" once the assumption must surface.
-- **#4 Model-dependence erasure** — rewrite anchors the argument to "constant 3.5-day doubling," a named assumption the original buried inside "seems."
+**Checks this claim passes strongly:**
+- **#3, hiding a judgment call.** "Was not associated" sounds like a stable, settled fact. Our rewrite forces the sentence to name the actual method (adjusting for lifestyle and diet) that produced that "no link found" result — the claim file's central move.
+- **#4, citing a result without saying how researchers got it.** Our rewrite ties the "no link found" result directly to "adjustment for lifestyle and dietary factors." Nobody can quote "not associated" as if it held true regardless of which method the researchers used.
 
-**Flagged-not-closed vectors:**
-- **#6 Selection bias (detection-rate variant)** — claim file's Analysis traces a real internal tension: the same debate transcript elsewhere implies detection rate ran inconstant (post-December-30 wet-market screening), which the 256× argument doesn't address. The rewrite surfaces this as an open question; per the claim file's own Adversarial Interpretation, "neither side, in the actual transcript, runs this calculation explicitly" — the gap stays open, not closed.
-- **#10 Absent source information** — the claim file states this plainly: "the argument's force depends entirely on constant detection rate, an assumption Peter doesn't state and doesn't defend."
+**Checks this claim flags, but can't fully solve:**
+- **#6 and #10, not knowing who took part, and missing source detail.** The claim file's own notes on unresolved questions say plainly: the source never states whether it treated BMI and statin use as things that caused the confusion, or as things that sat in the causal chain itself. Our rewrite can't supply that missing methodological detail. It only makes the gap visible as an open question.
+- **#1, a source-side version of turning correlation into causation.** The claim file's own notes on possible misuse state this directly: someone who wants eggs to look safe could pick an adjustment method that quietly removes a real signal by treating a real cause as a confusing factor instead. "Nothing in this source rules that out." This shows the claim file naming its own weak spot — not claiming a clean win.
 
-**Doesn't meaningfully apply:** #2, #5, #9.
-
----
-
-## covid-002 (Saar, Mr. Chen case)
-
-**Strong vectors:**
-- **#3 Evaluative-language smuggling** — "this means" forced into an explicit if/then/contingent-on chain, per the claim file's Analysis. This earns rating as the cleanest single demonstration of vector #3 in the covid case, rewrite_confidence: high.
-- **#10 Absent source information** — rewrite explicitly names "the Daily Mail interview's accuracy as the only source for his onset date" as the load-bearing, named dependency — exactly the single point of failure the claim file says the rewrite was built to expose.
-
-**Notable reversal worth flagging directly:** the claim file's own Adversarial Interpretation states this rewrite made the claim more vulnerable to scrutiny, not less — useful for an evaluating reader, double-edged for a debater defending the claim. Listed here because it gives a genuine example of E-Prime cutting against the claim-holder's interest, stronger evidence of non-bias than a rewrite that only ever strengthens claims.
-
-**Doesn't meaningfully apply:** #1, #2, #4, #5, #6, #7, #8, #9 — this claim works structurally as a single-source-reliability case, not a multi-vector one, and the claim file's own Ambiguity Flags state "none remaining after the rewrite."
+**Doesn't really apply here:** #2 (nobody has reason to selectively quote this result's range — the result itself came up null) and #5, #9.
 
 ---
 
-## covid-003 (Peter, furin cleavage site)
+## eggs-003 (the Díez-Espino/PREDIMED 2017 study)
 
-**Strong vectors:**
-- **#3 Evaluative-language smuggling, with a directional-inversion finding** — "is a mess" and "expected to work poorly" forced into a knowability-at-time-t framing. The claim file's Analysis identifies something beyond the standard pattern: a careless paraphrase of this claim ("shows signs of artificial insertion") doesn't just compress it — it flips which side the evidence supports. This gives the vault's strongest single example of vector #3 doing more than exposing vagueness; it catches a directional error a summary would otherwise launder.
-- **#9 Speculative theory** — rewrite anchors the claim to "computational modeling after COVID's emergence," explicitly dating the evidence relative to the event, which the claim file's Adversarial Interpretation uses to frame the real crux: does post-hoc tractability bear on pre-2019 knowability, or not.
+**Checks this claim passes strongly:**
+- **#3, hiding a judgment call.** This gives our single clearest example in this whole project. "No evidence of interaction" forces open into two real numbers: a hazard ratio of 1.33 (range 0.72–2.46) versus 0.96 (range 0.33–2.76) — a 38 percentage-point gap sitting underneath two wide, overlapping ranges. The claim file itself rates this rewrite as high-confidence, for exactly this reason.
+- **#7, too few people to trust the result.** Named directly. The claim file's own analysis states that "no evidence of interaction" actually means "not enough people in this group to detect an interaction," not "we detected a true absence of one." We flag this. We can't manufacture statistical power the original study never had.
 
-**Flagged-not-closed:**
-- **#8 Missing evidence** — the crux itself (whether post-2019 computational results say anything about pre-2019 engineering knowledge) remains explicitly unresolved per the claim file's relation_type: crux_candidate tag.
+**Checks this claim flags, but can't fully solve:**
+- **#8, studies nobody ever ran.** The claim file notes that the real uncertainty lives entirely in the source's own plain-language conclusion. Only a bigger, properly sized follow-up study would actually settle this question. Our rewrite makes the gap visible. It doesn't close it.
 
-**Doesn't meaningfully apply:** #1, #2, #4, #5, #6, #7, #10.
-
----
-
-## blackhole-001 (CERN FAQ, energy-equivalence)
-
-**Strong vectors:**
-- **#5 Geometric/parametric conflation** — this gives the vault's defining example. The claim file's Analysis identifies that cosmic-ray energy-equivalence (a fast particle striking a stationary target) doesn't automatically establish geometry-equivalence with LHC collisions (two fast particles colliding head-on in the center-of-momentum frame). "Phenomena happen naturally" sounding unrestricted works as exactly evaluative-language smuggling (#3) layered on top of a hidden parameter (#5); the claim file treats this as the first confirmed instance of the "scope-dependency" category predicted in `insight-contribution-v1.md`.
-
-**Flagged-not-closed:**
-- **#8 Missing evidence** — claim file states directly that the fuller CERN safety case (LSAG 2008) likely addresses collision geometry but "nothing in this FAQ text closes that gap," and the LSAG report itself never entered this vault.
-
-**Doesn't meaningfully apply:** #1, #2, #4, #6, #7, #9, #10.
+**Doesn't really apply here:** #1 (this claim asks about one subgroup's response, not about cause and effect in general), #2 (the range already sits inside the rewrite, not selectively dropped), #4, #5, #9, #10.
 
 ---
 
-## blackhole-002 (CERN FAQ, evaporation argument)
+## covid-001 (Peter's argument about timing)
 
-**Strong vectors:**
-- **#4 Model-dependence erasure** — the claim file's central finding: formation-prediction and evaporation-prediction both derive from the same extra-dimension theoretical package, which the original FAQ presents as two independent safety arguments. The rewrite ("the same...framework predicting...also predicts...") forces the shared dependency into a single sentence, making independence-framing impossible to state without it reading as visibly false.
+**Checks this claim passes strongly:**
+- **#3, hiding a judgment call.** "Seems epidemiologically impossible" forces open into "implies 256 times more cases than we actually saw." The claim file notes this new version "can't carry the same confident tone" once the assumption underneath it has to show up in the same sentence.
+- **#4, citing a result without saying how researchers got it.** Our rewrite ties the whole argument to one specific, named assumption: a case count that doubles every 3.5 days — an assumption the original buried inside the word "seems."
 
-**Flagged-not-closed, with a genuine refinement worth surfacing honestly:**
-- **#8 Missing evidence / #9 Speculative theory** — the claim file's Ambiguity Flags state that resolving which argument (the FAQ's same-theory point, or the LSAG report's independent astrophysical check) "actually carries the safety-relevant weight requires ingesting the LSAG 2008 report directly — not yet done in this vault." Notably, the claim file's own Analysis section goes further and states a tentative conclusion ("the safety-relevant weight likely sits with that independent check, not with the same-theory argument") while explicitly flagging this as the predicted scope-dependency category resolving into a chain-dependency on closer inspection — a real, falsifiable claim the vault states it hasn't closed, not a result dressed up as final.
+**Checks this claim flags, but can't fully solve:**
+- **#6, a version involving unclear detection rates.** The claim file's own analysis traces a real tension: elsewhere in the same debate, the transcript implies the actual detection rate changed over time (after wet-market testing began on December 30), which this argument's math never accounts for. Our rewrite surfaces this as an open question. Per the claim file's own notes on possible misuse: "neither side, in the actual transcript, runs this calculation explicitly" — the gap stays open, not closed.
+- **#10, missing source detail.** The claim file states this plainly: "the argument's whole force depends on a constant detection rate — an assumption Peter never states and never defends."
 
-**Doesn't meaningfully apply:** #1, #2, #6, #7, #10.
+**Doesn't really apply here:** #2, #5, #9.
 
 ---
 
-## Cross-Claim Pattern Summary
+## covid-002 (Saar's argument about Mr. Chen)
 
-| Vector | Strongly demonstrated in | Flagged-only in |
+**Checks this claim passes strongly:**
+- **#3, hiding a judgment call.** "This means" forces open into an explicit "if this holds, then that follows" chain, per the claim file's own analysis. This gives the cleanest single example of this particular check anywhere in the COVID case — rated high-confidence in the claim file itself.
+- **#10, missing source detail.** Our rewrite names, directly, "the accuracy of one newspaper interview as the only source for this person's symptom-onset date" — exactly the single point where the whole argument could fail, which the claim file says the rewrite exists specifically to expose.
+
+**A genuine reversal worth naming directly:** the claim file's own notes on possible misuse state that this rewrite actually makes the claim more exposed to scrutiny, not less — useful for someone evaluating the claim, a real problem for someone trying to defend it in a debate. Worth naming here because it gives a real example of E-Prime working against the claim-holder's own interest — stronger proof of fairness than a method that only ever makes claims look stronger.
+
+**Doesn't really apply here:** #1, #2, #4, #5, #6, #7, #8, #9 — this claim comes down to one single question of source reliability, not many different checks, and the claim file's own notes on unresolved questions say plainly: "none remaining after the rewrite."
+
+---
+
+## covid-003 (Peter's argument about a specific genetic feature)
+
+**Checks this claim passes strongly:**
+- **#3, hiding a judgment call, with an extra twist.** "Is a mess" and "expected to work poorly" force open into a question about what scientists could have known and when. The claim file's own analysis finds something beyond the usual pattern here: a careless, shortened version of this claim ("shows signs of artificial insertion") doesn't just compress the original — it flips which side of the debate the evidence actually supports. This gives our strongest single example of a summary doing more than losing nuance — it catches a summary getting the direction of the evidence backwards.
+- **#9, a claim resting on an unsettled question.** Our rewrite ties the claim to "computational modeling that happened after COVID already existed," explicitly dating the evidence relative to the event itself. The claim file's own notes on possible misuse use this dating to frame the real open question: does a method existing after the fact tell us anything about what scientists could have done before it existed?
+
+**Flagged, not solved:**
+- **#8, studies nobody ever ran.** The real open question itself — whether a post-2019 computational result tells us anything about pre-2019 engineering knowledge — stays explicitly unresolved, per the claim file's own tag marking it as a key open question.
+
+**Doesn't really apply here:** #1, #2, #4, #5, #6, #7, #10.
+
+---
+
+## blackhole-001 (CERN's FAQ, comparing to cosmic rays)
+
+**Checks this claim passes strongly:**
+- **#5, mixing up which assumption actually does the work.** This gives our defining example of this exact problem. The claim file's own analysis finds that "cosmic rays already hit Earth with similar energy" doesn't automatically mean "cosmic rays hit Earth in the same physical setup as the LHC's collisions." A fast particle hitting a stationary target doesn't automatically match two fast particles colliding head-on. The phrase "this already happens naturally" sounding completely safe combines two problems at once: a hidden judgment call (check #3) sitting on top of a hidden technical assumption (check #5). The claim file treats this as the first real, confirmed example of the "boundary" kind of hidden assumption our other big project file predicted in advance.
+
+**Flagged, not solved:**
+- **#8, studies nobody ever ran.** The claim file states plainly that CERN's fuller, full-length safety report likely addresses this exact collision-setup question, but "nothing in this FAQ text closes that gap" — and we never actually worked through that fuller report in this project.
+
+**Doesn't really apply here:** #1, #2, #4, #6, #7, #9, #10.
+
+---
+
+## blackhole-002 (CERN's FAQ, the safety argument itself)
+
+**Checks this claim passes strongly:**
+- **#4, citing a result without saying how researchers got it.** This gives the claim file's central finding. The prediction that black holes could form, and the prediction that they'd instantly evaporate, both come from the exact same underlying physics theory — even though the original FAQ presents them as two separate, independent safety arguments. Our rewrite forces that shared root into a single sentence, which makes it impossible to describe the two arguments as independent without the sentence visibly contradicting itself.
+
+**Flagged, not solved, with a real twist worth stating honestly:**
+- **#8 and #9, studies nobody ran, and an unsettled theory.** The claim file's own notes on unresolved questions state that settling which argument actually carries the real safety weight — CERN's "same theory predicts both" point, or a separate check against real astronomical objects — would require reading CERN's full 2008 technical report directly, something we haven't done in this project. Notably, the claim file's own analysis goes further, and offers a tentative answer: the real safety weight probably sits with that separate astronomical check, not with the "same theory" argument — while explicitly flagging this as our predicted "boundary" kind of hidden assumption turning into a "single-link-in-a-chain" kind, on closer look. A real, testable claim we admit we haven't fully settled, not a finished result dressed up as one.
+
+**Doesn't really apply here:** #1, #2, #6, #7, #10.
+
+---
+
+## The Pattern Across All Eight Claims
+
+| Check | Shows up strongly in | Only flagged (not solved) in |
 |---|---|---|
-| #1 Causality inversion | — | eggs-001, eggs-002 |
-| #2 Selective citation/CI narrowing | eggs-001 | — |
-| #3 Evaluative-language smuggling | all nine claims, in some form | — |
-| #4 Model-dependence erasure | eggs-002, covid-001, blackhole-002 | — |
-| #5 Geometric/parametric conflation | blackhole-001 | — |
-| #6 Selection bias | — | eggs-002, covid-001 |
-| #7 Underpowering | eggs-003 | — |
-| #8 Missing evidence | — | eggs-003, covid-003, blackhole-001, blackhole-002 |
-| #9 Speculative theory | covid-003 | blackhole-002 |
-| #10 Absent source information | covid-002 | eggs-001, eggs-002, covid-001 |
+| #1 Turning correlation into causation | — | eggs-001, eggs-002 |
+| #2 Cherry-picking the number | eggs-001 | — |
+| #3 Hiding a judgment call | all eight claims, in some form | — |
+| #4 Citing a result with no context | eggs-002, covid-001, blackhole-002 | — |
+| #5 Mixing up the hidden assumption | blackhole-001 | — |
+| #6 Not knowing who took part | — | eggs-002, covid-001 |
+| #7 Too few people | eggs-003 | — |
+| #8 Studies nobody ran | — | eggs-003, covid-003, blackhole-001, blackhole-002 |
+| #9 Resting on an unsettled theory | covid-003 | blackhole-002 |
+| #10 Missing source detail | covid-002 | eggs-001, eggs-002, covid-001 |
 
-**Honest observation, stated plainly:** vector #3 (evaluative-language smuggling) shows up in every single claim, which makes sense — it gives the mechanism E-Prime targets most directly by construction. The other nine vectors distribute unevenly across the nine claims; no claim demonstrates all ten, and several vectors (geometric/parametric conflation, underpowering) appear strongly in only one claim each. This marks a real limitation of a nine-claim, three-case vault: breadth of vector coverage trades off against depth per claim. A larger vault would let each vector get tested against more than one or two claims, which would matter for judging vector #5 and #7 in particular, where the current evidence rests on a single example each.
+**An honest observation, stated plainly:** check #3 (hiding a judgment call) shows up in every single claim. That makes sense — it names the exact thing E-Prime targets by design. The other nine checks spread out unevenly across our eight claims. No single claim triggers all ten checks, and a few checks (#5 and #7 especially) only show up strongly in one claim each. This points to a real limit of an eight-claim, three-case project: covering more checks trades off against digging deep on any one claim. A bigger project would let each check get tested against more than one or two claims — which would matter most for checks #5 and #7, where our current evidence rests on a single example each.

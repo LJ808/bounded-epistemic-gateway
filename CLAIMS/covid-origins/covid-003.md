@@ -36,3 +36,4 @@ Both debate sides treat this as load-bearing (per Yuri/Saar's counter-argument t
 
 ## Related Claims
 - This claim sits independent of [[covid-001]] and [[covid-002]] (epidemiological-timing cluster) — it belongs to the separate viral-genetics evidentiary track in the same debate.
+- [[covid-006]] — both claims bear on WIV's capacity to have engineered SARS-CoV-2, but address distinct specific questions: this claim asks whether the FCS's specific sequence looked achievable to a 2019 engineer, covid-006 asks whether WIV held a suitable backbone virus to engineer from at all. Checked explicitly, no edge forced — see `SYNTHESIS/structure-layer-worked-example-v1.md`.

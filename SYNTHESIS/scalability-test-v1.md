@@ -7,15 +7,15 @@ date: 2026-06-28
 tags: [resilience]
 ---
 
-# Scalability Test — Fixed-Prompt Ingestion, No Per-Case Customization
+# Does This Method Work Without Us Hand-Tuning Each Claim?
 
-## What this tests
+## What we're testing here
 
-Scalability (Criterion 4) asks whether the workflow improves with more compute, better models, or more contributors — and specifically whether it bottlenecks on a hand-designed human step. The honest risk in everything built so far: every rewrite in this vault came from me personally crafting each sentence with full context of the case, the crux, and what I wanted to find. That doesn't scale — that just means me doing careful analysis and calling it "E-Prime ingestion."
+FLF's fourth scoring question asks whether our method actually gets better with more computing power, better AI models, or more people helping — and specifically, whether it depends on one person doing careful, hand-crafted work for every single claim. The honest risk in everything we built so far looks like this: every rewrite in this project came from me, personally, writing each sentence with full knowledge of the case, the key question, and what I already hoped to find. That kind of process doesn't scale. It just means me doing careful analysis and calling it "automatic ingestion."
 
-**Real test:** Apply the exact ingestion prompt from the spec document — the one written for Claude to follow mechanically — to a brand-new source, with no case-specific tuning, no advance knowledge of what the "interesting" finding should look like. If the procedure only works when I bring outside judgment to each rewrite, the method doesn't scale; it just means me, slower.
+**The real test:** Take the exact same instructions we wrote down for an AI to follow mechanically, and run them on a brand-new source — with no special tuning for this particular case, and no advance idea of what "interesting" result we should find. If this only works because I personally bring outside judgment to every rewrite, the method doesn't actually scale. It just means me, working more slowly.
 
-## The Fixed Prompt (copied verbatim from the spec, not modified)
+## Our fixed instructions (copied exactly, unchanged)
 
 ```
 1. Rewrite the source, eliminating all forms of "to be"
@@ -33,75 +33,75 @@ Scalability (Criterion 4) asks whether the workflow improves with more compute, 
    EVIDENCE TRANSPARENCY (1-5).
 ```
 
-## New Source (never seen before this test, not pre-selected for an interesting finding)
+## A brand-new source (never worked through before this test, not picked in advance to give an interesting result)
 
-From the Million Veteran Program stroke study (ScienceDirect abstract):
+From a large veteran-health stroke study:
 
 > "In this prospective cohort of 233,792 veterans, we demonstrated a positive association between egg consumption and risk of ischemic stroke. The association was not modified by body mass index or diabetes. However, there was no association between egg intake and hemorrhagic stroke."
 
-## RUNNING THE FIXED PROMPT NOW
+## Running the fixed instructions, right now
 
-### Step 1: E-Prime rewrite
+### Step 1: The E-Prime rewrite
 
 Original: "we demonstrated a positive association between egg consumption and risk of ischemic stroke. The association WAS NOT modified by body mass index or diabetes. ...there WAS no association between egg intake and hemorrhagic stroke."
 
-Following the fixed instruction mechanically — find every "to be," replace with an active verb making the assertion explicit:
+Following the instructions exactly — find every form of "to be," replace it with an active verb that spells out the actual claim:
 
-Rewrite: "Egg consumption correlated positively with ischemic stroke risk across 233,792 veterans (mean age 65.6, 91.6% men, 3.3-year mean follow-up). Body mass index and diabetes status did not change the magnitude of this correlation. Egg intake showed no correlation with hemorrhagic stroke risk."
+Rewrite: "Egg consumption correlated positively with ischemic stroke risk across 233,792 veterans (average age 65.6, 91.6% men, followed for an average of 3.3 years). Body mass index and diabetes status did not change the size of this correlation. Egg intake showed no correlation with hemorrhagic stroke risk."
 
-**Following the instruction's flag clause:** "did not change the magnitude" — flagging this instance. The original "not modified by" could mean (a) no statistical interaction term, (b) interaction term tested and non-significant, or (c) interaction never tested at all. The abstract alone doesn't specify which. Per the prompt's own instruction ("if you cannot rewrite without adding interpretation, flag the instance"), this gets flagged rather than resolved — *the exact same ambiguity structure [[eggs-003]]'s diabetic-interaction question already showed*, found independently, without my deliberately steering toward it.
+**Following the instructions' flagging rule:** we flag "did not change the size of." The original phrase "not modified by" could mean one of three things: no formal statistical test ever ran, a test ran and came back with no significant result, or nobody ever tested it at all. The short summary we worked from doesn't say which. Per our own instructions ("if you can't rewrite without adding interpretation, flag it"), we flag this instead of guessing an answer — *and this turns out to be the exact same kind of gap we already found in [[eggs-003]]*, found completely independently this time, without me steering toward it on purpose.
 
-### Step 2: Claim extraction (following the fixed format)
+### Step 2: Pulling out the actual claims (using our fixed format)
 
 ```yaml
 claim_id: scaling-test-001
 source_segment: "we demonstrated a positive association between egg consumption and risk of ischemic stroke"
 rewritten_segment: "Egg consumption correlated positively with ischemic stroke risk across 233,792 veterans"
-attribution: Million Veteran Program study authors, prospective cohort
-claim_statement: positive correlation, egg consumption and ischemic stroke incidence
-confidence_language: "demonstrated" (original) — strong, unhedged
-evidence_cited: cohort hazard ratios by intake category (1.28 for <1/week vs reference, increasing with intake per the underlying table)
-methodology: Cox proportional hazard, self-reported FFQ exposure, ICD9/10 outcome ascertainment
-ambiguity_flags: "demonstrated" implies more certainty than a single observational cohort (3.3-year follow-up, notably shorter than the 32-year NHS/HPFS follow-up in [[eggs-002]]) typically supports
+attribution: the study's authors, a large forward-looking study
+claim_statement: a positive correlation between egg consumption and new stroke cases
+confidence_language: "demonstrated" (the original word) — strong, no hedging at all
+evidence_cited: risk numbers by how much people ate, increasing with more eggs eaten, per the underlying data table
+methodology: a standard time-to-event statistical model, self-reported diet questionnaire, medical-code-based outcome tracking
+ambiguity_flags: the word "demonstrated" claims more certainty than a single observational study (followed people for only 3.3 years, much shorter than the 32-year follow-up in [[eggs-002]]) usually supports
 ```
 
 ```yaml
 claim_id: scaling-test-002
 source_segment: "The association was not modified by body mass index or diabetes"
-rewritten_segment: "Body mass index and diabetes status did not change the magnitude of this correlation"
+rewritten_segment: "Body mass index and diabetes status did not change the size of this correlation"
 attribution: same source
-claim_statement: no effect modification by BMI or diabetes on the egg/ischemic-stroke association
-confidence_language: "was not modified" — flat, unhedged in original
-evidence_cited: [NOT SPECIFIED IN ABSTRACT — flagged per instruction]
-methodology: presumably subgroup or interaction-term analysis, not specified in available text
-ambiguity_flags: FLAGGED per prompt instruction — this text alone can't settle whether "not modified" means a tested-and-null interaction or an untested assumption; the rewrite can't resolve this without the full paper's methods section
+claim_statement: no change in the egg/stroke link based on weight or diabetes status
+confidence_language: "was not modified" — flat, no hedging in the original
+evidence_cited: [NOT GIVEN IN THE SUMMARY — flagged per our instructions]
+methodology: presumably some kind of subgroup comparison, but not specified anywhere in the text we have
+ambiguity_flags: FLAGGED per our own rule — this text alone can't settle whether "not modified" means a real test came back negative, or whether nobody ever ran the test at all; our rewrite can't answer this without reading the full paper's methods section
 ```
 
-### Step 3: Ratings (following the fixed scale)
+### Step 3: Scoring (using our fixed scale)
 
-| Claim | Attribution Clarity | Rewrite Confidence | Evidence Transparency |
+| Claim | How clear is the attribution | How confident is the rewrite | How visible is the underlying evidence |
 |---|---|---|---|
-| scaling-test-001 | 4 | 4 | 3 — RRs implied but not stated in this excerpt |
-| scaling-test-002 | 4 | 2 — flagged, see ambiguity note | 1 — methodology for the "not modified" claim entirely absent from available text |
+| scaling-test-001 | 4 out of 5 | 4 out of 5 | 3 out of 5 — the actual risk numbers get implied but not stated in this short excerpt |
+| scaling-test-002 | 4 out of 5 | 2 out of 5 — flagged, see the note above | 1 out of 5 — the method behind the "not modified" claim never appears anywhere in the text we have |
 
-## RESULT: Did the fixed prompt work without hand-tuning?
+## The result: did the fixed instructions work without any hand-tuning?
 
-**Yes, with one important honest caveat.**
+**Yes, with one important, honest catch.**
 
-The mechanical procedure — applied with no case-specific steering, to a source picked for outcome novelty (stroke, not CVD/diabetes) rather than for producing an interesting result — independently surfaced the same ambiguity type already catalogued in [[eggs-003]]: a flat "not modified by X" claim hiding whether an interaction got tested-and-found-null versus never tested at all. Nobody engineered this. The fixed prompt's own flagging instruction caught it.
+Following the mechanical instructions exactly — no special steering for this case, on a source picked for a different health outcome (stroke, not heart disease or diabetes) rather than picked to guarantee an interesting result — independently turned up the exact same kind of gap we already catalogued in [[eggs-003]]: a flat "not modified by X" claim that hides whether researchers actually tested that and found nothing, or never tested it at all. Nobody engineered this result on purpose. Our own instructions' flagging rule caught it on its own.
 
-**The caveat, stated plainly:** the prompt's instruction to "flag the instance if you cannot rewrite without adding interpretation" still requires judgment to execute — recognizing *that* an instance needs flagging counts as an interpretive act in itself. A less careful executor (a smaller model, a less attentive human, a rushed pass) could easily have written "Body mass index and diabetes did not modify the association" — simply substituting "modify" for "is...modified by" — which satisfies the letter of "eliminate to-be forms" while completely failing to surface the ambiguity. The mechanical rule (remove "to be") works as genuinely mechanical. The flagging judgment riding on top of it doesn't — and that stands as the actual bottleneck candidate for Criterion 4.
+**The honest catch:** our instruction to "flag the instance if you can't rewrite without adding interpretation" still needs real judgment to carry out. Noticing *that* something needs flagging counts as an act of judgment in itself. A less careful person, or a weaker AI model, or someone rushing through the work, could easily have written "Body mass index and diabetes did not modify the association" — just swapping "modify" in for "was...modified by" — which technically follows the letter of "remove every form of to be," while completely failing to expose the actual hidden gap. The mechanical rule (removing "to be") works as genuinely mechanical, no judgment required. The flagging step sitting on top of it doesn't work that way — and that flagging step gives the real candidate for where this method might not scale.
 
-## What this means for the scalability claim
+## What this actually tells us about scaling
 
-**Confirmed:** the core mechanical operation (E-Prime substitution) doesn't require case-specific tuning — it applied unchanged to a fourth source, in the same case-shape as three already in the vault, and produced a new claim record without modification to the procedure.
+**Confirmed:** the core mechanical step (swapping out "to be") doesn't need any case-specific tuning. It ran unchanged on a fourth source, in the same kind of case already in this project, and produced a working claim record without any change to the process.
 
-**Not confirmed, and now stated honestly instead of asserted:** the *quality* of what gets surfaced still depends on how carefully the flagging step gets executed, and that step marks exactly where a "better model" or "more compute" claim would need testing — does a stronger model catch ambiguities a weaker one misses, holding the prompt fixed? This vault cannot test that without running the same prompt through multiple model tiers, which hasn't happened yet.
+**Not confirmed, and now stated honestly instead of assumed:** how good the results turn out still depends on how carefully someone (or something) carries out the flagging step. This marks exactly the place where a claim like "a better model helps" or "more computing power helps" would actually need testing — does a stronger AI model catch gaps a weaker one misses, using the exact same instructions? We haven't tested that. Doing so would require running the same instructions through more than one tier of AI model, which we haven't done yet.
 
-**Revised Criterion 4 position:** Partial evidence, not full evidence. The substitution mechanism doesn't bottleneck on a hand-designed step (confirmed by this test). The flagging/judgment layer riding on top of the substitution mechanism *might* bottleneck on model capability — untested, stated as an open question rather than papered over.
+**Our honest position on this scoring question:** partial evidence, not full evidence. The mechanical swap-out step doesn't depend on any hand-designed shortcut (this test confirms that). The flagging-and-judgment step sitting on top of it *might* depend on how capable the AI model running it happens to be — untested, and stated here as a real open question, not smoothed over.
 
-## Real next step — correction
+## What we actually need to do next — a correction
 
-An earlier draft of this section proposed running the fixed prompt through a second model tier (e.g., Haiku) to test whether weaker models catch the same ambiguity. That comparison didn't happen in this session — this environment has no tool call available to invoke a separate model tier directly, and claiming the test ran without actually running it would repeat exactly the failure this whole session corrected for. Cutting the claim instead of asserting an unexecuted result.
+An earlier draft of this file proposed running the fixed instructions through a second, weaker AI model, to test whether a weaker model still catches the same gap. That comparison never actually happened in this working session — this environment gave us no way to call a separate, different AI model directly, and claiming we ran that test without actually running it would repeat the exact same mistake this whole project argues against. So we're cutting the claim, instead of stating a result we never actually produced.
 
-**What actually holds true, stated at the right confidence level:** the substitution mechanism (Step 1) works mechanically and shows no sign of requiring case-specific tuning — three independent tests (this one plus the original eggs/COVID/black-holes runs) bear this out. Whether the *judgment* layer (catching ambiguity worth flagging) scales with model capability remains a genuinely open, untested question. The honest version of Criterion 4's status: one half of the claim (mechanism doesn't bottleneck on hand-design) has real evidence behind it; the other half (judgment quality scales with compute/model capability) has zero evidence either way, and this file reports it that way rather than implying a test that never ran.
+**What we actually know, stated at the right level of confidence:** the swap-out mechanism (step one) works mechanically, and shows no sign of needing case-specific tuning — three separate, independent tests (this one, plus our original eggs, COVID, and black-hole runs) back this up. Whether the judgment layer (catching a gap worth flagging) actually gets better with a stronger AI model remains a real, untested, open question. The honest version of our answer to FLF's scaling question: one half of the claim (the mechanism doesn't depend on hand-designed shortcuts) has real evidence behind it. The other half (judgment quality improves with more compute or a better model) has zero evidence either way, and this file says so plainly, instead of implying we ran a test we never actually ran.

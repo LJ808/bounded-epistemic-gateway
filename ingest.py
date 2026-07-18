@@ -1,13 +1,12 @@
----
-title: Ingest
-type: code
-status: active
-vault: TRC
-date: 2026-06-30
-tags: []
----
-
 #!/usr/bin/env python3
+# ---
+# title: Ingest
+# type: code
+# status: active
+# vault: TRC
+# date: 2026-06-30
+# tags: []
+# ---
 """
 E-Prime Ingestion + Assessment Tool — FLF Submission
 =====================================================
@@ -177,6 +176,55 @@ DEMO_ASSESSMENT_OUTPUT_FILLER_BANNED = {
 }
 
 
+FALLACY_CATEGORIES = {
+    "structural_and_formal": [
+        "Circular argument", "False choice", "Part-to-whole mixup",
+        "Word-shift", "Non sequitur",
+    ],
+    "causal_and_statistical": [
+        "False cause", "Rushed conclusion", "Survivorship bias",
+        "Ignoring the base rate", "Texas sharpshooter", "Gambler's fallacy",
+    ],
+    "persuasion_instead_of_evidence": [
+        "Appeal to authority", "Personal attack", "Origin attack",
+        "Straw man", "Red herring", "Bandwagon", "Tu quoque",
+    ],
+    "shifting_the_boundaries": [
+        "Slippery slope", "No true Scotsman", "Motte-and-bailey",
+        "Appeal to nature", "Sunk cost", "False equivalence",
+        "Appeal to ignorance",
+    ],
+}
+
+SCREEN_PROMPT = "You are a Fallacy-Screen system checking an Ingestion Layer output for a broken argument in the rewrite, against 25 named categories across 4 groups (structural_and_formal, causal_and_statistical, persuasion_instead_of_evidence, shifting_the_boundaries). Output YAML with fallacy_found, category, group_tag, location, direction_of_error, explanation. Ingestion Layer output: original_quote={original_quote} e_prime_rewrite={e_prime_rewrite}"
+
+DEMO_SCREEN_OUTPUT = {
+    "fallacy_found": "no",
+    "category": "none",
+    "group_tag": "not applicable",
+    "location": "not applicable",
+    "direction_of_error": "not applicable",
+    "explanation": "The rewrite states a correlation with a magnitude and a confidence interval, and does not assert causation, independence, or authority beyond what the pooled sample supports. Checked against all 25 categories; none apply.",
+}
+
+# ---------------------------------------------------------------------------
+# OPEN-ENDED CHECK -- next-steps-v1.md's third priority. Fallacy-Screen above
+# only catches the 25 named categories. This step asks one further, unbound
+# question regardless of category match: does the conclusion actually follow
+# from its stated reasons? A fixed list, no matter how long, stays closed by
+# definition -- this question exists to catch what the list can't yet name.
+# ---------------------------------------------------------------------------
+
+OPEN_ENDED_PROMPT = "You are an Open-Ended Argument Check, the step named third in SYNTHESIS/next-steps-v1.md. Fallacy-Screen already checked this rewrite against 25 named categories -- this step asks one further, unbound question, independent of that list: does the stated conclusion actually follow from the stated reasons, whether or not the gap matches any named category? A fixed list, no matter how long, stays closed by definition -- this question exists to catch what the list can't yet name. Output YAML with argument_holds (yes/no), issue_found (state the actual gap in the reasoning in your own words if argument_holds is no, or 'none' if yes -- do not force it into one of the 25 named categories even if it resembles one), direction_of_error (whether the gap makes the claim look more convincing than it should, or a rebuttal of the claim look more convincing than it should, or 'not applicable' if argument_holds is yes), explanation. Ingestion Layer output: original_quote={original_quote} e_prime_rewrite={e_prime_rewrite}"
+
+DEMO_OPEN_ENDED_OUTPUT = {
+    "argument_holds": "yes",
+    "issue_found": "none",
+    "direction_of_error": "not applicable",
+    "explanation": "The rewrite's conclusion (a correlation of stated magnitude and confidence interval) follows directly from its stated reasons (pooled sample size, dose-response pattern). No unnamed reasoning gap found underneath the 25 named categories already checked.",
+}
+
+
 def strip_markdown_fences(text: str) -> str:
     """Defensively strip a fenced-code wrapper (triple backtick + optional yaml tag)
     if the model adds one despite the prompt explicitly forbidding it. No-op on
@@ -285,6 +333,58 @@ def assess_claim(ingestion_output: dict, filler_ban: bool = False) -> dict:
     return _call_model(prompt)
 
 
+def screen_claim(ingestion_output: dict) -> dict:
+    """Fallacy-Screen Layer. Requires an Ingestion Layer output as input --
+    same contract as assess_claim() -- and sits between Ingestion and
+    Assessment in the pipeline, per SYNTHESIS/fallacy-screen-layer-v1.md.
+    Checks the rewrite (not the raw source) for a broken argument across 25
+    named categories in 4 groups. Returns fallacy_found + category +
+    group_tag + location + direction_of_error + explanation.
+
+    Honest limitation, stated in the same file: this only catches the 25
+    named categories. An uncatalogued 26th form would still slip through."""
+    if "original_quote" not in ingestion_output or "e_prime_rewrite" not in ingestion_output:
+        print(
+            "screen_claim() requires an Ingestion Layer output "
+            "(original_quote + e_prime_rewrite). Run ingest_claim() first.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
+    prompt = SCREEN_PROMPT.format(
+        original_quote=ingestion_output["original_quote"],
+        e_prime_rewrite=ingestion_output["e_prime_rewrite"],
+    )
+    return _call_model(prompt)
+
+
+def open_check_claim(ingestion_output: dict) -> dict:
+    """Open-Ended Check. Requires an Ingestion Layer output as input -- same
+    contract as screen_claim() and assess_claim() -- and sits after
+    Fallacy-Screen in the pipeline, per SYNTHESIS/next-steps-v1.md step
+    three. Fallacy-Screen only catches the 25 named categories; this step
+    asks one further, unbound question regardless of category match: does
+    the conclusion actually follow from its stated reasons? Returns
+    argument_holds + issue_found + direction_of_error + explanation.
+
+    This step exists specifically to catch what a fixed list, by
+    definition, can never fully cover -- see fallacy-screen-layer-v1.md's
+    stated limitation, and next-steps-v1.md's framing of this exact step."""
+    if "original_quote" not in ingestion_output or "e_prime_rewrite" not in ingestion_output:
+        print(
+            "open_check_claim() requires an Ingestion Layer output "
+            "(original_quote + e_prime_rewrite). Run ingest_claim() first.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
+    prompt = OPEN_ENDED_PROMPT.format(
+        original_quote=ingestion_output["original_quote"],
+        e_prime_rewrite=ingestion_output["e_prime_rewrite"],
+    )
+    return _call_model(prompt)
+
+
 def compare_filler_ban(ingestion_output: dict) -> dict:
     """COMPARE-FILLER-BAN HARNESS -- the falsifiable test literature-
     engagement-addendum-v1.md names as unresolved: does a generation-stage
@@ -338,6 +438,16 @@ def main():
         action="store_true",
         help="Run the generation/disclosure comparison harness from literature-engagement-addendum-v1.md (2 live API calls). Use with --demo to see illustrative output without a key.",
     )
+    parser.add_argument(
+        "--no-screen",
+        action="store_true",
+        help="Skip the Fallacy-Screen Layer and run only Ingestion + Assessment (the pre-existing two-layer pipeline).",
+    )
+    parser.add_argument(
+        "--no-open-check",
+        action="store_true",
+        help="Skip the Open-Ended Check and run only Ingestion + Fallacy-Screen + Assessment.",
+    )
     args = parser.parse_args()
 
     if args.demo:
@@ -355,6 +465,12 @@ def main():
         else:
             print("--- Ingestion Layer ---")
             print(yaml.dump(DEMO_INGESTION_OUTPUT, default_flow_style=False, sort_keys=False))
+            if not args.no_screen:
+                print("--- Fallacy-Screen Layer ---")
+                print(yaml.dump(DEMO_SCREEN_OUTPUT, default_flow_style=False, sort_keys=False))
+            if not args.no_open_check:
+                print("--- Open-Ended Check ---")
+                print(yaml.dump(DEMO_OPEN_ENDED_OUTPUT, default_flow_style=False, sort_keys=False))
             print("--- Assessment Layer ---")
             print(yaml.dump(DEMO_ASSESSMENT_OUTPUT, default_flow_style=False, sort_keys=False))
         return
@@ -380,6 +496,16 @@ def main():
         print("--- Compliance check (filler-banned output) ---")
         print(comparison["filler_ban_compliance_check"])
         return
+
+    if not args.no_screen:
+        print("Running Fallacy-Screen Layer...", file=sys.stderr)
+        screen_result = screen_claim(ingestion_result)
+        print(yaml.dump(screen_result, default_flow_style=False, sort_keys=False))
+
+    if not args.no_open_check:
+        print("Running Open-Ended Check...", file=sys.stderr)
+        open_check_result = open_check_claim(ingestion_result)
+        print(yaml.dump(open_check_result, default_flow_style=False, sort_keys=False))
 
     print("Running Assessment Layer...", file=sys.stderr)
     assessment_result = assess_claim(ingestion_result)

@@ -1,106 +1,110 @@
 ---
 synthesis_type: adversarial_robustness_test
 framework: e_prime_defense_against_motivated_misreading_and_source_gaming
-claims_tested: 9
+claims_tested: 8
 attack_vectors: reader_side_10_per_claim_plus_source_side_per_case
 date_executed: "2026-06-17"
 tags: [resilience]
 ---
-# Adversarial Robustness — Criterion 6
-## How E-Prime Methodology Defends Against Motivated Misreading and Source Gaming
+# Our Toughest Test — FLF's Criterion 6
+## Can Someone Trick Our Method, Either as a Reader or as the Original Source?
 
-FLF's actual Criterion 6 text: "How well do the artefacts and methodology hold up when participants and consumers have differing views and priorities? Outputs withstand motivated reading and downstream-model interrogation. The methodology resists being gamed by sources optimizing to mislead. Failure modes and uncertainties are named and bounded, not hidden."
+FLF's exact wording for this test: "How well do the artefacts and methodology hold up when participants and consumers have differing views and priorities? Outputs withstand motivated reading and downstream-model interrogation. The methodology resists being gamed by sources optimizing to mislead. Failure modes and uncertainties are named and bounded, not hidden."
 
-This document tests **two distinct threat models**, both required by the criterion:
+In plain words: can a reader twist our claims to mean what they want them to mean? And separately, can whoever wrote the original source material trick our method from the very start, before any reader even sees it?
 
-1. **Reader-side gaming** — a downstream consumer of a clean claim selectively misreads it to support a predetermined conclusion.
-2. **Source-side gaming** — the original source (study author, debate participant, institution) designs the *evidence itself* to mislead, before any reader touches it.
+This file tests **two separate kinds of trickery**, because the actual criterion asks about both:
 
-A methodology defending only against (1) leaves half the criterion untested. Most of this document's prior draft covered (1) thoroughly. This revision adds (2).
+1. **A reader tricking themselves.** Someone reads one of our claims and picks only the parts that support what they already wanted to believe.
+2. **A source tricking everyone from the start.** The person or group who wrote the original study, debate, or official statement built it, on purpose, to mislead — before we ever touched it.
 
----
-
-## PART A: Reader-Side Gaming (Motivated Misreading)
-
-[Full ten-attack-vector analysis per claim retained from prior draft — see below for condensed summary; full text available on request if judges want per-claim detail restored at full length.]
-
-### Condensed Findings
-
-**What E-Prime successfully constrains (forces added language to misread):**
-1. Causality inversion — "correlates" replaces "is associated," blocking silent causal upgrade
-2. Selective citation / CI narrowing — point estimate and interval co-present in one sentence, so dropping one requires visible deletion
-3. Evaluative-language smuggling — "is," "seems," "means" replaced by structural forcing, exposing deductive steps as steps
-4. Model-dependence erasure — claims anchored to study design (pooled/cohort/n), blocking context-free citation
-5. Geometric/parametric conflation — hidden parameters (geometry, rate, population, timescale) surfaced and flagged
-
-**What E-Prime makes visible but doesn't prevent (flags the gap rather than closing it):**
-6. Selection bias — can't add absent population/quality data, but flags the question "who were these subjects?"
-7. Underpowering — can't fix wide CIs, but puts the numbers in the sentence so wide intervals stand visible
-8. Missing evidence — can't furnish unconducted studies, but refuses to collapse the gap into summary language
-9. Speculative theory — can't evaluate reliability, but exposes theoretical dependencies for scrutiny
-10. Absent source information — flags omission as a choice rather than hiding it as innocent compression
-
-Worked examples for all nine claims (eggs-001/002/003, covid-001/002/003, blackhole-001/002) live in [`per-claim-attack-vector-breakdown.md`](per-claim-attack-vector-breakdown.md), maintained alongside this file; this document's authoritative claim holds in the pattern above, demonstrated across all three case shapes.
+A method that only stops the first kind of trickery leaves half the test unanswered. Most of our earlier work covered only the first kind. This file adds the second.
 
 ---
 
-## PART B: Source-Side Gaming (Methodology Resisting Sources Optimizing to Mislead)
+## Part A: Can a Reader Trick Themselves?
 
-PART A didn't run this test. The question: when the *original source* — not a downstream reader — designs the study, debate argument, or institutional statement specifically to produce a misleading impression, does E-Prime ingestion catch it, or does it just faithfully transcribe the manipulation in cleaner grammar?
+[Full detail on all eight claims lives in a separate file, linked below. The short version follows here.]
 
-### Test 1: Cohort Selection Gaming (Eggs Case)
+### What we found
 
-**Adversarial scenario:** A source funds a study on a cohort pre-selected to produce a desired conclusion — for instance, a small cohort with pre-existing egg allergies or inflammatory conditions, then publishes "Our cohort exhibited increased inflammation on egg-heavy diet" without disclosing the selection criteria in the abstract.
+**Five ways E-Prime stops a reader cold — the reader has to add new words to twist the meaning:**
 
-**Does E-Prime catch this?**
+1. **Turning "happened together" into "caused it."** We replace "is associated with" with "correlates with." This blocks someone from quietly upgrading a correlation into a cause.
+2. **Cherry-picking the number, dropping the uncertainty.** We put the main number and its uncertainty range in the same sentence. Dropping one now takes a visible, deliberate edit.
+3. **Hiding a judgment call inside a small word.** Words like "is," "seems," and "means" let a writer skip past a judgment call. We replace them with wording that forces the judgment call into view.
+4. **Citing a result without saying how researchers got it.** We tie every claim to the actual study design behind it — how many people, what kind of study. This blocks quoting a result with no context.
+5. **Mixing up which assumption actually does the work.** Some claims quietly rest on one specific assumption out of several possible ones. We name that assumption directly instead of letting it hide.
 
-No — not on its own, and this needs plain statement rather than softening. E-Prime forces the rewrite "Our cohort (n=X) exhibited Y inflammation marker increase," more specific than the original but **still failing to surface the selection criteria if the source's own abstract omits it.** The rewrite can only force visibility of what stands stated; it can't conjure what nobody disclosed.
+**Five things E-Prime makes visible but can't fully fix — it flags the gap instead of closing it:**
 
-**What E-Prime does instead:** It forces the question to become structurally unavoidable. Requiring a cohort size and a specific outcome metric in the same sentence as the claim creates a visible gap: "n=X, but who composed this cohort?" A reader applying this methodology now finds themselves structurally prompted to seek the cohort-selection information as a *named open question*, rather than accepting "our cohort" as sufficient framing.
+6. **Not knowing who actually took part in the study.** We can't invent missing details about who took part in a study. But we do flag the open question: who actually took part?
+7. **Too few people to trust the result.** We can't shrink a wide uncertainty range. But we do put the actual numbers in the sentence, so a wide range stays visible instead of getting summarized away.
+8. **Studies nobody ever ran.** We can't produce research nobody ran. But we refuse to write around that gap as if it doesn't exist.
+9. **A claim resting on an unsettled theory.** We can't judge whether a theory holds up. But we do expose that the claim depends on it.
+10. **Leaving out where information came from.** We treat that omission as a choice worth naming, not an innocent shortcut.
 
-**Verdict:** E-Prime narrows source-side gaming from invisible to flagged-but-unresolved. This counts as a real, bounded limitation, not a success. Comparing against the three actual eggs claims in this vault: eggs-002 (Zhong/Drouin-Chartier) explicitly triggers this exact gap in its own Adversarial Interpretation section — "a source motivated to find eggs safe could select an adjustment model that systematically removes the true signal by treating mediators as confounders. Nothing in this abstract rules that out." That marks the methodology naming its own blind spot on a real claim, not a hypothetical.
-
-### Test 2: Debate-Side Rhetorical Engineering (COVID Case)
-
-**Adversarial scenario:** A debate participant deliberately chooses a framing ("epidemiologically impossible") calibrated to sound more rigorous than the underlying calculation warrants, knowing that confident-sounding language carries persuasive weight independent of evidentiary weight.
-
-**Does E-Prime catch this?**
-
-Partially, and more successfully than Test 1. Peter's original claim — "it seems epidemiologically impossible" — gives exactly the kind of confidence-language a debater chooses *because* it sounds authoritative. The E-Prime rewrite ("Assuming constant 3.5-day doubling, a November 11 start implies 256× the case count actually observed") **loses that same rhetorical confidence**, since it now requires stating an assumption explicitly. A debater optimizing for persuasive weight over evidential weight loses that option once the assumption must surface in the same breath as the conclusion.
-
-**Verdict:** This stands as the strongest case in the vault for source-side gaming resistance. The rhetorical engineering specifically depended on hiding the assumption inside confident phrasing; E-Prime structurally blocks that specific move. This matches covid-001's own analysis section, which independently identified the detection-rate assumption as the thing Peter's framing buried.
-
-### Test 3: Institutional Hedge-Then-Reassure Pattern (Black Holes Case)
-
-**Adversarial scenario:** An institution (CERN) facing public anxiety has incentive to present a reassuring conclusion even where the underlying argument has real gaps, because the institutional cost of public panic exceeds the cost of an imperfect safety argument. The FAQ format itself — questions answered briefly, confidently — optimizes for public reassurance, not epistemic completeness.
-
-**Does E-Prime catch this?**
-
-This stands as the most instructive test in the vault, because it shows E-Prime's defense working exactly as designed and exactly where its limits sit. The rewrite of blackhole-002 ("the same extra-dimension theoretical framework predicting microscopic black hole formation also predicts Hawking-radiation evaporation on a sub-accretion timescale") exposes that the FAQ's two-part reassurance (formation stays improbable; even should it happen, it stays safe) shares one theoretical root, which the original FAQ structure obscures by presenting them as two separate reassurances. A reader trusting "two independent safety arguments" gets corrected by the rewrite into seeing "one argument, stated twice."
-
-**What this doesn't catch:** Whether CERN's institutional incentive to reassure shaped which arguments made it into the public FAQ versus the full LSAG 2008 report. The vault's own missing-perspectives report already flags that the LSAG report itself never entered this vault — meaning **the strongest test of institutional source-gaming (comparing the public-facing reassurance to the full technical safety case) remains undone**, not because E-Prime failed, but because this vault build never ingested the comparison source.
-
-**Verdict:** E-Prime correctly defeats source-gaming *within* a single document (catching the false-independence framing). It cannot defend against source-gaming *across* documents the methodology never ingested (catching whether the FAQ selectively omits material from the fuller report). This counts as a real, named limitation — not a failure of the technique, but a scope boundary needing disclosure to judges rather than silence.
+Full detail on all eight claims (three eggs, three covid, two black-hole) lives in [`per-claim-attack-vector-breakdown.md`](per-claim-attack-vector-breakdown.md). This pattern holds across all three, very different kinds of case.
 
 ---
 
-## PART C: What This Means for the Criterion, Stated Without Inflation
+## Part B: Can the Original Source Trick Everyone From the Start?
 
-FLF's Criterion 6 carries two clauses. This vault's evidence supports different confidence levels for each:
+Part A never tested this. The real question: when the person who wrote the original study, debate argument, or official statement builds it on purpose to mislead, does our method catch that — or does it just copy the trick into cleaner-sounding sentences?
 
-**"Outputs withstand motivated reading and downstream-model interrogation"** — **Well-supported.** Part A's ten-vector analysis across nine claims, three case shapes, shows a consistent, demonstrated pattern: E-Prime forces five classes of reader-side manipulation to require visible added language, and flags five more classes as open gaps rather than hiding them.
+### Test 1: Picking a Study Group to Get the Answer You Want (Eggs Case)
 
-**"The methodology resists being gamed by sources optimizing to mislead"** — **Partially supported, with a named boundary.** Test 2 (COVID rhetorical engineering) shows clear, demonstrated resistance. Test 3 (institutional FAQ) shows resistance *within* a document but an unaddressed gap *across* documents. Test 1 (cohort gaming) shows the methodology converting invisible gaming into a flagged-but-unresolved question, which carries real value but falls short of "resistance" in the strong sense.
+**The trick:** Someone funds a study on a small group of people chosen in advance to produce the answer they want — say, people who already have egg allergies or inflammation. They then publish "Our group showed more inflammation on an egg-heavy diet," without saying how they picked that group.
 
-**Honest summary for judges:** E-Prime works as a detection-and-disclosure mechanism, not a fraud-proof filter. It can't recover information a source never disclosed. What it reliably does: make the *place* where motivated design would have to hide structurally visible, so the absence of disclosure becomes itself a flagged data point rather than smooth prose. This matches the same finding Part A reached for reader-side gaming, now confirmed to hold — with one explicit cross-document blind spot — for source-side gaming as well.
+**Does our method catch this?**
+
+No, not on its own, and we should say that plainly instead of softening it. Our method forces the sentence to become "Our group of X people showed a Y increase in this inflammation marker" — more specific than the original, but it still can't reveal how the group got picked if the source itself never says. Our rewrite can only force visibility of what someone actually wrote down. It can't produce information nobody wrote down in the first place.
+
+**What our method does instead:** It makes the missing question impossible to ignore. Once a sentence has to name a specific group size and a specific outcome, a reader immediately sees the gap: "X people — but who actually made up that group?" Our method turns that gap into a clearly named open question, instead of letting "our group" pass as good enough on its own.
+
+**Bottom line:** Our method turns this kind of trickery from invisible into flagged-but-unsolved. That counts as real progress, and also as a real, honest limit — not a full solution. One of our own actual claims proves this happens in practice, not just in theory: our second eggs claim already names this exact gap in its own write-up — "a source that wants eggs to look safe could pick an adjustment method that quietly removes the real signal. Nothing in this source rules that out." Our method caught its own blind spot on a real claim, unprompted.
+
+### Test 2: Choosing Words That Sound More Certain Than They Should (COVID Case)
+
+**The trick:** Someone in a debate picks a phrase — like "epidemiologically impossible" — built to sound more rigorous than the actual math behind it. They know confident-sounding language convinces people, whether or not the evidence backs it up.
+
+**Does our method catch this?**
+
+Mostly yes, and more successfully than Test 1. The original claim — "it seems epidemiologically impossible" — sounds exactly like the kind of confident phrase a debater picks on purpose. Our rewrite ("assuming a case count that doubles every 3.5 days, a November 11 start implies 256 times more cases than we actually saw") loses that same confident tone, because now it has to state its assumption out loud. Once the assumption has to sit right next to the conclusion, a debater loses the option of hiding it.
+
+**Bottom line:** This gives the strongest result in this whole project for catching a source trying to mislead. The trick specifically depended on hiding an assumption inside confident wording. Our method structurally blocks exactly that move. Our own first COVID claim's write-up already found this same detection-rate assumption on its own, before we ran this test.
+
+### Test 3: An Institution Reassuring the Public While Hiding Real Gaps (Black Holes Case)
+
+**The trick:** An institution facing public worry — CERN, in this case — has a reason to sound reassuring even where its actual argument has real gaps. Public panic costs the institution more than an imperfect safety argument does. A short FAQ format, answering questions briefly and confidently, naturally serves reassurance more than full honesty.
+
+**Does our method catch this?**
+
+This gives the single most useful test in this whole project, because it shows our method working exactly as intended, and it shows exactly where the method's limit sits. Our rewrite of the relevant claim exposes something the original FAQ hides: two reassurances that sound independent ("black holes stay unlikely to form" and "even if they form, they stay safe") actually rest on the exact same underlying physics theory. A reader who trusted "two separate safety arguments" gets corrected into seeing "one argument, said twice."
+
+**What this doesn't catch:** Whether CERN's own reassurance goal shaped which arguments made it into the short public FAQ, versus the full 2008 technical safety report. We already flagged, elsewhere in this project, that we never actually worked through that fuller report. That means the strongest possible test here — comparing the public-facing reassurance against the full technical case — remains untried. Not because our method failed, but because we never fed it the comparison document.
+
+**Bottom line:** Our method correctly catches a source hiding something *within one document* (the false-independence trick above). It cannot yet catch a source leaving something out *across two different documents*, if we never worked through the second one. That counts as a real, named limit — not a failure of the method, but a limit on what we've actually built so far, and we're saying so directly instead of staying quiet about it.
 
 ---
 
-## Extension Protocol for Source-Side Testing
+## Part C: What This Actually Proves, No Exaggeration
 
-To test a new source for gaming resistance:
+FLF's Criterion 6 asks two separate questions. Our evidence supports different confidence levels for each one.
 
-1. Identify the source's likely incentive (funding, institutional reputation, debate-winning, narrative coherence).
-2. Ask: what information would that incentive motivate the source to omit, frame favorably, or bury in confident language?
-3. Run the E-Prime rewrite. Check: does the omitted information now carry a structurally visible gap where it should appear (Test 1 pattern), does the confident framing become impossible to sustain without stating the buried assumption (Test 2 pattern), or does the gaming require comparison to a document never ingested (Test 3 pattern)?
-4. Log which pattern applies. Pattern 2 gives the strongest result; Pattern 1 stays real but partial; Pattern 3 means the vault's scope, not the method, sets the limit — and that earns statement as a scope gap to extend, not a methodology failure to hide.
+**"Can a reader twist our claims, or can another AI system poke holes in them later?"** — **Strongly supported.** Part A's ten-check analysis, across eight claims and three very different kinds of case, shows a real, repeated pattern: our method blocks five kinds of reader trickery outright, and flags five more kinds as open gaps instead of hiding them.
+
+**"Can the original source trick our method from the start?"** — **Partly supported, with one clear, named limit.** Test 2 (COVID) shows clear, real resistance. Test 3 (CERN) shows resistance within one document, but a real, unaddressed gap across two different documents. Test 1 (eggs) shows our method turning an invisible trick into a flagged, unsolved question — real value, but short of full resistance.
+
+**The honest summary:** Our method catches hidden problems and forces them into view. It doesn't stop lying outright, and it can't recover information a source chose never to write down. What it reliably does: it makes the exact spot where a hidden trick would have to hide clearly visible, so a missing piece of information becomes its own, obvious red flag instead of smooth, confident-sounding prose. This matches what Part A already found for readers. Now we've confirmed the same holds for sources trying to trick us from the start — with one clear exception: catching a trick that spans two documents we never both fed into our method.
+
+---
+
+## How to Test a New Source
+
+To check whether a new source could trick our method:
+
+1. Ask what the source's likely motive looks like — money, reputation, winning a debate, telling a good story.
+2. Ask: what would that motive make the source want to leave out, frame in its own favor, or bury inside confident-sounding language?
+3. Run the E-Prime rewrite. Then check: does the missing information now show up as a visible, obvious gap (like Test 1)? Does the confident wording become impossible to keep without naming the assumption it was hiding (like Test 2)? Or does catching the trick require comparing this document against a second document we never worked through (like Test 3)?
+4. Write down which pattern applies. Pattern 2 (Test 2's kind) gives the strongest result. Pattern 1 (Test 1's kind) stays real, but only partial. Pattern 3 (Test 3's kind) means our own project's limited scope sets the boundary, not the method itself — and that deserves plain statement as something worth extending, not something to hide.

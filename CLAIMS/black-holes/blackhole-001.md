@@ -36,3 +36,4 @@ A reader skeptical of LHC safety could press exactly this geometry gap. A reader
 
 ## Related Claims
 - [[blackhole-002]] — addresses a different failure mode (evaporation behavior rather than formation-energy regime); the two claims are not fully independent safety arguments despite reading that way in the source
+- [[blackhole-003]] — the full LSAG 2008 report this claim guessed CERN's fuller safety case would address. It does address this exact geometry gap directly ("there is one significant difference between cosmic-ray collisions with a body at rest and collisions at the LHC... [particles] tend to have low velocities, whereas cosmic-ray collisions would produce them with high velocities") but defers the actual resolution to a separate, still-uningested paper. The gap moved one level deeper; it didn't close.

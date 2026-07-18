@@ -26,7 +26,7 @@ The diabetic-subgroup HR (1.33, CI 0.72–2.46) and non-diabetic HR (0.96, CI 0.
 ### Analysis
 "No evidence of interaction" reads as definitive — as if diabetes status doesn't matter here. The rewrite forces the actual numbers into view: a 38% relative difference in point estimate (1.33 vs 0.96) sits underneath a statistically null interaction test, because both confidence intervals are wide enough to overlap heavily.
 
-This rewrite carries the highest confidence of the three eggs claims (score 5) because the rewrite adds no interpretation beyond restating the source's own numbers — but it also matters most, because it exposes that "no evidence of interaction" actually means "underpowered to detect an interaction," not "detected absence of interaction." Those differ as epistemic states, and the standard-summary collapse of one into the other gives the single clearest case of evaluative-language smuggling found across all nine claims in this vault.
+This rewrite carries the highest confidence of the three eggs claims (score 5) because the rewrite adds no interpretation beyond restating the source's own numbers — but it also matters most, because it exposes that "no evidence of interaction" actually means "underpowered to detect an interaction," not "detected absence of interaction." Those differ as epistemic states, and the standard-summary collapse of one into the other gives the single clearest case of evaluative-language smuggling found across all eight claims in this vault.
 
 ### Ambiguity Flags
 - None in the rewrite itself — the ambiguity lives entirely in the source's plain-language conclusion, which the rewrite exposes rather than resolves.
