@@ -3,12 +3,99 @@ title: Readme
 type: reference
 status: active
 vault: TRC
-date: 2026-06-28
+date: 2026-08-17
 tags: [resilience]
 ---
 
-# FLF Epistemic Case Study Submission
-## Using a Writing Rule to Catch Hidden Assumptions
+# Bounded Epistemic Gateway
+
+*Formerly the FLF Epistemic Case Study Submission. This repository now holds two distinct things — read this page in full before assuming either one.*
+
+---
+
+## Two things live here
+
+**1. A closed competition submission.** The original FLF entry — twelve claims across three case studies, testing whether a strict writing rule (E-Prime) surfaces hidden assumptions in confident-sounding sentences. Complete, submitted July 19, 2026, frozen since. Nothing below the "Original Submission" section changed after that date, and nothing in it should.
+
+**2. An active tool, built after the submission closed.** Once the competition ended, the underlying question stayed open: can a system evaluate an arbitrary claim's reliability, not just rewrite it — and can it do so without ever needing to *trust* the model's memory of what a source actually said? The Bounded Epistemic Gateway answers that with three real guarantees, described below, extending FLF's own three-layer framework (Ingestion, Structure, Assessment) to a working state none of the three reached during the competition itself.
+
+The full build history from close to now lives in [`POST-SUBMISSION.md`](POST-SUBMISSION.md) — a readable narrative. The complete, dated, bug-by-bug technical log lives in [`DEVELOPMENT.md`](DEVELOPMENT.md).
+
+---
+
+## Applied Purposeful Epistemology
+
+The gateway operationalizes a simple discipline: knowledge only earns use once someone checks what it rests on, how reliable that rest is, and what it's for. Five questions govern every claim that passes through the pipeline —
+
+- What do we know?
+- How do we know it?
+- How reliable does that knowledge stay?
+- What purpose will it serve?
+- How should it guide action or a decision?
+
+The three layers below answer these in order. Ingestion answers the first two. Assessment answers the third. Structure answers the last two — a claim's reliability doesn't mean much sitting alone; it means something once it's weighed against, corroborated by, or contested by the other claims around it.
+
+---
+
+## What the gateway guarantees
+
+**Verbatim quote fidelity, structurally enforced, not requested.** Early runs found the model's own "verbatim" quote field silently drifting from its source — a dropped comma, a corrected "that" into "which," once a full sentence gone. Prompt instructions naming the failure directly didn't hold across reruns. The real fix removes the failure mode instead of asking the model to avoid it: `original_quote` gets overwritten with the actual source text, pulled directly from the claim file, after the model's response clears its own shape checks. The model never needs to *reproduce* a quote character-for-character — the one operation that kept failing regardless of prompt wording. Confirmed clean on a real run: 3/3 verbatim, zero drift, including the one case that survived four earlier attempts.
+
+**Local inference only — no data leaves the machine, no per-call cost.** Every check here runs against a local RKLLama model on dedicated hardware, not a cloud API. The neuro-symbolic bounds pass alone ran 12 real model calls in one session at zero marginal cost.
+
+**Bounds-pair reasoning, not flat yes/no.** Every check returns a `[lower, upper]` truth interval — known-true, known-false, unknown, or contradictory — instead of collapsing genuine uncertainty into a forced binary. An early version of this check anchored on the prompt's own example numbers instead of reasoning independently; found by checking the model's own explanation text against the pattern, not just trusting a clean-looking result, then fixed at the prompt level across all four bounds-scoring functions in the codebase.
+
+**A real, computed Structure Layer**, not a documented gap. Twelve claims, twenty-one checked pairs, a closed four-tag relation vocabulary (`supports`, `argues_against`, `combines_with`, `shares_open_question_with`), each with a defined bounds-propagation formula reasoned from what the tag actually means — corroboration pulls confidence up, contestation pulls it down, joint evidence combines rather than dilutes, and an unresolved shared question propagates nothing at all, honestly.
+
+---
+
+## Try it yourself
+
+```
+pip install -r requirements.txt
+python3 ingest.py --demo
+```
+
+No account or key needed for `--demo`. The local pipeline (`build_local_corpus.py`, `run_local_neuro_symbolic.py`, `structure_layer.py`) needs no `ANTHROPIC_API_KEY` at all — see [`POST-SUBMISSION.md`](POST-SUBMISSION.md) for why that's a deliberate, permanent constraint on this codebase, not a temporary limitation.
+
+---
+
+## What's in this project
+
+```
+bounded-epistemic-gateway/
+├── README.md                                  ← this file
+├── POST-SUBMISSION.md                         ← readable narrative, competition close to now
+├── DEVELOPMENT.md                             ← full dated technical log
+├── ingest.py                                  ← original submission's two-layer pipeline + the
+│                                                 neuro-symbolic bounds engine built after
+├── build_local_corpus.py                      ← drives Ingestion/Assessment against a local model
+├── verify_corpus.py                           ← retroactive quote-fidelity + E-Prime compliance checks
+├── run_local_neuro_symbolic.py                ← single-claim bounds screening, local inference only
+├── run_local_neuro_symbolic_batch.py          ← extends bounds screening to the full 12-claim set
+├── structure_layer.py                         ← propagates bounds through the real claim graph
+├── requirements.txt
+├── CLAIMS/
+│   ├── eggs-cvd-diabetes/{eggs-001,002,003}.md
+│   ├── covid-origins/{covid-001,...,006}.md
+│   └── black-holes/{blackhole-001,002,003}.md
+├── SOURCES/                                    ← primary documents, including both COVID debate
+│                                                 judges' full written decisions and CERN's full
+│                                                 2008 LSAG safety report, not just summaries
+├── CORPUS/                                     ← local-model-generated Ingestion/Assessment records
+├── NEURO_SYMBOLIC_RUNS/                        ← bounds-screening output, per claim
+├── STRUCTURE_LAYER_RUNS/                       ← propagated bounds, per claim, per run
+└── SYNTHESIS/                                  ← the reasoning behind every layer, every fix,
+                                                   every honestly-named limitation
+```
+
+---
+
+## Original Submission
+
+*Frozen July 19, 2026. Preserved below exactly as submitted — this section describes the competition entry, not the gateway built afterward.*
+
+### Using a Writing Rule to Catch Hidden Assumptions
 
 "Epistemic" means about how we know things. Not what we believe. How we check it.
 
@@ -16,79 +103,15 @@ tags: [resilience]
 
 **The main idea:** We use a strict writing rule called E-Prime. E-Prime bans every form of the word "to be" — no "is," no "are," no "was," no "were." That one rule forces a sentence to say what it actually rests on, instead of hiding behind a confident-sounding word like "is."
 
-**How the pipeline works, updated June 30:** Every claim passes through two steps.
+**How the pipeline worked:** Every claim passed through two steps.
 
 Step one: rewrite the sentence in E-Prime. No interpretation yet. Just the mechanical rewrite.
 
 Step two: check what the rewrite reveals. What did the original sentence hide? What stays unclear even after the rewrite? How could someone misuse it?
 
-FLF reviewer Oly Sourbut suggested this two-step split. See [`two-layer-architecture-v1.md`](flf-vault/SYNTHESIS/two-layer-architecture-v1.md) for the exact rules each step follows. See [`ingest.py`](flf-vault/ingest.py), where the two steps run as two separate, checkable pieces of code.
+FLF reviewer Oly Sourbut suggested this two-step split. See [`SYNTHESIS/two-layer-architecture-v1.md`](SYNTHESIS/two-layer-architecture-v1.md) for the exact rules each step follows.
 
----
-
-## Try it yourself (takes under a minute)
-
-```
-cd flf-vault
-pip install -r requirements.txt
-python3 ingest.py --demo
-```
-
-No account or key needed for `--demo`. If you have an Anthropic API key (a personal password for using Anthropic's AI model), run `python3 ingest.py "your claim here"` to test it on your own sentence.
-
----
-
-## Where to start
-
-### If you have 15 minutes
-1. Read [`INDEX.md`](flf-vault/INDEX.md) first. It maps out all twelve claims and every file in this project.
-2. Pick one case. Read one or two of its claim files. Each one shows the sentence before and after the rewrite.
-3. Skim Part C of [`adversarial-robustness-criterion-6.md`](flf-vault/SYNTHESIS/adversarial-robustness-criterion-6.md). It gives the plain, unvarnished summary of where this method works and where it doesn't.
-4. Skim [`literature-engagement-addendum-v1.md`](flf-vault/SYNTHESIS/literature-engagement-addendum-v1.md). It shows how we responded to two real outside papers we found after we finished our first draft.
-
-### If you have 45 minutes
-1. Read one claim from each case: `eggs-001.md`, `covid-001.md`, `blackhole-001.md`.
-2. Open the files in Obsidian (the note-taking app this vault uses) and click the links between claims. You'll see how one claim actually connects to another.
-3. Read [`crux-analysis-v1.md`](flf-vault/SYNTHESIS/crux-analysis-v1.md). It ranks the single questions that, if answered, would change the most about each case.
-
-### If you want to run the code
-1. `pip install -r requirements.txt && python3 ingest.py --demo`
-2. With your own API key, run `ingest.py` on a claim from any topic you like.
-3. Compare what you get against the worked examples in `adversarial-robustness-criterion-6.md`'s "Extension Protocol" section.
-
----
-
-## What's in this project
-
-```
-flf-vault/
-├── INDEX.md
-├── ingest.py                                  ← the code, runnable in one command
-├── requirements.txt
-├── CLAIMS/
-│   ├── eggs-cvd-diabetes/{eggs-001,002,003}.md
-│   ├── covid-origins/{covid-001,002,003,004,005,006}.md
-│   └── black-holes/{blackhole-001,002,003}.md
-├── SOURCES/  (the nine documents we worked from)
-└── SYNTHESIS/
-    ├── crux-analysis-v1.md                      ← the key open questions per case
-    ├── scalability-test-v1.md                   ← does this method still work on a bigger job?
-    ├── per-claim-attack-vector-breakdown.md      ← every way someone could misread each claim
-    ├── adversarial-robustness-criterion-6.md     ← the toughest test: can this get gamed?
-    ├── literature-engagement-addendum-v1.md      ← our response to two outside papers, round one
-    ├── literature-engagement-addendum-v2.md      ← our response to a third outside paper, round two
-    ├── two-layer-architecture-v1.md              ← the two-step rewrite/check split, explained
-    ├── structure-layer-mapping-v1.md             ← a third step FLF asked for, and how far we got on it
-    ├── structure-layer-worked-example-v1.md      ← the real, structured version of that step, tested across all three cases
-    ├── fallacy-screen-layer-v1.md                ← fourth step catching bad logic (26 categories), wired into ingest.py as screen_claim()
-    ├── fallacy-screen-worked-examples-v1.md      ← that check, run for real against all twelve claims
-    ├── near-duplicate-check-v1.md                 ← fifth step: checked every claim pair for a restated conclusion; found none, but found a wrong claim count instead
-    └── next-steps-v1.md                          ← roadmap: all seven priorities done or wired this day
-```
-
----
-
-## Our main claim, stated plainly
+### Our main claim, stated plainly
 
 **Rewriting a sentence in E-Prime makes a hidden assumption visible. It does not make lying or misreading impossible.**
 
@@ -96,21 +119,15 @@ Consider the problem this solves. A sentence like "eggs cause heart disease" sou
 
 Someone determined to mislead can still try. But now they have to add extra words to hide the gap, or leave a gap a careful reader can actually spot. Before E-Prime, they could hide the same gap inside one small, confident word.
 
-We tested this claim two ways. First: ten different ways a reader could misread each of the original eight claims. Second: three ways a source could try to game the method — picking a friendly sample, using persuasive wording instead of evidence, or reassuring people right after raising a scary possibility. `adversarial-robustness-criterion-6.md` holds the full results, including where the method falls short.
+We tested this claim two ways: ten different ways a reader could misread each of the original eight claims, and three ways a source could try to game the method. [`SYNTHESIS/adversarial-robustness-criterion-6.md`](SYNTHESIS/adversarial-robustness-criterion-6.md) holds the full results, including where the method falls short.
 
----
+### What we got wrong or left unfinished, stated honestly
 
-## What we got wrong or left unfinished, stated honestly
-
-- **We used two secondhand sources, now closed; one remains.** All three cases originally worked from a summary, a write-up of a debate, or an FAQ page — not the raw data, the full debate transcripts, or CERN's full 2008 safety report. **Update:** both COVID-debate judges' own written decisions now sit in the vault directly. [[covid-004]] comes from Eric Stansifer's decision; [[covid-005]] and [[covid-006]] come from Will van Treuren's, previously blocked by a hosting format this vault's tools couldn't render, provided directly by Jay this session. [[blackhole-003]] comes directly from CERN's full LSAG 2008 report, not the FAQ that summarizes it. One secondhand gap remains: the paper LSAG itself cites for further detail on collision geometry (Giddings & Mangano, arXiv:0806.3381).
-- **We can catch this now, at least once.** Our method catches a source that treats two related facts as independent, when both facts sit in the same document (see `blackhole-002.md`). It originally couldn't catch a source leaving something out of one document that a different, uningested document would have caught. **Update:** we tested this directly. Reading CERN's full LSAG report (`blackhole-003.md`) after the FAQ (`blackhole-002.md`) did surface something the FAQ alone didn't show — confirmation that the two safety arguments run independently, not as one restated. It didn't, however, resolve the deeper question either document raises (which argument carries more real weight), so this capability still has real limits even where it worked.
-- **Three questions named, one now partly answered.** Does one study's null result mean no effect exists, or just that the study didn't have enough people to detect one (see `eggs-003.md`)? Does the fact that a post-2019 method exists tell us anything about what a scientist could have done before 2019 (see `covid-003.md`)? These two stay fully open. The third — which part of CERN's safety argument actually holds the most weight (see `blackhole-002.md`) — got partly answered by reading the primary source directly (`blackhole-003.md`): the two arguments run independently, not as one restated, but which one matters more still isn't stated anywhere we've read. We name what's still open. We don't pretend to have closed more than we did.
+- **We used secondhand sources for two of three cases at first; closed by submission close.** All three cases originally worked from a summary, a write-up of a debate, or an FAQ page. By close, both COVID-debate judges' own written decisions and CERN's full 2008 LSAG safety report sat in the vault directly — not just the summaries that pointed to them. One secondhand gap remained at submission: the paper LSAG itself cites for collision-geometry detail (Giddings & Mangano, arXiv:0806.3381), never ingested.
+- **Three open questions named; one partly answered by submission close.** Does one study's null result mean no effect exists, or just that the study lacked power to detect one? Does a post-2019 method's existence tell us anything about what a scientist could have done before 2019? Both stayed fully open. Which part of CERN's safety argument carries the most real weight got partly answered by reading the primary source directly — the two arguments run independently, not as one restated — but which one matters more stayed unstated anywhere we'd read.
 - **One claim we caught and fixed.** We once wrote that this method gets better just by adding more computing power. We caught that we never actually tested it, and corrected the file to say so honestly.
 
----
-
-## Contact
+### Contact
 
 James Greathouse — james@senecacommons.com
-Optional early check-in: June 21, 2026
-Deadline: July 19, 2026
+Submitted: July 19, 2026

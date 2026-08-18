@@ -1,0 +1,29 @@
+{
+  "model": "Qwen2.5-14B-Instruct-rk3588-w8a8-opt-1-hybrid-ratio-0.0",
+  "check": "circular",
+  "category": null,
+  "ingestion_layer": {
+    "original_quote": "we can conclude that the irradiation, with such standards, by the wireless technologies developed by the telecommunications industry corresponds to an intentional strategy from the military-industrial complex and part of the political establishment to affect the cognitive functions of the population.",
+    "e_prime_rewrite": "we conclude the irradiation, following these guidelines, through the wireless tech made by telecoms matches an aimed plan from parts of the military-industrial complex and politics aiming to impact people's mental abilities",
+    "_attempts": 1
+  },
+  "result": {
+    "premise_restated_bounds": [
+      0.3,
+      0.7
+    ],
+    "premise_restated_location": "not applicable",
+    "no_independent_support_bounds": [
+      0.4,
+      0.8
+    ],
+    "no_independent_support_location": "\"intentional strategy from the military-industrial complex and part of the political establishment to affect the cognitive functions of the population\"",
+    "explanation": "The original quote and its rewrite both assert that the harmful effects of wireless technology are intentional strategies by certain entities, but they do not clearly restate a premise found elsewhere in the source document. However, there is some overlap with the idea of intentional harm (\"harmfulness of guidelines is intentional\"), which introduces uncertainty into whether this constitutes restating a premise. The lack of independent support for the claim about cognitive functions being targeted by these strategies suggests that the argument may be circular but does not definitively prove it.",
+    "_attempts": 1,
+    "circular_argument_bounds": [
+      0.3,
+      0.7
+    ],
+    "state": "unknown"
+  }
+}

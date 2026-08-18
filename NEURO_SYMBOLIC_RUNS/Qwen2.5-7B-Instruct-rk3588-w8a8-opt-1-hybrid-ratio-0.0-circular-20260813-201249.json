@@ -1,0 +1,30 @@
+{
+  "model": "Qwen2.5-7B-Instruct-rk3588-w8a8-opt-1-hybrid-ratio-0.0",
+  "check": "circular",
+  "category": null,
+  "ingestion_layer": {
+    "original_quote": "we can conclude that the irradiation, with such standards, by the wireless technologies developed by the telecommunications industry correlates to an intentional strategy from the military-industrial complex and part of the political establishment to affect the cognitive functions of the population.",
+    "e_prime_rewrite": "the wireless technologies developed by the telecommunications industry correlates to an intentional strategy from the military-industrial complex and part of the political establishment to affect the cognitive functions of the population.",
+    "_attempts": 1
+  },
+  "result": {
+    "premise_restated_bounds": [
+      0.6,
+      0.8
+    ],
+    "premise_restated_location": "\"not applicable\"",
+    "no_independent_support_bounds": [
+      0.4,
+      0.7
+    ],
+    "no_independent_support_location": "\"we can conclude that the irradiation, with such standards, by the wireless technologies developed by the telecommunications industry correlates to an intentional strategy from the military-industrial complex and part of the political establishment to affect the cognitive functions of the population.\"",
+    "explanation": "The original quote restates the conclusion in different words as a premise within the same sentence. This is evident because the phrase \"the irradiation, with such standards, by the wireless technologies developed by the telecommunications industry correlates to an intentional strategy from the military-industrial complex and part of the political establishment to affect the cognitive functions of the population\" directly restates the conclusion in terms of the correlation between wireless technologies and an intentional strategy. The rewritten version (e_prime) further reinforces this conclusion, making it clear that no independent evidence is provided for the claim beyond rephrasing the same idea.\n\nThe scores are moderate due to the presence of some overlap but not a complete circularity, and the lack of additional supporting evidence outside the restated premise.",
+    "_fallback_extraction": true,
+    "_attempts": 1,
+    "circular_argument_bounds": [
+      0.4,
+      0.7
+    ],
+    "state": "unknown"
+  }
+}

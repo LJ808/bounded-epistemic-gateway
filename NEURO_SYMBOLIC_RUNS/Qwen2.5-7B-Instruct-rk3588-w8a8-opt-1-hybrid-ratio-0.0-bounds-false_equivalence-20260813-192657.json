@@ -1,0 +1,30 @@
+{
+  "model": "Qwen2.5-7B-Instruct-rk3588-w8a8-opt-1-hybrid-ratio-0.0",
+  "check": "bounds",
+  "category": "false_equivalence",
+  "ingestion_layer": {
+    "original_quote": "Above 20 gigahertz, 5G behaves like an unconventional chemical weapon.",
+    "e_prime_rewrite": "At frequencies above 20 gigahertz, 5G exhibits behavior similar to that of an unconventional chemical weapon.",
+    "_attempts": 1
+  },
+  "result": {
+    "shared_trait_identified_bounds": [
+      0.3,
+      0.7
+    ],
+    "shared_trait_identified_location": "\"not applicable\"",
+    "differences_ignored_bounds": [
+      0.3,
+      0.7
+    ],
+    "differences_ignored_location": "\"At frequencies above 20 gigahertz, 5G exhibits behavior similar to that of an unconventional chemical weapon.\"",
+    "explanation": "- The quote compares 5G's behavior at high frequencies to an unconventional chemical weapon.\n  - It suggests a similarity in the way 5G operates or affects things at these frequencies without addressing other differences between them.\n  - The comparison might be misleading as it ignores potential physical, ethical, and practical differences between 5G technology and actual chemical weapons.",
+    "_fallback_extraction": true,
+    "_attempts": 1,
+    "false_equivalence_bounds": [
+      0.3,
+      0.7
+    ],
+    "state": "unknown"
+  }
+}

@@ -1,0 +1,330 @@
+[
+  {
+    "claim_id": "blackhole-001",
+    "source_file": "black-holes/blackhole-001.md",
+    "ingestion_layer": {
+      "original_quote": "The LHC can only reproduce phenomena that already happen naturally all around us... If such phenomena were dangerous or destructive, it would contradict what we see: stars, galaxies and the Earth still exist.",
+      "e_prime_rewrite": "The LHC reproduces phenomena that already happen naturally all around us... Dangerous or destructive phenomena show no association; stars, galaxies and the Earth still exist."
+    },
+    "result": {
+      "premise_restated_bounds": [
+        0.2,
+        0.6
+      ],
+      "premise_restated_location": "not applicable",
+      "no_independent_support_bounds": [
+        0.1,
+        0.4
+      ],
+      "no_independent_support_location": "Dangerous or destructive phenomena show no association; stars, galaxies and the Earth still exist.",
+      "explanation": "The argument does not clearly restate its conclusion in different words within the bounds of a circular structure, making it hard to score confidently on premise restatement. However, there is some suggestion that the existence of celestial bodies indicates safety, which could imply no independent support for the LHC's safety beyond the initial claim.",
+      "_attempts": 1,
+      "circular_argument_bounds": [
+        0.1,
+        0.4
+      ],
+      "state": "unknown"
+    }
+  },
+  {
+    "claim_id": "blackhole-002",
+    "source_file": "black-holes/blackhole-002.md",
+    "ingestion_layer": {
+      "original_quote": "All these theories predict that these particles would disintegrate immediately. Black holes, therefore, would have no time to start accreting matter and to cause macroscopic effects.",
+      "e_prime_rewrite": "These theories indicate immediate disintegration of these particles. Consequently, black holes lack the opportunity to initiate accretion and produce macroscopic effects."
+    },
+    "result": {
+      "premise_restated_bounds": [
+        0.1,
+        0.3
+      ],
+      "premise_restated_location": "\"not applicable\"",
+      "no_independent_support_bounds": [
+        0.2,
+        0.6
+      ],
+      "no_independent_support_location": "\"Consequently, black holes lack the opportunity to initiate accretion and produce macroscopic effects.\"",
+      "explanation": "The premise is not restated in different words within the argument, leading to a low score for 'premise_restated'. However, there's some uncertainty about whether this sentence fully supports or explains why the conclusion follows from the premises. This introduces ambiguity into the 'no_independent_support' scoring range.",
+      "_attempts": 1,
+      "circular_argument_bounds": [
+        0.1,
+        0.3
+      ],
+      "state": "known-false"
+    }
+  },
+  {
+    "claim_id": "blackhole-003",
+    "source_file": "black-holes/blackhole-003.md",
+    "ingestion_layer": {
+      "original_quote": "In fact, ultra-high-energy cosmic rays hitting dense stars such as white dwarfs and neutron stars would have produced black holes copiously during their lifetimes. Such black holes, even if neutral, would have been stopped by the material inside such dense stars. The rapid accretion due to the large density of these bodies, and to the strong gravitational interactions of these black holes, would have led to the destruction of white dwarfs and neutron stars on time scales that are much shorter than their observed lifetimes. The final stages of their destruction would have released explosively large amounts of energy, that would have been highly visible. The observation of white dwarfs and neutron stars that would have been destroyed in this way tells us that cosmic rays do not produce such black holes, and hence neither will the LHC. To conclude: in addition to the very general reasoning excluding the possibility that stable black holes exist, and in particular that they could only be neutral, we therefore have very robust empirical evidence either disproving their existence, or excluding any consequence of it.",
+      "e_prime_rewrite": "In fact, ultra-high-energy cosmic rays hitting dense stars such as white dwarfs and neutron stars would copiously produce black holes during their lifetimes. Such black holes, even if neutral, would stop by the material inside such dense stars. Rapid accretion due to large density of these bodies and strong gravitational interactions of these black holes would lead to destruction of white dwarfs and neutron stars on time scales much shorter than observed lifetimes. Final stages of their destruction would release explosively large amounts of energy which would be highly visible. Observation of white dwarfs and neutron stars destroyed in this way tells us that cosmic rays do not produce such black holes, and hence neither will the LHC. In addition to very general reasoning excluding possibility that stable black holes exist and particularly that they could only be neutral we have very robust empirical evidence either disproving their existence or excluding any consequence of it."
+    },
+    "result": {
+      "premise_restated_bounds": [
+        0.2,
+        0.5
+      ],
+      "premise_restated_location": "\"To conclude: in addition to the very general reasoning excluding the possibility that stable black holes exist, and in particular that they could only be neutral, we therefore have very robust empirical evidence either disproving their existence, or excluding any consequence of it.\"",
+      "no_independent_support_bounds": [
+        0.1,
+        0.3
+      ],
+      "no_independent_support_location": "\"To conclude: in addition to the very general reasoning excluding the possibility that stable black holes exist, and in particular that they could only be neutral, we therefore have very robust empirical evidence either disproving their existence, or excluding any consequence of it.\"",
+      "explanation": "The conclusion is restated in different words at the end but does not clearly reiterate all parts of the premise. There's some uncertainty if this fully meets the criteria for circular argument. The argument offers some reasoning and observational data against black hole production, yet the final sentence seems to rely heavily on its own premises without additional support.",
+      "_attempts": 1,
+      "circular_argument_bounds": [
+        0.1,
+        0.3
+      ],
+      "state": "known-false"
+    }
+  },
+  {
+    "claim_id": "covid-001",
+    "source_file": "covid-origins/covid-001.md",
+    "ingestion_layer": {
+      "original_quote": "it seems epidemiologically impossible for COVID to have been circulating much before the first cases were officially detected December 11. The COVID pandemic doubles every 3.5 days... we would expect 256x as much COVID as we actually saw.",
+      "e_prime_rewrite": "epidemiologically impossible for any significant circulation of COVID before December 11's official detection. doubling rate of 3.5 days suggests an expected increase of 256 times the actual observed cases."
+    },
+    "result": {
+      "premise_restated_bounds": [
+        0.4,
+        0.7
+      ],
+      "premise_restated_location": "\"epidemiologically impossible for any significant circulation of COVID before December 11's official detection\"",
+      "no_independent_support_bounds": [
+        0.5,
+        0.8
+      ],
+      "no_independent_support_location": "\"doubling rate of 3.5 days suggests an expected increase of 256 times the actual observed cases.\"",
+      "explanation": "The rewritten statement restates the conclusion about limited pre-detection circulation in different terms but does not clearly restate it as a premise supporting itself, leading to some uncertainty on whether this is circular argumentation. Similarly, while there's an attempt to provide evidence (doubling rate), its direct link to the conclusion lacks clarity or independent support beyond restating the initial claim.",
+      "_attempts": 1,
+      "circular_argument_bounds": [
+        0.4,
+        0.7
+      ],
+      "state": "unknown"
+    }
+  },
+  {
+    "claim_id": "covid-002",
+    "source_file": "covid-origins/covid-002.md",
+    "ingestion_layer": {
+      "original_quote": "The only source saying that Mr. Chen got sick early was an anonymous interview... This means that whoever infected him was earlier than the index case and not linked to the wet market.",
+      "e_prime_rewrite": "Only anonymous interview indicated Mr. Chen got sick early... Whoever infected him happened before the index case and disconnected from the wet market."
+    },
+    "result": {
+      "premise_restated_bounds": [
+        0.5,
+        0.8
+      ],
+      "premise_restated_location": "\"This means that whoever infected him was earlier than the index case and not linked to the wet market.\"",
+      "no_independent_support_bounds": [
+        0.6,
+        0.9
+      ],
+      "no_independent_support_location": "\"Whoever infected him happened before the index case and disconnected from the wet market.\"",
+      "explanation": "The argument does not clearly restate its conclusion in different words, but there is some overlap in meaning which makes it hard to rule out a restatement without more context. Similarly, while additional information is provided about the timing of infection relative to the index case, this detail alone may not constitute independent support for the original claim about Mr. Chen's illness origin.",
+      "_attempts": 1,
+      "circular_argument_bounds": [
+        0.5,
+        0.8
+      ],
+      "state": "unknown"
+    }
+  },
+  {
+    "claim_id": "covid-003",
+    "source_file": "covid-origins/covid-003.md",
+    "ingestion_layer": {
+      "original_quote": "COVID's furin cleavage site is a mess... a bizarre furin cleavage site which no human has ever used before, and which virologists expected to work poorly.",
+      "e_prime_rewrite": "COVID's furin cleavage site is problematic... a strange furin cleavage site that humans have never encountered before, and virologists anticipated it would function poorly."
+    },
+    "result": {
+      "premise_restated_bounds": [
+        0.0,
+        0.1
+      ],
+      "premise_restated_location": "not applicable",
+      "no_independent_support_bounds": [
+        0.0,
+        0.1
+      ],
+      "no_independent_support_location": "not applicable",
+      "explanation": "The original and rewritten quotes do not contain a circular argument as they restate the same idea without using it to support itself. There is no evidence of the conclusion being restated in different words within the premises, nor are there any signs that the argument lacks independent support beyond this premise statement.",
+      "_attempts": 1,
+      "circular_argument_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false"
+    }
+  },
+  {
+    "claim_id": "covid-004",
+    "source_file": "covid-origins/covid-004.md",
+    "ingestion_layer": {
+      "original_quote": "I find with high confidence that zoonotic spillover is the more likely origin of sars-cov-2. The most important basis for this decision is the relative epidemiological proximity of the earliest indicators of covid to a plausible animal source rather than a potential laboratory source. While Rootclaim identified unusual characteristics of the genetics of sars-cov-2 and the potential for laboratory work to create a similar virus, I found this insufficient to overcome the proximity evidence and the prior against a laboratory origin.",
+      "e_prime_rewrite": "With high confidence, zoonotic spillover is more likely origin of sars-cov-2. Relative epidemiological proximity of earliest indicators of covid suggests animal source rather than laboratory source. While Rootclaim identified unusual characteristics in genetics of sars-cov-2 and potential for laboratory work to create similar virus, this was insufficient to overcome proximity evidence against laboratory origin."
+    },
+    "result": {
+      "premise_restated_bounds": [
+        0.1,
+        0.3
+      ],
+      "premise_restated_location": "\"With high confidence, zoonotic spillover is more likely origin of sars-cov-2.\"",
+      "no_independent_support_bounds": [
+        0.2,
+        0.5
+      ],
+      "no_independent_support_location": "\"While Rootclaim identified unusual characteristics in genetics of sars-cov-2 and potential for laboratory work to create similar virus, this was insufficient to overcome proximity evidence against laboratory origin.\"",
+      "explanation": "The restated premise is somewhat vague but does not clearly restate the conclusion as its own independent support. There's some uncertainty if it offers any new reasoning beyond restating the conclusion. Similarly, while the argument touches on epidemiological proximity and genetics characteristics, it lacks detailed or varied evidence to independently support the conclusion, leaning towards a lack of substantive independent support.",
+      "_attempts": 1,
+      "circular_argument_bounds": [
+        0.1,
+        0.3
+      ],
+      "state": "known-false"
+    }
+  },
+  {
+    "claim_id": "covid-005",
+    "source_file": "covid-origins/covid-005.md",
+    "ingestion_layer": {
+      "original_quote": "Under the best case for LL I find plausible, I think that HSM absorbs maybe 1/1000th of all Hunan 'visits' per day. I don't think the cited HSM environmental conditions give it much of an advantage vs a bar, a karaoke spot, a crowded subway car, etc. Even under a 2x spreading advantage (as LL assigns in the simulation), I get 1/1000th the traffic * 2 = 1/500. I will discount the model by 5X (arbitrary) because the retrospective ILI swab/blood searches do not find evidence of any community transmission.",
+      "e_prime_rewrite": "Under the best case for LL I find plausible, HSM absorbs maybe a fraction of Hunan 'visits' per day compared to bars, karaoke spots, and crowded subway cars. Even with a 2x spreading advantage as assigned in the simulation, HSM gets half the traffic * 2 = less than 1/500th. Due to lack of evidence from retrospective ILI swab/blood searches, I discount the model by 5X."
+    },
+    "result": {
+      "premise_restated_bounds": [
+        0.0,
+        0.3
+      ],
+      "premise_restated_location": "not applicable",
+      "no_independent_support_bounds": [
+        0.1,
+        0.4
+      ],
+      "no_independent_support_location": "\"I discount the model by 5X (arbitrary)\"",
+      "explanation": "The argument does not restatement its conclusion in different words as a premise, thus scoring low for 'premise_restated'. However, there is some uncertainty about whether the arbitrary discounting of the model provides any independent support or merely reiterates a lack of evidence.",
+      "_attempts": 1,
+      "circular_argument_bounds": [
+        0.0,
+        0.3
+      ],
+      "state": "known-false"
+    }
+  },
+  {
+    "claim_id": "covid-006",
+    "source_file": "covid-origins/covid-006.md",
+    "ingestion_layer": {
+      "original_quote": "This is an area that I think the ZO side won rather cleanly in the debate. The LL side did not present any credible evidence (IMO) of secret backbones with high nucleotide identity to SARS-CoV-2... I think ZO makes a fairly convincing case that the LL side has made many predictions that WIV is nefariously hiding sequences that have failed to materialize... Ultimately, I would probably say 1 in 1000 chance that WIV had an appropriate backbone. I have moderated that 10X in LL's favor because I do find the (later) non-sharing of the database odd.",
+      "e_prime_rewrite": "ZO side won convincingly in this area. LL side failed to present credible evidence regarding secret backbones with high nucleotide identity to SARS-CoV-2... ZO makes a strong case that LL side has made numerous predictions about WIV nefariously hiding sequences that have not materialized... Chance of WIV having an appropriate backbone is 1 in 1000. I've adjusted this estimate by a factor of 10 in favor of LL due to the (later) non-sharing of the database."
+    },
+    "result": {
+      "premise_restated_bounds": [
+        0.0,
+        0.2
+      ],
+      "premise_restated_location": "\"Chance of WIV having an appropriate backbone is 1 in 1000.\"",
+      "no_independent_support_bounds": [
+        0.0,
+        0.3
+      ],
+      "no_independent_support_location": "\"ZO makes a strong case that LL side has made numerous predictions about WIV nefariously hiding sequences that have not materialized...\"",
+      "explanation": "The conclusion about the low probability of WIV having an appropriate backbone is restated in different terms, but with less confidence. There's no clear independent support provided beyond rephrasing the original claim.",
+      "_attempts": 1,
+      "circular_argument_bounds": [
+        0.0,
+        0.2
+      ],
+      "state": "known-false"
+    }
+  },
+  {
+    "claim_id": "eggs-001",
+    "source_file": "eggs-cvd-diabetes/eggs-001.md",
+    "in_scope": false,
+    "exclusion_reason": "Single-clause statistical claim, no separate premise/conclusion structure for circular argument to consist of. This run scored known-true [0.8, 1.0]; the model's own explanation conflated original_quote-vs-e_prime_rewrite similarity (expected by design) with premise-restates-conclusion circularity -- a category mismatch, not a real finding. Excluded from circular-argument screening 2026-08-17, Jay's call. Raw result kept below for audit -- not used downstream.",
+    "ingestion_layer": {
+      "original_quote": "there is a dose-response positive association between egg consumption and the risk of CVD and diabetes",
+      "e_prime_rewrite": "a dose-response positive association exists between egg consumption and the risk of CVD and diabetes"
+    },
+    "result": {
+      "premise_restated_bounds": [
+        0.9,
+        1.0
+      ],
+      "premise_restated_location": "there is a dose-response positive association between egg consumption and the risk of CVD and diabetes",
+      "no_independent_support_bounds": [
+        0.8,
+        1.0
+      ],
+      "no_independent_support_location": "not applicable",
+      "explanation": "The argument restates its conclusion in different words, indicating high confidence that it meets the premise_restated condition. There is no additional evidence provided beyond this rephrasing of the original statement, suggesting strong alignment with the no_independent_support criterion as well.",
+      "_attempts": 1,
+      "circular_argument_bounds": [
+        0.8,
+        1.0
+      ],
+      "state": "known-true"
+    }
+  },
+  {
+    "claim_id": "eggs-002",
+    "source_file": "eggs-cvd-diabetes/eggs-002.md",
+    "in_scope": false,
+    "exclusion_reason": "Single-clause statistical claim, no separate premise/conclusion structure for circular argument to consist of. This run scored known-true [0.8, 1.0]; premise_restated_location quoted the same sentence from original_quote and e_prime_rewrite as its own evidence -- the same category mismatch as eggs-001. Excluded from circular-argument screening 2026-08-17, Jay's call. Raw result kept below for audit -- not used downstream.",
+    "ingestion_layer": {
+      "original_quote": "consumption of at least one egg per day was not associated with incident cardiovascular disease risk after adjustment for updated lifestyle and dietary factors associated with egg intake",
+      "e_prime_rewrite": "consumption of at least one egg per day shows no association with incident cardiovascular disease risk after adjustment for updated lifestyle and dietary factors associated with egg intake"
+    },
+    "result": {
+      "premise_restated_bounds": [
+        0.9,
+        1.0
+      ],
+      "premise_restated_location": "\"consumption of at least one egg per day was not associated with incident cardiovascular disease risk\"\n\"consumption of at least one egg per day shows no association with incident cardiovascular disease risk\"",
+      "no_independent_support_bounds": [
+        0.8,
+        1.0
+      ],
+      "no_independent_support_location": "\"after adjustment for updated lifestyle and dietary factors associated with egg intake\"\n\"after adjustment for updated lifestyle and dietary factors associated with egg intake\"",
+      "explanation": "The argument restates the conclusion in different words as a premise, scoring high on both 'premise_restated' and 'no_independent_support'. The phrase about adjustments seems to be an attempt at support but does not provide independent evidence beyond rephrasing the core claim.",
+      "_attempts": 1,
+      "circular_argument_bounds": [
+        0.8,
+        1.0
+      ],
+      "state": "known-true"
+    }
+  },
+  {
+    "claim_id": "eggs-003",
+    "source_file": "eggs-cvd-diabetes/eggs-003.md",
+    "ingestion_layer": {
+      "original_quote": "There was no evidence of interaction by diabetic status",
+      "e_prime_rewrite": "No evidence found for relationship with diabetic status"
+    },
+    "result": {
+      "premise_restated_bounds": [
+        0.1,
+        0.2
+      ],
+      "premise_restated_location": "\"not applicable\"",
+      "no_independent_support_bounds": [
+        0.1,
+        0.3
+      ],
+      "no_independent_support_location": "\"There was no evidence of interaction by diabetic status\"",
+      "explanation": "The premise and conclusion do not restate each other in different words, so the score for 'premise_restated' is low. However, there's a slight uncertainty if this statement offers any independent support beyond its own assertion about lack of evidence.",
+      "_attempts": 1,
+      "circular_argument_bounds": [
+        0.1,
+        0.2
+      ],
+      "state": "known-false"
+    }
+  }
+]
