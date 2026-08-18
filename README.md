@@ -25,7 +25,7 @@ The full build history from close to now lives in [`POST-SUBMISSION.md`](POST-SU
 
 ## Applied Purposeful Epistemology
 
-The gateway operationalizes a simple discipline: knowledge only earns use once someone checks what it rests on, how reliable that rest is, and what it's for. Five questions govern every claim that passes through the pipeline —
+The gateway operationalizes a simple discipline: knowledge only earns use once someone checks what it rests on, how reliable that rest stays, and what purpose it serves. Five questions govern every claim that passes through the pipeline —
 
 - What do we know?
 - How do we know it?
@@ -33,7 +33,7 @@ The gateway operationalizes a simple discipline: knowledge only earns use once s
 - What purpose will it serve?
 - How should it guide action or a decision?
 
-The three layers below answer these in order. Ingestion answers the first two. Assessment answers the third. Structure answers the last two — a claim's reliability doesn't mean much sitting alone; it means something once it's weighed against, corroborated by, or contested by the other claims around it.
+The three layers below answer these in order. Ingestion answers the first two. Assessment answers the third. Structure answers the last two — a claim's reliability doesn't mean much sitting alone; it gains meaning once weighed against, corroborated by, or contested by the other claims around it.
 
 ---
 
@@ -56,7 +56,7 @@ pip install -r requirements.txt
 python3 ingest.py --demo
 ```
 
-No account or key needed for `--demo`. The local pipeline (`build_local_corpus.py`, `run_local_neuro_symbolic.py`, `structure_layer.py`) needs no `ANTHROPIC_API_KEY` at all — see [`POST-SUBMISSION.md`](POST-SUBMISSION.md) for why that's a deliberate, permanent constraint on this codebase, not a temporary limitation.
+No account or key needed for `--demo`. The local pipeline (`build_local_corpus.py`, `run_local_neuro_symbolic.py`, `structure_layer.py`) needs no `ANTHROPIC_API_KEY` at all — see [`POST-SUBMISSION.md`](POST-SUBMISSION.md) for why this constraint stays deliberate and permanent, not temporary.
 
 ---
 
