@@ -1436,7 +1436,19 @@ def strip_markdown_fences(text: str) -> str:
     which PyYAML reads as "expected a single document in the stream".
     Real content never legitimately contains a standalone dash-only line,
     so truncating at the first one found anywhere in what remains is safe
-    regardless of which of the two shapes produced it."""
+    regardless of which of the two shapes produced it.
+
+    Also joins a bare "key:" line to its value when the value lands on the
+    NEXT line at column 0 instead of inline or properly indented -- fifth
+    real failure mode, found 2026-08-18 during the Hivemind-claims run.
+    Every _location field's schema asks for "key: |" plus an indented
+    placeholder line; the model sometimes drops both the pipe and the
+    indent, emitting "key:\nvalue" instead, which YAML can't parse as a
+    continuation since it isn't indented past the key. Detects a bare
+    "key:" line (nothing after the colon) immediately followed by a
+    non-blank line that doesn't itself look like a new key, and joins them
+    onto one line -- valid YAML either way the model meant it (block
+    scalar or plain)."""
     text = text.strip()
     match = re.match(r"^```(?:yaml|yml)?\s*\n(.*?)\n```\s*$", text, re.DOTALL)
     if match:
@@ -1453,6 +1465,23 @@ def strip_markdown_fences(text: str) -> str:
     sep_match = re.search(r"\n-{3,}[ \t]*(?:\n|$)", text)
     if sep_match:
         text = text[:sep_match.start()]
+
+    lines = text.split("\n")
+    joined = []
+    i = 0
+    key_only_re = re.compile(r"^[ \t]*[A-Za-z_][A-Za-z0-9_]*:[ \t]*$")
+    key_start_re = re.compile(r"^[ \t]*[A-Za-z_][A-Za-z0-9_]*:")
+    while i < len(lines):
+        line = lines[i]
+        if key_only_re.match(line) and i + 1 < len(lines):
+            nxt = lines[i + 1]
+            if nxt.strip() and not key_start_re.match(nxt) and not nxt.lstrip().startswith(("-", "|", ">")):
+                joined.append(line.rstrip() + " " + nxt.strip())
+                i += 2
+                continue
+        joined.append(line)
+        i += 1
+    text = "\n".join(joined)
 
     return text.strip()
 

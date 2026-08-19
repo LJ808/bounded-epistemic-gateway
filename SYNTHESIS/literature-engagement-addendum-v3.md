@@ -41,6 +41,20 @@ What the paper adds: a concrete argument for treating the four states unevenly d
 
 ---
 
+## Structural validation, stated for citation
+
+This section states the point above in full, on its own, in the form it needs to take if it ever gets quoted to a grant reviewer or judge — not folded into a paragraph about something else.
+
+Artificial Hivemind's stated critique of current reward models and LM judges: they "assume a single, consensus notion of quality" and, by that assumption, fail specifically on genuinely contested cases — the ones where quality doesn't collapse to one number. The paper's own annotation data backs this: LM judges, reward models, and perplexity scores all correlate worse with human ratings exactly on the subset of responses humans themselves rate as comparably good or disagree about most.
+
+The Gateway's four-state bounds design does not force a verdict. Every scoring call returns a `[lower, upper]` interval, not a scalar, and that interval reads into one of four states — known-true, known-false, unknown, contradictory — with "unknown" and "contradictory" standing as first-class outputs, not error states or fallback cases. A claim that genuinely sits in contested territory comes back reading as contested. Nothing in the pipeline collapses that toward a false single verdict the way a scalar reward score or a forced-binary judge call would.
+
+This design predates the paper. `combine_bounds_and()`, `combine_bounds_or()`, and `bounds_state()` existed in this codebase before Artificial Hivemind's arXiv posting, built from first-principles reasoning about what a fallacy-screen bounds pair needed to represent, not built in response to any external critique of judge calibration. The paper did not motivate the design. The paper independently arrived at the empirical case for why the design's core choice — preserving genuine uncertainty as an output state rather than resolving it into a forced answer — matters. Two separate lines of reasoning, one architectural and one empirical, landing on the same structural principle without either informing the other.
+
+Stated as plainly as the claim allows: a system that already refuses to force verdicts on contested cases does not need to change in response to a finding that judges which force verdicts on contested cases get those cases wrong. It already built around that exact failure mode. What changes, per Extension 1 above, is how much downstream attention each of the four states earns — not what the four states mean or how they combine.
+
+---
+
 ## Extension 1 — review-priority flag
 
 **Proposal:** every bounds-screen result carries a `review_priority` field, computed directly from `bounds_state()`'s output:
@@ -69,19 +83,19 @@ Attached to every `circular_argument_screen()` and `fallacy_bounds_screen()` res
 
 ---
 
-## Extension 2 — cross-family model diversity for the Gateway's own scoring calls
+## Extension 2 — cross-family model diversity for the Gateway's own scoring calls, local-only
 
 The paper's inter-model finding (cross-model similarity 71–82%, sometimes exceeding intra-model similarity) raises a question about the Gateway specifically: every live scoring call currently routes to one model family. RKLLama on Board 2 serves Qwen2.5 (7B or 14B) exclusively — same lineage, same training pipeline, regardless of which size runs.
 
-**Real, already-available alternatives exist in this exact project, not hypothetical ones:**
+**Correction, 2026-08-18, same day:** the original version of this section named Ling and Kimi via OpenRouter as the real, already-available cross-family path. Jay's direct call, same day: not used for the Gateway's own scoring calls — local-only, the same principle already governing Doppelganger's render pipeline. Struck here rather than left standing as a live option. The Session 100 vault-mapping precedent (Opus/Ling/Kimi divergence, `in/SYSTEM/vault-maps/run-01/02/03`) stays real and worth knowing about, but it doesn't license using those models for this project's own scoring calls.
 
-- **Ling** (`inclusionai/ling-2.6-1t`) and **Kimi** (`moonshotai/kimi-k2.6`), both configured in `~/.claude/settings.json` for Claude Code CLI, routed through OpenRouter — not a direct Anthropic API key, so this sits outside the standing rule closing off live runs against Anthropic API directly. Worth Jay's explicit confirmation that this reading of the rule holds, since it's his rule to interpret, not mine to assume past a plain reading.
-- **Documented, real divergence on a comparable task already exists.** Session 100 (2026-07-02) ran Opus, Ling, and Kimi independently against the same vault-mapping task and found real behavioral differences: Kimi surfaced three live bugs Opus and Ling both missed; Opus produced the stronger architectural inference from structure alone. Not the Gateway's own task, but a real precedent for cross-family divergence inside this exact system, on file at `in/SYSTEM/vault-maps/run-01-opus-2026-06-05/`, `run-02-ling-2026-07-01/`, `run-03-kimi-2026-07-01/`.
-- **Phi-3**, named in an earlier session as one of the model families (alongside Qwen) that converts reliably to `.rkllm` format for local NPU serving. A genuinely different lineage (Microsoft, not Alibaba) running fully local on Board 2 or Board 1, inside the same trust boundary IMST and Doppelganger already operate under. Not installed; would need conversion via Rockchip's toolkit and a serving slot, possibly requiring a model swap given RAM headroom constraints already documented for this board.
+**The real remaining path stays local:**
 
-**What this buys, concretely:** running the same claim through `fallacy_bounds_screen()` against RKLLama-Qwen and against OpenRouter-Ling or OpenRouter-Kimi, then comparing bounds pairs, tests directly whether the Gateway's own scoring exhibits the same convergent-judgment risk the paper measures across models generally — rather than assuming a single model's score functions as ground truth. Genuine cross-family agreement on a bounds read would carry more weight than any single model's read alone. Genuine cross-family disagreement would itself be a signal worth surfacing — likely warranting `high` review priority regardless of what any individual model's state read says.
+- **Phi-3**, named in an earlier session as one of the model families (alongside Qwen) that converts reliably to `.rkllm` format for local NPU serving. A genuinely different lineage (Microsoft, not Alibaba) running fully local on Board 2 or Board 1, inside the same trust boundary IMST and Doppelganger already operate under. Not installed; would need conversion via Rockchip's toolkit and a serving slot, possibly requiring a model swap given RAM headroom constraints already documented for this board. This is the one real, not-yet-built candidate for Extension 2 as of this correction.
 
-**Not proposed:** Opus, Fable, or any other Anthropic-hosted model for this purpose. The standing rule closing off live runs against a real Anthropic API key applies to those regardless of the calibration case made here.
+**What this buys, concretely, once Phi-3 (or another local-only alternative) exists:** running the same claim through `fallacy_bounds_screen()` against RKLLama-Qwen and against RKLLama-Phi-3, then comparing bounds pairs, tests directly whether the Gateway's own scoring exhibits the same convergent-judgment risk the paper measures across models generally — rather than assuming a single model's score functions as ground truth. Genuine cross-family agreement on a bounds read would carry more weight than any single model's read alone. Genuine cross-family disagreement would itself be a signal worth surfacing — likely warranting `high` review priority regardless of what any individual model's state read says.
+
+**Not proposed, either before or after this correction:** Opus, Fable, or any other Anthropic-hosted model for this purpose. The standing rule closing off live runs against a real Anthropic API key applies to those regardless of the calibration case made here.
 
 ---
 
@@ -93,7 +107,7 @@ The full 78-call live run (`run_all_26_rkllama.py`, RKLLama Qwen2.5-14B, three p
 
 **Six categories run unknown on all three claims regardless of topic:** `appeal_to_ignorance`, `double_counting`, `false_equivalence`, `no_true_scotsman`, `part_to_whole_mixup`, `word_shift`. A second, separate mechanism from the topic effect above — something about how these six subconditions get asked produces wide bounds independent of what claim sits underneath them. Full breakdown: `CLAUDE_INDEPENDENT_RUNS/rkllama-78-run-analysis-20260818.md`.
 
-Both findings sharpen Extension 2's test beyond "do different models converge on the same bounds." The real question for a second model (Ling or Kimi via OpenRouter) now has two specific, checkable shapes: does it show the same skew toward `covid-003` specifically, and does it hedge on the same six categories regardless of claim. Agreement or divergence on *which* claims and categories draw uncertainty carries more signal than agreement on raw bounds-pair values alone. Not run yet — Jay's call on timing, same as the rest of Extension 2.
+Both findings sharpen Extension 2's test beyond "do different models converge on the same bounds." The real question for a second, local-only model (Phi-3, once converted) now has two specific, checkable shapes: does it show the same skew toward `covid-003` specifically, and does it hedge on the same six categories regardless of claim. Agreement or divergence on *which* claims and categories draw uncertainty carries more signal than agreement on raw bounds-pair values alone. Not run yet — blocked on Phi-3 conversion, not on Jay's timing call this time.
 
 ---
 
@@ -101,4 +115,4 @@ Both findings sharpen Extension 2's test beyond "do different models converge on
 
 Rewrite the Gateway's core architecture, take back any prior claim about the four-state bounds design, or assert that "unknown" results are wrong. The paper gives a reason to weight review attention unevenly across states that already exist — not a reason to change what those states mean or how they combine.
 
-Both extensions above stay proposals. Neither has code written yet beyond the `review_priority()` function sketched here. Jay's call on build order and whether the OpenRouter reading needs confirmation before any cross-family call actually fires.
+Both extensions above stay proposals. Extension 1 has real, working code (`review_priority()`, above). Extension 2 stays blocked on Phi-3 conversion — the OpenRouter question is resolved, not open; local-only stands as the confirmed path. Jay's call on build order and on Phi-3 conversion timing.
