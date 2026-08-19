@@ -1,0 +1,2568 @@
+{
+  "generated": "2026-08-19T15:40:28.550076",
+  "summary": {
+    "total_comparisons": 78,
+    "cross_family_agreements": 23,
+    "cross_family_agreement_rate": 0.2948717948717949,
+    "by_claim": {
+      "eggs-003": {
+        "total": 26,
+        "agreements": 7,
+        "phi3_unknown_rate": 0.5,
+        "qwen_unknown_rate": 0.5384615384615384
+      },
+      "covid-003": {
+        "total": 26,
+        "agreements": 6,
+        "phi3_unknown_rate": 0.2692307692307692,
+        "qwen_unknown_rate": 0.7692307692307693
+      },
+      "blackhole-002": {
+        "total": 26,
+        "agreements": 10,
+        "phi3_unknown_rate": 0.07692307692307693,
+        "qwen_unknown_rate": 0.2692307692307692
+      }
+    },
+    "known_hedge_categories_checked": [
+      "appeal_to_ignorance",
+      "double_counting",
+      "false_equivalence",
+      "no_true_scotsman",
+      "part_to_whole_mixup",
+      "word_shift"
+    ],
+    "phi3_unknown_rate_on_known_hedge_categories": 0.16666666666666666
+  },
+  "disagreements": [
+    {
+      "claim_id": "eggs-003",
+      "category": "appeal_to_ignorance",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.1,
+        0.5
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.95,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "appeal_to_nature",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.15,
+        0.75
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "bandwagon",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.0,
+        1.0
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "double_counting",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.1,
+        0.5
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.75,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "false_choice",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.1,
+        0.5
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "false_equivalence",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.1,
+        0.5
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.7,
+        1
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "gamblers_fallacy",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.15,
+        0.75
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "ignoring_base_rate",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.15,
+        0.75
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "motte_and_bailey",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.1,
+        0.5
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "no_true_scotsman",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.1,
+        0.5
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "origin_attack",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.1,
+        0.4
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "personal_attack",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.15,
+        0.85
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "red_herring",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "slippery_slope",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.75,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "straw_man",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.1,
+        0.3
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.33,
+        2.46
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "sunk_cost",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.0,
+        1.0
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "survivorship_bias",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.1,
+        0.5
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.75,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "texas_sharpshooter",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.1,
+        0.3
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "tu_quoque",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "appeal_to_authority",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.2,
+        0.6
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.05,
+        0.3
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "appeal_to_ignorance",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.4,
+        0.8
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.75,
+        0.85
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "appeal_to_nature",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.2
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.75,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "double_counting",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.3,
+        0.6
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "false_cause",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.3,
+        0.4
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.1,
+        0.2
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "false_equivalence",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.3,
+        0.6
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.1,
+        0.2
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "gamblers_fallacy",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.1,
+        0.4
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "no_true_scotsman",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.3,
+        0.7
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.8,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "non_sequitur",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.5,
+        0.8
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.75,
+        0.85
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "origin_attack",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.3,
+        0.7
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.75,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "part_to_whole_mixup",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.5,
+        0.8
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.0,
+        0.1
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "personal_attack",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.3
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.65,
+        0.75
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "red_herring",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.3,
+        0.7
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "rushed_conclusion",
+      "qwen_state": "known-true",
+      "qwen_bounds": [
+        0.7,
+        0.9
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.4,
+        0.6
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "slippery_slope",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.3,
+        0.6
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.75,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "straw_man",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.0,
+        0.4
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.15,
+        0.3
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "sunk_cost",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.3,
+        0.4
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.0,
+        0.1
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "survivorship_bias",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.5,
+        0.8
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.75,
+        0.9
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "texas_sharpshooter",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.25,
+        0.75
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.75,
+        0.85
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "tu_quoque",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.3,
+        0.7
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.75,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "appeal_to_ignorance",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.2,
+        0.4
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.7,
+        0.9
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "appeal_to_nature",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.0,
+        1.0
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.1,
+        0.3
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "double_counting",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.6,
+        0.9
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.1,
+        0.3
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "false_cause",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.1,
+        0.3
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "false_choice",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.1,
+        0.3
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.2,
+        0.4
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "false_equivalence",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.3,
+        0.6
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.2,
+        0.3
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "gamblers_fallacy",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.8,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "no_true_scotsman",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.0,
+        1.0
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "part_to_whole_mixup",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.5,
+        0.8
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.1,
+        0.2
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "personal_attack",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.1,
+        0.9
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "rushed_conclusion",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.1,
+        0.3
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "slippery_slope",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.1,
+        0.2
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "survivorship_bias",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.1,
+        0.3
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.8,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "texas_sharpshooter",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.1,
+        0.2
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.8,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "tu_quoque",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.1,
+        0.3
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "word_shift",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.3,
+        0.6
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.1,
+        0.2
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    }
+  ],
+  "all_rows": [
+    {
+      "claim_id": "eggs-003",
+      "category": "appeal_to_authority",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.0,
+        1.0
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.15,
+        0.85
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": true,
+      "cross_family_disagreement_priority": "standard",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "appeal_to_ignorance",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.1,
+        0.5
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.95,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "appeal_to_nature",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.15,
+        0.75
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "bandwagon",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.0,
+        1.0
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "double_counting",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.1,
+        0.5
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.75,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "false_cause",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.1,
+        0.5
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.5,
+        1.0
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": true,
+      "cross_family_disagreement_priority": "standard",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "false_choice",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.1,
+        0.5
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "false_equivalence",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.1,
+        0.5
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.7,
+        1
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "gamblers_fallacy",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.15,
+        0.75
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "ignoring_base_rate",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.15,
+        0.75
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "motte_and_bailey",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.1,
+        0.5
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "no_true_scotsman",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.1,
+        0.5
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "non_sequitur",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.1,
+        0.5
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.15,
+        0.85
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": true,
+      "cross_family_disagreement_priority": "standard",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "origin_attack",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.1,
+        0.4
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "part_to_whole_mixup",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.1,
+        0.5
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.15,
+        0.8
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": true,
+      "cross_family_disagreement_priority": "standard",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "personal_attack",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.15,
+        0.85
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "red_herring",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "rushed_conclusion",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.1,
+        0.5
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.05,
+        0.85
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": true,
+      "cross_family_disagreement_priority": "standard",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "slippery_slope",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.75,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "straw_man",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.1,
+        0.3
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.33,
+        2.46
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "sunk_cost",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.0,
+        1.0
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "survivorship_bias",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.1,
+        0.5
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.75,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "texas_sharpshooter",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.1,
+        0.3
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "tu_quoque",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "word_shift",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.1,
+        0.4
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.15,
+        0.75
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": true,
+      "cross_family_disagreement_priority": "standard",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "eggs-003",
+      "category": "circular_argument",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.05,
+        0.1
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": true,
+      "cross_family_disagreement_priority": "standard",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "appeal_to_authority",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.2,
+        0.6
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.05,
+        0.3
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "appeal_to_ignorance",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.4,
+        0.8
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.75,
+        0.85
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "appeal_to_nature",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.2
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.75,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "bandwagon",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.3
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.0,
+        0.3
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": true,
+      "cross_family_disagreement_priority": "standard",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "double_counting",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.3,
+        0.6
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "false_cause",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.3,
+        0.4
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.1,
+        0.2
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "false_choice",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.3,
+        0.7
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.65,
+        0.75
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": true,
+      "cross_family_disagreement_priority": "standard",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "false_equivalence",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.3,
+        0.6
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.1,
+        0.2
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "gamblers_fallacy",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.1,
+        0.4
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "ignoring_base_rate",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.3,
+        0.7
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.35,
+        0.65
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": true,
+      "cross_family_disagreement_priority": "standard",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "motte_and_bailey",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.65,
+        0.85
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.35,
+        0.45
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": true,
+      "cross_family_disagreement_priority": "standard",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "no_true_scotsman",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.3,
+        0.7
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.8,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "non_sequitur",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.5,
+        0.8
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.75,
+        0.85
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "origin_attack",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.3,
+        0.7
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.75,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "part_to_whole_mixup",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.5,
+        0.8
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.0,
+        0.1
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "personal_attack",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.3
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.65,
+        0.75
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "red_herring",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.3,
+        0.7
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "rushed_conclusion",
+      "qwen_state": "known-true",
+      "qwen_bounds": [
+        0.7,
+        0.9
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.4,
+        0.6
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "slippery_slope",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.3,
+        0.6
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.75,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "straw_man",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.0,
+        0.4
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.15,
+        0.3
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "sunk_cost",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.3,
+        0.4
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.0,
+        0.1
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "survivorship_bias",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.5,
+        0.8
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.75,
+        0.9
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "texas_sharpshooter",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.25,
+        0.75
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.75,
+        0.85
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "tu_quoque",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.3,
+        0.7
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.75,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "word_shift",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.5,
+        0.8
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.6,
+        0.7
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": true,
+      "cross_family_disagreement_priority": "standard",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "covid-003",
+      "category": "circular_argument",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.2
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.1,
+        0.25
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": true,
+      "cross_family_disagreement_priority": "standard",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "appeal_to_authority",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.2
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.1,
+        0.3
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": true,
+      "cross_family_disagreement_priority": "standard",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "appeal_to_ignorance",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.2,
+        0.4
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.7,
+        0.9
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "appeal_to_nature",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.0,
+        1.0
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.1,
+        0.3
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "bandwagon",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.05,
+        0.2
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": true,
+      "cross_family_disagreement_priority": "standard",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "double_counting",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.6,
+        0.9
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.1,
+        0.3
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "false_cause",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.1,
+        0.3
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "false_choice",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.1,
+        0.3
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.2,
+        0.4
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "false_equivalence",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.3,
+        0.6
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.2,
+        0.3
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "gamblers_fallacy",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.8,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "ignoring_base_rate",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.1,
+        0.2
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.1,
+        0.3
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": true,
+      "cross_family_disagreement_priority": "standard",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "motte_and_bailey",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.1,
+        0.3
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.1,
+        0.3
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": true,
+      "cross_family_disagreement_priority": "standard",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "no_true_scotsman",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.0,
+        1.0
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "non_sequitur",
+      "qwen_state": "known-true",
+      "qwen_bounds": [
+        0.9,
+        1.0
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        0.95
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": true,
+      "cross_family_disagreement_priority": "standard",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "origin_attack",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.1,
+        0.3
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.1,
+        0.2
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": true,
+      "cross_family_disagreement_priority": "standard",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "part_to_whole_mixup",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.5,
+        0.8
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.1,
+        0.2
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "personal_attack",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "unknown",
+      "phi3_bounds": [
+        0.1,
+        0.9
+      ],
+      "phi3_review_priority": "high",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "red_herring",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.1,
+        0.3
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.1,
+        0.3
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": true,
+      "cross_family_disagreement_priority": "standard",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "rushed_conclusion",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.1,
+        0.3
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "slippery_slope",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.1,
+        0.2
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "straw_man",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.2
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.15,
+        0.3
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": true,
+      "cross_family_disagreement_priority": "standard",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "sunk_cost",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.1,
+        0.2
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": true,
+      "cross_family_disagreement_priority": "standard",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "survivorship_bias",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.1,
+        0.3
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.8,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "texas_sharpshooter",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.1,
+        0.2
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.8,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "tu_quoque",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.1,
+        0.3
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-true",
+      "phi3_bounds": [
+        0.85,
+        1.0
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": false
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "word_shift",
+      "qwen_state": "unknown",
+      "qwen_bounds": [
+        0.3,
+        0.6
+      ],
+      "qwen_review_priority": "high",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.1,
+        0.2
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": false,
+      "cross_family_disagreement_priority": "high",
+      "known_hedge_category": true
+    },
+    {
+      "claim_id": "blackhole-002",
+      "category": "circular_argument",
+      "qwen_state": "known-false",
+      "qwen_bounds": [
+        0.0,
+        0.1
+      ],
+      "qwen_review_priority": "standard",
+      "phi3_state": "known-false",
+      "phi3_bounds": [
+        0.0,
+        0.2
+      ],
+      "phi3_review_priority": "standard",
+      "cross_family_agree": true,
+      "cross_family_disagreement_priority": "standard",
+      "known_hedge_category": false
+    }
+  ]
+}

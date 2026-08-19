@@ -1,0 +1,20 @@
+error: while scanning a simple key
+  in "<unicode string>", line 9, column 1:
+    The score for 'links unjustified ... 
+    ^
+could not find expected ':'
+  in "<unicode string>", line 9, column 542:
+     ... ed perfectly confidently at 1.0.
+                                         ^
+
+--- full raw response below ---
+
+ chain_claimed_bounds: [0.85, 1.0]
+chain_claimed_location: "the argument claim one small step leads"
+
+links_unjustified_bounds: [0.75, 1.0]
+links_unjustified_location: "Does it fail to show how each step in that chain actually lead[s]"
+
+explanation: The score for 'chain claimed' is high due to the strong implication of a causal link between small steps and significant consequences as suggested by the original quote. However, there remains some uncertainty because without specific examples or evidence provided within this context, it cannot be rated perfectly confidently at 1.0.
+
+The score for 'links unjustified' is also high since the rewritten statement implies that prior knowledge (computational modeling) supports PRRAR as a functional furin cleavage site post-COVID emergence which was not available before, indicating an actual link between steps in scientific understanding and practical application. Nevertheless, there remains some uncertainty because without direct evidence of these links being made clear or demonstrated within the argument's context itself, it cannot be rated perfectly confidently at 1.0.

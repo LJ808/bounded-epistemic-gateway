@@ -1,0 +1,22 @@
+error: while scanning a simple key
+  in "<unicode string>", line 11, column 1:
+    The confidence in absence of dis ... 
+    ^
+could not find expected ':'
+  in "<unicode string>", line 11, column 360:
+     ... imism based on indirect support.
+                                         ^
+
+--- full raw response below ---
+
+ absence_as_proof_bounds: [0.65, 0.85]
+
+absence_as_proof_location: "No published gain-of-function study used the PRRAR sequence"
+
+absence_as_disproof_bounds: [0.75, 0.95]
+
+absence_as_disproof_location: "computational modeling after COVID's emergence found PRRAR functions adequately as a furin cleavage site"
+
+explanation: The confidence in absence of proof being considered evidence is moderate, given the lack of pre-2019 engineering work using this sequence. However, post-emergence computational modeling provides some support for its function despite no human usage prior to COVID's emergence; thus a cautious score reflecting both uncertainty and partial affirmation based on available evidence is assigned.
+
+The confidence in absence of disproof being considered proof that the claim fails also leans towards moderate, as computational modeling does suggest adequacy but doesn’t entirely confirm it—hence not full-fledged 'disproof'. The score reflects a balanced view between skepticism due to limited direct evidence and cautious optimism based on indirect support.

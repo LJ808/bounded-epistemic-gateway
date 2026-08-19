@@ -1448,7 +1448,38 @@ def strip_markdown_fences(text: str) -> str:
     "key:" line (nothing after the colon) immediately followed by a
     non-blank line that doesn't itself look like a new key, and joins them
     onto one line -- valid YAML either way the model meant it (block
-    scalar or plain)."""
+    scalar or plain).
+
+    Also re-indents unindented multi-line content under a genuine block-
+    scalar key ("key: |" followed by content at column 0) -- sixth real
+    failure mode, found 2026-08-19 against Phi-3-mini (cross_family_
+    comparison_rkllama.py, Extension 2). Unlike the fifth fix above (a
+    bare "key:" with no pipe, value on the next line), this is a real
+    "key: |" block-scalar marker whose multi-line body never got
+    indented past the key -- YAML requires block-scalar content to
+    indent more than its own key line, so unindented content breaks the
+    parser the same way a bare key does, just with the pipe already
+    present. Detects a line matching "key: |" with nothing else on it,
+    then indents every following line by two spaces until a blank line
+    followed by a new key, a bare new key line itself, or the text ends.
+
+    Also merges an orphaned continuation paragraph into the preceding
+    top-level key's inline value -- seventh real failure mode, found
+    2026-08-19 against Phi-3-mini. Distinct from both the fifth fix (bare
+    "key:" with nothing after it) and the sixth (a real "key: |" marker):
+    here the key already carries real inline content ("explanation: The
+    score is..."), then continues past a blank line into a second,
+    unindented paragraph with no key of its own. YAML's plain-scalar
+    parser can't follow that -- it tries reading the second paragraph as
+    a possible new mapping key and fails partway through, exactly the
+    "could not find expected ':'" shape seen on two full-length real
+    responses this session. Detects any top-level ("key: <content>")
+    line, then folds every following line into it -- skipping blank
+    lines, stopping only at the next real top-level key -- until the
+    orphaned paragraph(s) land on one continuous line, which YAML reads
+    as a normal (if long) plain scalar. A genuine single-paragraph value
+    passes through completely unchanged, confirmed via regression test
+    before this landed."""
     text = text.strip()
     match = re.match(r"^```(?:yaml|yml)?\s*\n(.*?)\n```\s*$", text, re.DOTALL)
     if match:
@@ -1482,6 +1513,71 @@ def strip_markdown_fences(text: str) -> str:
         joined.append(line)
         i += 1
     text = "\n".join(joined)
+
+    # Sixth pass -- re-indent unindented block-scalar bodies ("key: |"
+    # followed by content at column 0). Real Phi-3 failure shape,
+    # 2026-08-19.
+    lines = text.split("\n")
+    reindented = []
+    i = 0
+    block_key_re = re.compile(r"^([A-Za-z_][A-Za-z0-9_]*):\s*\|\s*$")
+    while i < len(lines):
+        line = lines[i]
+        reindented.append(line)
+        if block_key_re.match(line):
+            i += 1
+            while i < len(lines):
+                nxt = lines[i]
+                if nxt.strip() == "":
+                    reindented.append(nxt)
+                    i += 1
+                    continue
+                if key_start_re.match(nxt) and not nxt.startswith((" ", "\t")):
+                    break
+                if nxt.startswith((" ", "\t")):
+                    reindented.append(nxt)
+                else:
+                    reindented.append("  " + nxt)
+                i += 1
+            continue
+        i += 1
+    text = "\n".join(reindented)
+
+    # Seventh pass -- merge an orphaned continuation paragraph into the
+    # preceding top-level key's inline value. Real Phi-3 failure shape,
+    # 2026-08-19.
+    key_start_re_top = re.compile(r"^([A-Za-z_][A-Za-z0-9_]*):")
+    lines = text.split("\n")
+    merged = []
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        m = key_start_re_top.match(line)
+        has_content = bool(m) and line[m.end():].strip() != ""
+        ends_with_block_indicator = line.rstrip().endswith(("|", ">"))
+        if has_content and not ends_with_block_indicator:
+            current = line
+            i += 1
+            while i < len(lines):
+                nxt = lines[i]
+                if nxt.strip() == "":
+                    j = i + 1
+                    while j < len(lines) and lines[j].strip() == "":
+                        j += 1
+                    if j < len(lines) and key_start_re_top.match(lines[j]):
+                        break
+                    else:
+                        i += 1
+                        continue
+                if key_start_re_top.match(nxt):
+                    break
+                current = current.rstrip() + " " + nxt.strip()
+                i += 1
+            merged.append(current)
+            continue
+        merged.append(line)
+        i += 1
+    text = "\n".join(merged)
 
     return text.strip()
 

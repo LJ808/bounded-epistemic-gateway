@@ -4,7 +4,7 @@ addendum_to: [neuro-symbolic-fallacy-screen-v1, structure-layer-mapping-v1, insi
 trigger: artificial-hivemind-arxiv-2510.22954-2026-08-18
 claims_tested: 0
 date_executed: "2026-08-18"
-status: addendum — core Gateway architecture unchanged; two concrete extensions proposed, neither built yet
+status: addendum — Extension 1 exists as real code, not yet wired into a live run; Extension 2 ran to full completion against Phi-3-mini, real cross-family comparison data now exists
 written_in_e_prime: true
 tags: [model-routing, architecture]
 ---
@@ -89,11 +89,9 @@ The paper's inter-model finding (cross-model similarity 71–82%, sometimes exce
 
 **Correction, 2026-08-18, same day:** the original version of this section named Ling and Kimi via OpenRouter as the real, already-available cross-family path. Jay's direct call, same day: not used for the Gateway's own scoring calls — local-only, the same principle already governing Doppelganger's render pipeline. Struck here rather than left standing as a live option. The Session 100 vault-mapping precedent (Opus/Ling/Kimi divergence, `in/SYSTEM/vault-maps/run-01/02/03`) stays real and worth knowing about, but it doesn't license using those models for this project's own scoring calls.
 
-**The real remaining path stays local:**
+**Update, 2026-08-19 — installed and live.** Phi-3-mini-4k-instruct-w8a8 (GatekeeperZA on HuggingFace, matched to Board 2's confirmed v1.2.3 runtime) sits downloaded, byte-verified (3,946,316,324 bytes), and confirmed real via a live `GET /v1/models` call, at `/opt/rkllama/src/rkllama/config/models/Phi-3-mini-4k-instruct-w8a8/` on Board 2. Real path used a pre-converted community build, not Rockchip toolkit conversion — no Rockchip toolkit access exists on any machine in this stack (Mac mini, Board 1, Board 2), and none ever ran. This session's install happened inside the in/ vault's application-level MoE router build (`in/SYSTEM/moe_router.py`), where Phi-3 now serves as `DIVERSITY_MODEL`, alongside NextCoder-7B (`CODE_MODEL`) and Qwen3-1.7B (`CLASSIFIER_MODEL`). A genuinely different lineage (Microsoft, not Alibaba) now runs fully local on Board 2, inside the same trust boundary IMST and Doppelganger already operate under.
 
-- **Phi-3**, named in an earlier session as one of the model families (alongside Qwen) that converts reliably to `.rkllm` format for local NPU serving. A genuinely different lineage (Microsoft, not Alibaba) running fully local on Board 2 or Board 1, inside the same trust boundary IMST and Doppelganger already operate under. Not installed; would need conversion via Rockchip's toolkit and a serving slot, possibly requiring a model swap given RAM headroom constraints already documented for this board. This is the one real, not-yet-built candidate for Extension 2 as of this correction.
-
-**What this buys, concretely, once Phi-3 (or another local-only alternative) exists:** running the same claim through `fallacy_bounds_screen()` against RKLLama-Qwen and against RKLLama-Phi-3, then comparing bounds pairs, tests directly whether the Gateway's own scoring exhibits the same convergent-judgment risk the paper measures across models generally — rather than assuming a single model's score functions as ground truth. Genuine cross-family agreement on a bounds read would carry more weight than any single model's read alone. Genuine cross-family disagreement would itself be a signal worth surfacing — likely warranting `high` review priority regardless of what any individual model's state read says.
+**What this buys, concretely, now that Phi-3 exists and loads:** running the same claim through `fallacy_bounds_screen()` against RKLLama-Qwen and against RKLLama-Phi-3, then comparing bounds pairs, tests directly whether the Gateway's own scoring exhibits the same convergent-judgment risk the paper measures across models generally — rather than assuming a single model's score functions as ground truth. Genuine cross-family agreement on a bounds read would carry more weight than any single model's read alone. Genuine cross-family disagreement would itself be a signal worth surfacing — likely warranting `high` review priority regardless of what any individual model's state read says. **Run to completion, 2026-08-19 — real results below, see "Extension 2 real-run confirmation."**
 
 **Not proposed, either before or after this correction:** Opus, Fable, or any other Anthropic-hosted model for this purpose. The standing rule closing off live runs against a real Anthropic API key applies to those regardless of the calibration case made here.
 
@@ -111,8 +109,28 @@ Both findings sharpen Extension 2's test beyond "do different models converge on
 
 ---
 
+## Extension 2 real-run confirmation (2026-08-19) — Phi-3 comparison complete, a genuine and specific disagreement pattern found
+
+`cross_family_comparison_rkllama.py` (new file) ran the full 78-call circular-argument + 25-category bounds screen against Phi-3-mini-4k-instruct-w8a8, reusing Qwen2.5-14B's already-complete 78 calls directly rather than re-running them. Real work reaching a clean 156/156 required four real fixes: two genuine model-install gaps (neither Phi-3 nor NextCoder-7B carried a working Modelfile until this session, despite both showing byte-verified weights and a confirmed `GET /v1/models` string — a live `/load_model` call now confirms both load-capable for real, not merely downloaded), a wrong JSON field-name assumption on the first live `/load_model` attempt, and three further real RKLLama YAML-formatting shapes Phi-3 produces that Qwen never triggered — an unindented block-scalar body, a dropped `_bounds` suffix on a subcondition key, and an orphaned continuation paragraph spanning a blank line under an inline value. `strip_markdown_fences()` now carries seven total real-failure passes, six from Qwen's original run plus this session's three, each confirmed against the exact captured text that broke it, plus a full regression suite covering every prior shape before any fix landed. Full technical detail: TRC's own ERRORS.md and MEMORY.md, 2026-08-19.
+
+**Real comparison, 78/78 clean, 29.5% cross-family agreement.** Two specific, checkable questions the prior entry named now carry real answers:
+
+**Phi-3 does not reproduce the six systemically-hedging categories.** The six categories (`appeal_to_ignorance`, `double_counting`, `false_equivalence`, `no_true_scotsman`, `part_to_whole_mixup`, `word_shift`) hedged unknown on all three claims, every time, for Qwen. Phi-3 hedges unknown on those same six categories only 17% of the time — where Qwen consistently could not commit, Phi-3 mostly resolves, usually to `known-true` at high confidence (typically 0.75–1.0 bounds).
+
+**The topic-skew Qwen showed runs in reverse for Phi-3.** Qwen's unknown rate ran `covid-003` 77%, `eggs-003` 54%, `blackhole-002` 27% — covid read hardest for Qwen. Phi-3's unknown rate ran `eggs-003` 50%, `covid-003` 27%, `blackhole-002` 8% — covid read easiest for Phi-3, relatively speaking. Same three claims, opposite direction of relative difficulty between the two families.
+
+**The dominant shape across the 55 real disagreements: Qwen sits at unknown while Phi-3 commits to a confident state, either direction, far more often than the reverse.** Phi-3 resolves; Qwen hedges. A consistent behavioral asymmetry under the identical prompt, not scattered noise.
+
+**Real caveat, stated directly rather than left implicit:** Phi-3-mini runs at roughly a quarter of Qwen2.5-14B's parameter count. Some or much of this disagreement plausibly reflects a raw capability gap rather than genuinely independent judgment on comparably-difficult reasoning — the addendum's own reasoning for treating cross-family agreement as a meaningful signal assumed comparable capability between the two models compared, an assumption this specific pairing does not meet. The 29.5% agreement rate measures something real about these two specific models; it does not, on its own, measure the convergent-judgment risk Artificial Hivemind names for comparably-capable models generally.
+
+**Practical implication for Extension 1's `review_priority()` flag, run against this real pairing:** 70.5% of the 78 comparisons would flag `high` under a cross-family-disagreement rule. Genuine structural finding regardless of the capability-gap caveat above — this specific pairing offers weak corroboration value as a diversity check, not because the mechanism fails, but because a 3.8B and a 14B model read the same fallacy-screen prompts too differently for agreement itself to carry much weight. A same-capability-class second model (a different ~14B lineage, if one becomes available for this board) would test the addendum's original question more cleanly than this pairing does.
+
+Full raw data: `NEURO_SYMBOLIC_RUNS/cross-family-comparison-raw.json` (156 calls) and `cross-family-comparison-report.json` (the full 78-row comparison, every state, bounds pair, and review-priority flag from both models, side by side).
+
+---
+
 ## What this document does not do
 
 Rewrite the Gateway's core architecture, take back any prior claim about the four-state bounds design, or assert that "unknown" results are wrong. The paper gives a reason to weight review attention unevenly across states that already exist — not a reason to change what those states mean or how they combine.
 
-Both extensions above stay proposals. Extension 1 has real, working code (`review_priority()`, above). Extension 2 stays blocked on Phi-3 conversion — the OpenRouter question is resolved, not open; local-only stands as the confirmed path. Jay's call on build order and on Phi-3 conversion timing.
+Both extensions above stay proposals in name, though both now carry real code and real execution behind them. Extension 1 has real, working code (`review_priority()`, above), not yet wired into a live run's own output. Extension 2 has real, working code, run to full completion against Phi-3-mini — see "Extension 2 real-run confirmation" above for the actual result: 29.5% cross-family agreement, Phi-3 does not reproduce Qwen's six-category hedge pattern, and a real capability-gap caveat on how much weight the disagreement rate itself deserves. Jay's call on whether a same-capability-class second model gets pursued next, and on wiring Extension 1's flag into a real batch runner.
