@@ -1,0 +1,181 @@
+{
+  "fixed_point": {
+    "nodes": [
+      {
+        "claim_id": "eggs-001",
+        "seed_bounds": [0.35, 0.65],
+        "seed_source": "confidence_assessment proxy (NOT neuro-symbolic -- different scope)",
+        "raw_confidence_assessment": 3,
+        "seed_caveat": "Excluded from circular-argument screening (single-clause claim, no premise/conclusion structure -- see CIRCULAR_SCREEN_OUT_OF_SCOPE). This proxy measures rewrite robustness against motivated misreading, a materially different and weaker signal than the neuro-symbolic seed used for the other 10 claims.",
+        "current_bounds": [0.35, 0.65],
+        "applied_edges": [],
+        "final_bounds": [0.35, 0.65],
+        "final_state": "unknown"
+      },
+      {
+        "claim_id": "eggs-002",
+        "seed_bounds": [0.35, 0.65],
+        "seed_source": "confidence_assessment proxy (NOT neuro-symbolic -- different scope)",
+        "raw_confidence_assessment": 3,
+        "seed_caveat": "Excluded from circular-argument screening (single-clause claim, no premise/conclusion structure -- see CIRCULAR_SCREEN_OUT_OF_SCOPE). This proxy measures rewrite robustness against motivated misreading, a materially different and weaker signal than the neuro-symbolic seed used for the other 10 claims.",
+        "current_bounds": [0.35, 0.65],
+        "applied_edges": [],
+        "final_bounds": [0.35, 0.65],
+        "final_state": "unknown"
+      },
+      {
+        "claim_id": "eggs-003",
+        "seed_bounds": [0.8, 0.9],
+        "seed_source": "neuro-symbolic circular-argument bounds, inverted",
+        "raw_circular_argument_bounds": [0.1, 0.2],
+        "seed_caveat": "Partial proxy -- reflects only the absence of ONE fallacy category (circular argument) out of 26 tracked. Not a general evidentiary-strength or truth score.",
+        "current_bounds": [0.8, 0.9],
+        "applied_edges": [],
+        "final_bounds": [0.8, 0.9],
+        "final_state": "known-true"
+      },
+      {
+        "claim_id": "covid-001",
+        "seed_bounds": [0.3, 0.6],
+        "seed_source": "neuro-symbolic circular-argument bounds, inverted",
+        "raw_circular_argument_bounds": [0.4, 0.7],
+        "seed_caveat": "Partial proxy -- reflects only the absence of ONE fallacy category (circular argument) out of 26 tracked. Not a general evidentiary-strength or truth score.",
+        "current_bounds": [0.7, 1.0],
+        "applied_edges": [
+          {"iteration": 1, "from": "covid-004", "relation": "supports", "before": [0.3, 0.6], "after": [0.7, 0.9]},
+          {"iteration": 1, "from": "covid-005", "relation": "supports", "before": [0.7, 0.9], "after": [0.7, 1.0]}
+        ],
+        "final_bounds": [0.7, 1.0],
+        "final_state": "known-true"
+      },
+      {
+        "claim_id": "covid-002",
+        "seed_bounds": [0.2, 0.5],
+        "seed_source": "neuro-symbolic circular-argument bounds, inverted",
+        "raw_circular_argument_bounds": [0.5, 0.8],
+        "seed_caveat": "Partial proxy -- reflects only the absence of ONE fallacy category (circular argument) out of 26 tracked. Not a general evidentiary-strength or truth score.",
+        "current_bounds": [0.2, 0.5],
+        "applied_edges": [],
+        "final_bounds": [0.2, 0.5],
+        "final_state": "unknown"
+      },
+      {
+        "claim_id": "covid-003",
+        "seed_bounds": [0.9, 1.0],
+        "seed_source": "neuro-symbolic circular-argument bounds, inverted",
+        "raw_circular_argument_bounds": [0.0, 0.1],
+        "seed_caveat": "Partial proxy -- reflects only the absence of ONE fallacy category (circular argument) out of 26 tracked. Not a general evidentiary-strength or truth score.",
+        "current_bounds": [0.9, 1.0],
+        "applied_edges": [],
+        "final_bounds": [0.9, 1.0],
+        "final_state": "known-true"
+      },
+      {
+        "claim_id": "covid-004",
+        "seed_bounds": [0.7, 0.9],
+        "seed_source": "neuro-symbolic circular-argument bounds, inverted",
+        "raw_circular_argument_bounds": [0.1, 0.3],
+        "seed_caveat": "Partial proxy -- reflects only the absence of ONE fallacy category (circular argument) out of 26 tracked. Not a general evidentiary-strength or truth score.",
+        "current_bounds": [0.7, 1.0],
+        "applied_edges": [
+          {"iteration": 1, "from": "covid-005", "relation": "supports", "before": [0.7, 0.9], "after": [0.7, 1.0]}
+        ],
+        "final_bounds": [0.7, 1.0],
+        "final_state": "known-true"
+      },
+      {
+        "claim_id": "covid-005",
+        "seed_bounds": [0.7, 1.0],
+        "seed_source": "neuro-symbolic circular-argument bounds, inverted",
+        "raw_circular_argument_bounds": [0.0, 0.3],
+        "seed_caveat": "Partial proxy -- reflects only the absence of ONE fallacy category (circular argument) out of 26 tracked. Not a general evidentiary-strength or truth score.",
+        "current_bounds": [0.7, 1.0],
+        "applied_edges": [],
+        "final_bounds": [0.7, 1.0],
+        "final_state": "known-true"
+      },
+      {
+        "claim_id": "covid-006",
+        "seed_bounds": [0.8, 1.0],
+        "seed_source": "neuro-symbolic circular-argument bounds, inverted",
+        "raw_circular_argument_bounds": [0.0, 0.2],
+        "seed_caveat": "Partial proxy -- reflects only the absence of ONE fallacy category (circular argument) out of 26 tracked. Not a general evidentiary-strength or truth score.",
+        "current_bounds": [0.8, 1.0],
+        "applied_edges": [],
+        "final_bounds": [0.8, 1.0],
+        "final_state": "known-true"
+      },
+      {
+        "claim_id": "blackhole-001",
+        "seed_bounds": [0.6, 0.9],
+        "seed_source": "neuro-symbolic circular-argument bounds, inverted",
+        "raw_circular_argument_bounds": [0.1, 0.4],
+        "seed_caveat": "Partial proxy -- reflects only the absence of ONE fallacy category (circular argument) out of 26 tracked. Not a general evidentiary-strength or truth score.",
+        "current_bounds": [0.6, 0.9],
+        "applied_edges": [],
+        "final_bounds": [0.6, 0.9],
+        "final_state": "unknown"
+      },
+      {
+        "claim_id": "blackhole-002",
+        "seed_bounds": [0.7, 0.9],
+        "seed_source": "neuro-symbolic circular-argument bounds, inverted",
+        "raw_circular_argument_bounds": [0.1, 0.3],
+        "seed_caveat": "Partial proxy -- reflects only the absence of ONE fallacy category (circular argument) out of 26 tracked. Not a general evidentiary-strength or truth score.",
+        "current_bounds": [0.7, 0.9],
+        "applied_edges": [],
+        "final_bounds": [0.7, 0.9],
+        "final_state": "known-true"
+      },
+      {
+        "claim_id": "blackhole-003",
+        "seed_bounds": [0.7, 0.9],
+        "seed_source": "neuro-symbolic circular-argument bounds, inverted",
+        "raw_circular_argument_bounds": [0.1, 0.3],
+        "seed_caveat": "Partial proxy -- reflects only the absence of ONE fallacy category (circular argument) out of 26 tracked. Not a general evidentiary-strength or truth score.",
+        "current_bounds": [0.7, 0.9],
+        "applied_edges": [],
+        "final_bounds": [0.7, 0.9],
+        "final_state": "known-true"
+      }
+    ],
+    "joint_pairs": [
+      {"pair": ["covid-005", "covid-006"], "relation": "combines_with", "joint_bounds": [0.7, 1.0], "state": "known-true"}
+    ],
+    "no_op_edges": [
+      {"from": "eggs-001", "to": "eggs-003", "relation": "shares_open_question_with"},
+      {"from": "eggs-002", "to": "eggs-003", "relation": "shares_open_question_with"},
+      {"from": "covid-002", "to": "covid-001", "relation": "shares_open_question_with"},
+      {"from": "blackhole-001", "to": "blackhole-002", "relation": "shares_open_question_with"}
+    ],
+    "converged": true,
+    "iterations_run": 2
+  },
+  "single_pass_vs_fixed_point_diffs": [],
+  "order_independence_check": {
+    "order_independent": true,
+    "mismatches": [],
+    "original_converged": true,
+    "original_iterations": 2,
+    "shuffled_converged": true,
+    "shuffled_iterations": 2
+  },
+  "formula_ablation": {
+    "divergences": [
+      {
+        "claim_id": "covid-001",
+        "current_or_formula": {"final_bounds": [0.7, 1.0], "final_state": "known-true"},
+        "alternative_and_formula": {"final_bounds": [0.3, 0.6], "final_state": "unknown"}
+      },
+      {
+        "claim_id": "covid-004",
+        "current_or_formula": {"final_bounds": [0.7, 1.0], "final_state": "known-true"},
+        "alternative_and_formula": {"final_bounds": [0.7, 0.9], "final_state": "known-true"}
+      }
+    ],
+    "n_divergences": 2,
+    "n_claims_total": 12,
+    "covid_001_external_check_note": "External check available for covid-001 only: two independent debate judges (Stansifer, Van Treuren) both reach strong zoonotic-favoring verdicts through independent methods (Bayes factors ~100-1000 and ~1000). Current OR formula: final_state=known-true. Alternative AND formula: final_state=unknown. Neither formula's magnitude derives from the Bayes-factor size itself -- both seed from circular-argument-absence bounds, a different signal. This is a direction check, not a calibration proof; n=1 external check exists in this entire project.",
+    "honest_limit": "This comparison shows what the formula choice changes on the real graph. It does not establish that either formula is better calibrated -- no ground-truth reliability label exists for any of these 12 claims in this project (Jay declined hand-labeling, 2026-08-17). The covid-001 direction check above is the only external reference point available, and it checks direction only, not magnitude."
+  }
+}

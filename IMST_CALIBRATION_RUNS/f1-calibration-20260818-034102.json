@@ -1,0 +1,31 @@
+{
+  "thesis": "A sustained 60s+ P1 lead in the 22-47% race-elapsed window predicts that driver's win.",
+  "n_candidates": 12,
+  "real_wins": 3,
+  "real_win_rate": 0.25,
+  "current_or_formula": {
+    "final_bounds": [0.9, 1.0],
+    "final_state": "known-true",
+    "iterations_run": 2
+  },
+  "alternative_and_formula": {
+    "final_bounds": [0.3, 0.7],
+    "final_state": "unknown",
+    "iterations_run": 1
+  },
+  "honest_limit": "Single-graph direction check (Approach A), not a multi-graph calibration study. Shows the OR-combine formula fails calibration on this graph's real evidence mix (25.0% real win rate propagates to a confident known-true under OR). AND-combine avoids overclaiming here but doesn't produce a magnitude match to the real win rate either -- it stays at the neutral prior. Extending to many theses/graphs (Approach B) remains real, undone work.",
+  "candidates": [
+    {"id": "spain_antonelli", "country": "Spain", "driver": "Kimi ANTONELLI", "fraction": 0.45, "entry_price": 0.27, "won": false, "profit": -0.27},
+    {"id": "spain_hamilton", "country": "Spain", "driver": "Lewis HAMILTON", "fraction": 0.46, "entry_price": 0.46, "won": true, "profit": 0.54},
+    {"id": "austria_antonelli", "country": "Austria", "driver": "Kimi ANTONELLI", "fraction": 0.22, "entry_price": 0.11, "won": false, "profit": -0.11},
+    {"id": "austria_russell", "country": "Austria", "driver": "George RUSSELL", "fraction": 0.27, "entry_price": 0.56, "won": true, "profit": 0.44},
+    {"id": "austria_verstappen", "country": "Austria", "driver": "Max VERSTAPPEN", "fraction": 0.47, "entry_price": 0.62, "won": false, "profit": -0.62},
+    {"id": "uk_antonelli", "country": "United Kingdom", "driver": "Kimi ANTONELLI", "fraction": 0.36, "entry_price": 0.59, "won": false, "profit": -0.59},
+    {"id": "belgium_leclerc1", "country": "Belgium", "driver": "Charles LECLERC", "fraction": 0.34, "entry_price": 0.02, "won": false, "profit": -0.02},
+    {"id": "belgium_norris", "country": "Belgium", "driver": "Lando NORRIS", "fraction": 0.37, "entry_price": 0.02, "won": false, "profit": -0.02},
+    {"id": "belgium_leclerc2", "country": "Belgium", "driver": "Charles LECLERC", "fraction": 0.41, "entry_price": 0.36, "won": false, "profit": -0.36},
+    {"id": "hungary_antonelli", "country": "Hungary", "driver": "Kimi ANTONELLI", "fraction": 0.23, "entry_price": 0.03, "won": false, "profit": -0.03},
+    {"id": "hungary_piastri", "country": "Hungary", "driver": "Oscar PIASTRI", "fraction": 0.29, "entry_price": 0.36, "won": false, "profit": -0.36},
+    {"id": "hungary_norris", "country": "Hungary", "driver": "Lando NORRIS", "fraction": 0.42, "entry_price": 0.51, "won": true, "profit": 0.49}
+  ]
+}

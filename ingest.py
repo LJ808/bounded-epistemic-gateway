@@ -433,17 +433,23 @@ def circular_argument_screen(ingestion_output: dict, reference_passage: str = No
 
 # ---------------------------------------------------------------------------
 # SHAPE-GROUPED BOUNDS ENGINE -- generalizes circular_argument_screen()'s
-# pattern to the other 24 categories in the original 25-category list (all
-# of FALLACY_CATEGORIES above except circular argument, which keeps its own
-# dedicated function above rather than getting folded in here). Per
-# SYNTHESIS/neuro-symbolic-fallacy-shapes-v1.md's classification pass:
-# almost every category decomposes into two AND-linked subconditions, one
-# (appeal_to_ignorance) decomposes into two OR-linked alternatives, and one
-# (non_sequitur) doesn't decompose at all -- one holistic subcondition.
-# double-counting, the 26th category, sits outside this table entirely: it
-# came from evidence-reasoning tradition, not the classical fallacy
-# tradition the other 25 draw from, and doesn't cleanly decompose the same
-# way -- left unbuilt here, named honestly rather than forced in.
+# pattern to the other 25 categories in the full 26-category list (all of
+# FALLACY_CATEGORIES above, plus double-counting, except circular argument,
+# which keeps its own dedicated function above rather than getting folded
+# in here). Per SYNTHESIS/neuro-symbolic-fallacy-shapes-v1.md's
+# classification pass: almost every category decomposes into two
+# AND-linked subconditions, one (appeal_to_ignorance) decomposes into two
+# OR-linked alternatives, and one (non_sequitur) doesn't decompose at all
+# -- one holistic subcondition. double-counting, the 26th category, came
+# from evidence-reasoning tradition, not the classical fallacy tradition
+# the other 25 draw from -- originally left unbuilt for that reason (see
+# neuro-symbolic-fallacy-shapes-v1.md's original text). Added 2026-08-17,
+# scored the same AND way as most of the other 25 (a shared premise across
+# two or more conclusions, plus treating those conclusions as independent)
+# once checked within one argument's own text, the same single-quote
+# contract every other category here already uses -- not forced across two
+# separate claims, which is what made it look like a genuinely different
+# shape at first.
 # ---------------------------------------------------------------------------
 
 FALLACY_SHAPE_DATA = {
@@ -662,6 +668,15 @@ FALLACY_SHAPE_DATA = {
             {"key": "absence_as_disproof", "question": "Does the argument treat an absence of proof as itself proof the claim fails?"},
         ],
     },
+    "double_counting": {
+        "display_name": "Double-counting",
+        "group_tag": "causal_and_statistical",
+        "shape": "and",
+        "subconditions": [
+            {"key": "shared_premise", "question": "Do two or more conclusions in the argument derive from one shared underlying premise or source, rather than from genuinely independent evidence?"},
+            {"key": "treated_as_independent", "question": "Does the argument treat those conclusions as if they independently corroborate each other, without accounting for the shared premise underneath both?"},
+        ],
+    },
 }
 
 
@@ -730,9 +745,11 @@ def build_bounds_prompt(category_key: str, ingestion_output: dict, reference_pas
 
 def fallacy_bounds_screen(category_key: str, ingestion_output: dict, reference_passage: str = None) -> dict:
     """Generalized neuro-symbolic pilot -- Approach C, shape-grouped per
-    SYNTHESIS/neuro-symbolic-fallacy-shapes-v1.md. Covers all 24 categories
-    in FALLACY_SHAPE_DATA (the 25-category list minus circular argument,
-    which keeps its own dedicated circular_argument_screen() above).
+    SYNTHESIS/neuro-symbolic-fallacy-shapes-v1.md. Covers all 25 categories
+    in FALLACY_SHAPE_DATA (the full 26-category list minus circular
+    argument, which keeps its own dedicated circular_argument_screen()
+    above). double_counting joined this table 2026-08-17, closing the
+    prior 25/26 gap this docstring used to name.
     Combines each category's subcondition bounds under its assigned shape
     (AND, OR, or pass-through for the one single-subcondition category).
 
@@ -1392,12 +1409,52 @@ def iterative_argument_refinement(
 def strip_markdown_fences(text: str) -> str:
     """Defensively strip a fenced-code wrapper (triple backtick + optional yaml tag)
     if the model adds one despite the prompt explicitly forbidding it. No-op on
-    already-clean YAML."""
+    already-clean YAML.
+
+    Also strips a bare leading "yaml"/"yml" label line with no closing fence --
+    real failure mode found 2026-08-18: RKLLama's 14B model sometimes opens a
+    response with an unfenced "yaml" line (no triple backticks at all), which
+    the fenced-block regex above never matches, so a bare label line slid
+    straight into the parser and broke on line 2 instead of getting stripped.
+    Only strips when the first line is exactly "yaml"/"yml" and nothing else,
+    to avoid ever touching a real key that happens to start with that word.
+
+    Also strips a bare leading dashes-only separator line (e.g. "-------") --
+    second real failure mode found same day: build_bounds_prompt()'s own
+    schema section is formatted as "Schema:\n-------\n<schema>", and the 14B
+    model sometimes echoes that literal "-------" separator back as the first
+    line of its response, same underlying leak-the-prompt-formatting behavior
+    as the bare "yaml" line above, just a different literal string.
+
+    Also truncates at any FURTHER standalone dash-line appearing anywhere
+    after the leading strip above -- third and fourth real failure modes
+    found 2026-08-18 during the first live 78-call run (all-26-rkllama):
+    motte_and_bailey leaked build_bounds_prompt()'s "-------" separator
+    again, but mid-response after real content, not as the first line, so
+    the leading-anchor check above never caught it; sunk_cost leaked a
+    second bare "---" document marker after a legitimate leading one,
+    which PyYAML reads as "expected a single document in the stream".
+    Real content never legitimately contains a standalone dash-only line,
+    so truncating at the first one found anywhere in what remains is safe
+    regardless of which of the two shapes produced it."""
     text = text.strip()
     match = re.match(r"^```(?:yaml|yml)?\s*\n(.*?)\n```\s*$", text, re.DOTALL)
     if match:
-        return match.group(1)
-    return text
+        text = match.group(1)
+    else:
+        match = re.match(r"^(?:yaml|yml)[ \t]*\n(.*)$", text, re.DOTALL)
+        if match:
+            text = match.group(1)
+        else:
+            match = re.match(r"^-{3,}[ \t]*\n(.*)$", text, re.DOTALL)
+            if match:
+                text = match.group(1)
+
+    sep_match = re.search(r"\n-{3,}[ \t]*(?:\n|$)", text)
+    if sep_match:
+        text = text[:sep_match.start()]
+
+    return text.strip()
 
 
 def count_filler_words(text: str, word_list=FILLER_BAN_WORDS) -> dict:
@@ -1626,8 +1683,8 @@ def main():
         choices=sorted(FALLACY_SHAPE_DATA.keys()),
         help="Run the generalized shape-grouped bounds pilot (Approach C, "
         "SYNTHESIS/neuro-symbolic-fallacy-shapes-v1.md) against one of the "
-        "24 categories in FALLACY_SHAPE_DATA (all of the original 25 except "
-        "circular argument, which uses --circular-pilot instead). Pair with "
+        "25 categories in FALLACY_SHAPE_DATA (all 26 except circular "
+        "argument, which uses --circular-pilot instead). Pair with "
         "--claim to pick which of the three pilot claims to run against in "
         "live mode (default eggs-003); --demo scores against the standard "
         "demo claim regardless of --claim.",
