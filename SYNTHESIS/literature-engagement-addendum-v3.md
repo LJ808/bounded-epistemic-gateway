@@ -15,7 +15,7 @@ A fourth real paper now speaks directly to a mechanism the Gateway depends on ev
 
 Jiang, Chai, Li, and others (2026), "Artificial Hivemind: The Open-Ended Homogeneity of Language Models (and Beyond)," NeurIPS 2025 (arXiv:2510.22954), measures two things: how much a single model repeats itself across independent samples of the same query, and how well LM judges, reward models, and LM-perplexity scores track human ratings on open-ended responses. Full independent screen of the paper's own claims runs in `CLAUDE_INDEPENDENT_RUNS/artificial-hivemind-decomp-report-20260818.md`, in this same directory tree.
 
-Our standing rule here: new evidence that speaks to our project's mechanisms gets stated plainly, not folded in quietly. This document states exactly what the paper's judge-calibration finding means for the Gateway's own scoring calls, where it sharpens output the Gateway already produces, and two concrete build items it motivates — neither built yet.
+Our standing rule here: new evidence that speaks to our project's mechanisms gets stated plainly, not folded in quietly. This document states exactly what the paper's judge-calibration finding means for the Gateway's own scoring calls, where it sharpens output the Gateway already produces, and two concrete build items it motivates. Extension 1 carries real, working code but awaits wiring into a live batch run. Extension 2 ran to full completion against Phi-3-mini, delivering real cross-family comparison data.
 
 ---
 
