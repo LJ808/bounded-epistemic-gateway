@@ -200,6 +200,20 @@ def main():
     output_path = RUNS_DIR / f"{safe_model_name}-circular-batch-{timestamp}.json"
     output_path.write_text(json.dumps(results, ensure_ascii=False, indent=2), encoding="utf-8")
 
+    # PRIORITY REVIEW QUEUE -- Extension 1, SYNTHESIS/literature-engagement-
+    # addendum-v3.md. Same pattern as run_all_26_rkllama.py's queue: groups
+    # every high-review_priority result, printed before the plain summary.
+    high_priority = [
+        r for r in results
+        if r.get("in_scope", True) and r["result"].get("review_priority") == "high"
+    ]
+    print(f"\n=== PRIORITY REVIEW QUEUE: {len(high_priority)} high-priority result(s) ===", file=sys.stderr)
+    if high_priority:
+        for r in high_priority:
+            print(f"  {r['claim_id']:16s} {r['result']['state']}", file=sys.stderr)
+    else:
+        print("  none -- every scored result landed known-true or known-false.", file=sys.stderr)
+
     print(f"\n--- Summary, {len(results)}/{len(claim_files)} claims scored ---", file=sys.stderr)
     for r in results:
         if not r.get("in_scope", True):
@@ -209,7 +223,17 @@ def main():
         bounds = r["result"].get("circular_argument_bounds", "n/a")
         print(f"  {r['claim_id']:16s} {state:14s} {bounds}", file=sys.stderr)
 
+    queue_path = output_path.with_name(output_path.stem + "-priority-queue.json")
+    queue_path.write_text(
+        json.dumps(
+            [{"claim_id": r["claim_id"], "state": r["result"]["state"]} for r in high_priority],
+            ensure_ascii=False, indent=2,
+        ),
+        encoding="utf-8",
+    )
+
     print(f"\nWritten to: {output_path}", file=sys.stderr)
+    print(f"Priority review queue written to: {queue_path}", file=sys.stderr)
 
 
 if __name__ == "__main__":

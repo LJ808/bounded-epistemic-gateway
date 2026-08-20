@@ -43,6 +43,7 @@ from ingest import (
     combine_bounds_and,
     combine_bounds_or,
     bounds_state,
+    review_priority,
     strip_markdown_fences,
 )
 
@@ -121,6 +122,7 @@ def run_circular_argument(claim_id: str, ingestion_output: dict) -> dict:
     )
     result["circular_argument_bounds"] = combined
     result["state"] = bounds_state(combined)
+    result["review_priority"] = review_priority(result["state"])
     return result
 
 
@@ -144,6 +146,7 @@ def run_shape_category(category_key: str, claim_id: str, ingestion_output: dict)
         return None
     result[f"{category_key}_bounds"] = combined
     result["state"] = bounds_state(combined)
+    result["review_priority"] = review_priority(result["state"])
     return result
 
 
@@ -223,12 +226,48 @@ def main():
             save()
 
     failed = [r for r in all_results if r["result"] is None]
+
+    # PRIORITY REVIEW QUEUE -- Extension 1, SYNTHESIS/literature-engagement-
+    # addendum-v3.md. Groups every high-review_priority result by claim,
+    # printed before the plain done/failed summary so a human's attention
+    # lands first where the Artificial Hivemind paper's own data says a
+    # model judge is least trustworthy (unknown/contradictory states) --
+    # not spread evenly across all 26 categories regardless of state.
+    high_priority = [
+        r for r in all_results
+        if r["result"] is not None and r["result"].get("review_priority") == "high"
+    ]
+    print(f"\n=== PRIORITY REVIEW QUEUE: {len(high_priority)} high-priority result(s) ===", file=sys.stderr)
+    if high_priority:
+        by_claim = {}
+        for r in high_priority:
+            by_claim.setdefault(r["claim_id"], []).append(r)
+        for claim_id in sorted(by_claim):
+            print(f"  {claim_id}:", file=sys.stderr)
+            for r in by_claim[claim_id]:
+                print(f"    {r['category']:28s} {r['result']['state']}", file=sys.stderr)
+    else:
+        print("  none -- every scored result landed known-true or known-false.", file=sys.stderr)
+
+    queue_path = output_path.with_name(output_path.stem + "-priority-queue.json")
+    queue_path.write_text(
+        json.dumps(
+            [
+                {"claim_id": r["claim_id"], "category": r["category"], "state": r["result"]["state"]}
+                for r in high_priority
+            ],
+            ensure_ascii=False, indent=2,
+        ),
+        encoding="utf-8",
+    )
+
     print(f"\n--- Done: {len(all_results)} calls, {len(failed)} failed ---", file=sys.stderr)
     if failed:
         for f in failed:
             print(f"  FAILED: {f['claim_id']} / {f['category']}", file=sys.stderr)
         print("  Rerun this script to retry only the failed/missing calls -- already-done calls are skipped.", file=sys.stderr)
     print(f"\nWritten to: {output_path}", file=sys.stderr)
+    print(f"Priority review queue written to: {queue_path}", file=sys.stderr)
 
 
 if __name__ == "__main__":

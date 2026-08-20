@@ -48,6 +48,7 @@ from ingest import (
     combine_bounds_and,
     combine_bounds_or,
     bounds_state,
+    review_priority,
 )
 from build_local_corpus import (
     call_local_model,
@@ -176,6 +177,7 @@ def local_circular_argument_screen(model_name: str, ingestion_output: dict, refe
     )
     result["circular_argument_bounds"] = combined
     result["state"] = bounds_state(combined)
+    result["review_priority"] = review_priority(result["state"])
     return result
 
 
@@ -214,6 +216,7 @@ def local_fallacy_bounds_screen(model_name: str, category_key: str, ingestion_ou
         )
     result[f"{category_key}_bounds"] = combined
     result["state"] = bounds_state(combined)
+    result["review_priority"] = review_priority(result["state"])
     return result
 
 

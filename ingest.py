@@ -342,6 +342,25 @@ def bounds_state(bounds):
     return "unknown"
 
 
+def review_priority(state: str) -> str:
+    """Maps a four-state bounds read to a review-priority label. 'unknown'
+    and 'contradictory' get 'high' -- Artificial Hivemind (arXiv:2510.22954)
+    finds LM judges miscalibrate specifically on contested, non-clear-cut
+    cases, which is the same territory these two states describe. 'known-
+    true' and 'known-false' get 'standard' -- the paper gives no data-backed
+    reason to distrust confidently-resolved reads specifically. Pure
+    post-processing on data bounds_state() already produces -- no new model
+    call, no new prompt. Extension 1, SYNTHESIS/literature-engagement-
+    addendum-v3.md, wired into run_all_26_rkllama.py and
+    run_local_neuro_symbolic_batch.py 2026-08-20."""
+    return {
+        "known-true": "standard",
+        "known-false": "standard",
+        "unknown": "high",
+        "contradictory": "high",
+    }[state]
+
+
 # Fixed Ingestion Layer output for the three claims
 # fallacy-screen-worked-examples-v1.md originally tested, pulled verbatim
 # from each claim file's own Ingestion Layer section -- lets --circular-pilot
