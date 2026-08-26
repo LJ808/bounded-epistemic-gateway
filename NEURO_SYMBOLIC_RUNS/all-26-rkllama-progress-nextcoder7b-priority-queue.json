@@ -1,0 +1,42 @@
+[
+  {
+    "claim_id": "eggs-003",
+    "category": "appeal_to_ignorance",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "false_cause",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "red_herring",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "survivorship_bias",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "tu_quoque",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "ignoring_base_rate",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "false_choice",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "survivorship_bias",
+    "state": "unknown"
+  }
+]

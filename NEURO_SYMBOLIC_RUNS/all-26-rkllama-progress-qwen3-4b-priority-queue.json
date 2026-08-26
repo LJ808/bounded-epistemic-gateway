@@ -1,0 +1,12 @@
+[
+  {
+    "claim_id": "covid-003",
+    "category": "rushed_conclusion",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "motte_and_bailey",
+    "state": "unknown"
+  }
+]

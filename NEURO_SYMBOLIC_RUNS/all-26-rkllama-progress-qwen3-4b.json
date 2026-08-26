@@ -1,0 +1,1859 @@
+[
+  {
+    "claim_id": "eggs-003",
+    "category": "circular_argument",
+    "result": {
+      "premise_restated_bounds": [
+        0.0,
+        0.1
+      ],
+      "premise_restated_location": "not applicable",
+      "no_independent_support_bounds": [
+        0.0,
+        0.1
+      ],
+      "no_independent_support_location": "not applicable",
+      "explanation": "The original quote does not restate its conclusion as a premise, nor does it present any circular structure. The e_prime_rewrite provides statistical details (HRs and CIs) that support the claim about overlapping confidence intervals and lack of significance, offering independent evidence rather than restating the conclusion. There is no indication that the conclusion is embedded within a premise or supported only by itself. Thus, both conditions are absent, warranting low scores with minimal uncertainty.",
+      "circular_argument_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 50.38377404212952
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "appeal_to_authority",
+    "result": {
+      "authority_invoked_bounds": [
+        0.0,
+        0.1
+      ],
+      "authority_invoked_location": "not applicable",
+      "no_evidence_given_bounds": [
+        0.0,
+        0.1
+      ],
+      "no_evidence_given_location": "not applicable",
+      "explanation": "The original quote and its rewrite do not reference any individual, title, or credential. There is no invocation of authority, so both scores are low. No evidence is presented as being offered in place of data; instead, statistical measures (HR, CI) are provided directly. Thus, the condition for appeal to authority does not hold.",
+      "appeal_to_authority_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 43.84628510475159
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "appeal_to_ignorance",
+    "result": {
+      "absence_as_proof_bounds": [
+        0.0,
+        0.1
+      ],
+      "absence_as_proof_location": "not applicable",
+      "absence_as_disproof_bounds": [
+        0.0,
+        0.1
+      ],
+      "absence_as_disproof_location": "not applicable",
+      "explanation": "The original quote mentions the absence of evidence of interaction but does not treat that absence as proof of any claim being false or true. Instead, the rephrased version explicitly states that the interaction test failed to reach significance due to overlapping confidence intervals, which is a statistical assessment rather than an appeal to ignorance. There is no suggestion that lack of evidence proves anything; thus, neither absence_as_proof nor absence_as_disproof applies.",
+      "appeal_to_ignorance_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 50.457968950271606
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "appeal_to_nature",
+    "result": {
+      "called_natural_bounds": [
+        0.0,
+        0.1
+      ],
+      "called_natural_location": "not applicable",
+      "equated_with_good_bounds": [
+        0.0,
+        0.1
+      ],
+      "equated_with_good_location": "not applicable",
+      "explanation": "The original quote and its rewrite do not mention anything about nature or natural processes. There is no reference to something being \"natural\" or equating a natural state with safety or goodness. Therefore, both conditions for the appeal to nature fallacy are absent.",
+      "appeal_to_nature_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 39.173381090164185
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "bandwagon",
+    "result": {
+      "popularity_cited_bounds": [
+        0.0,
+        0.1
+      ],
+      "popularity_cited_location": "not applicable",
+      "popularity_as_proof_bounds": [
+        0.0,
+        0.1
+      ],
+      "popularity_as_proof_location": "not applicable",
+      "explanation": "The original quote and its rewrite do not mention or reference any popular belief, trend, or widespread acceptance of a claim. There is no indication that popularity is cited or used as support for the truth of any assertion. Therefore, both conditions for the Bandwagon fallacy are absent.",
+      "bandwagon_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 41.421321868896484
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "double_counting",
+    "result": {
+      "shared_premise_bounds": [
+        0.0,
+        0.1
+      ],
+      "shared_premise_location": "not applicable",
+      "treated_as_independent_bounds": [
+        0.0,
+        0.1
+      ],
+      "treated_as_independent_location": "not applicable",
+      "explanation": "The quote and rewrite do not present multiple conclusions derived from a shared premise. There is no indication of two separate conclusions being drawn from the same underlying source or that they are treated as independently corroborating each other. Thus, both conditions for double-counting are absent.",
+      "double_counting_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 41.779067039489746
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "false_cause",
+    "result": {
+      "correlation_established_bounds": [
+        0.0,
+        0.1
+      ],
+      "correlation_established_location": "not applicable\n",
+      "causation_asserted_bounds": [
+        0.0,
+        0.1
+      ],
+      "causation_asserted_location": "not applicable\n",
+      "explanation": "The original quote and its rewrite do not describe any observed correlation between two variables co-occurring or varying together. Instead, they report overlapping hazard ratios with non-significant interaction, indicating lack of evidence for a relationship. Therefore, no correlation is established (score near 0.0). There is also no assertion that one variable causes another; the statement only reports statistical non-significance. Thus, causation is not asserted (score near 0.0). Both scores are low due to absence of any claim about co-occurrence or causal influence.",
+      "false_cause_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 59.780048847198486
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "false_choice",
+    "result": {
+      "only_two_presented_bounds": [
+        0.0,
+        0.1
+      ],
+      "only_two_presented_location": "not applicable\n",
+      "more_options_exist_bounds": [
+        0.0,
+        0.1
+      ],
+      "more_options_exist_location": "not applicable\n",
+      "explanation": "The original quote and its rewrite do not present any binary choice or frame options as exhaustive. There is no suggestion of two mutually exclusive alternatives being presented as the only possibilities. Therefore, neither subcondition applies. The content discusses statistical overlap in hazard ratios between diabetic and non-diabetic groups, which is a factual description, not a false dichotomy. No additional options are implied or omitted; thus, both scores are low due to absence of relevant framing.",
+      "false_choice_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 50.99424505233765
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "false_equivalence",
+    "result": {
+      "shared_trait_identified_bounds": [
+        0.0,
+        0.1
+      ],
+      "shared_trait_identified_location": "not applicable",
+      "differences_ignored_bounds": [
+        0.0,
+        0.1
+      ],
+      "differences_ignored_location": "not applicable",
+      "explanation": "The output does not identify any shared trait between diabetic and non-diabetic subgroups. It only reports overlapping hazard ratios and a failed interaction test, without asserting a commonality. There is no suggestion of equivalence based on a shared trait. Differences in HR values are acknowledged through the confidence intervals, so relevant differences are not ignored. The claim of \"equivalence\" or \"shared trait\" is absent, thus both subconditions for false equivalence do not hold.",
+      "false_equivalence_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 50.974552154541016
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "gamblers_fallacy",
+    "result": {
+      "past_outcomes_cited_bounds": [
+        0.0,
+        0.1
+      ],
+      "past_outcomes_cited_location": "not applicable",
+      "future_probability_claim_bounds": [
+        0.0,
+        0.1
+      ],
+      "future_probability_claim_location": "not applicable",
+      "explanation": "The original quote and its rewrite do not describe any sequence of past independent outcomes or make claims about how prior results affect future probabilities. There is no reference to repeated trials, random events, or changing odds based on history. Thus, both subconditions for the gambler's fallacy are absent.",
+      "gamblers_fallacy_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 42.211313247680664
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "ignoring_base_rate",
+    "result": {
+      "vivid_example_relied_on_bounds": [
+        0.0,
+        0.1
+      ],
+      "vivid_example_relied_on_location": "not applicable",
+      "base_rate_ignored_bounds": [
+        0.0,
+        0.1
+      ],
+      "base_rate_ignored_location": "not applicable",
+      "explanation": "The original quote does not reference any vivid or exceptional example, and the rephrased version presents statistical data without relying on a striking or memorable instance. There is no indication of ignoring a known base rate; instead, it explicitly reports overlapping hazard ratios and their confidence intervals, which reflects standard statistical practice. Thus, neither subcondition is met with confidence.",
+      "ignoring_base_rate_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 47.32406210899353
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "motte_and_bailey",
+    "result": {
+      "bold_claim_advanced_bounds": [
+        0.1,
+        0.3
+      ],
+      "bold_claim_advanced_location": "There was no evidence of interaction by diabetic status\n",
+      "retreats_under_challenge_bounds": [
+        0.0,
+        0.1
+      ],
+      "retreats_under_challenge_location": "not applicable\n",
+      "explanation": "The original quote does not advance a bold or strong claim; it is a neutral statement about lack of evidence. The rephrased version provides statistical details but does not present a bold claim that would be challenged and then retreated from. There is no indication of a shift to a weaker claim under scrutiny, so retreat behavior is absent. Thus, both scores reflect low confidence in the presence of a motte-and-bailey structure.",
+      "motte_and_bailey_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 52.81822228431702
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "no_true_scotsman",
+    "result": {
+      "counterexample_presented_bounds": [
+        0.0,
+        0.1
+      ],
+      "counterexample_presented_location": "not applicable\n",
+      "definition_narrowed_bounds": [
+        0.0,
+        0.1
+      ],
+      "definition_narrowed_location": "not applicable\n",
+      "explanation": "No counterexample to a general claim is presented in the text. The statement discusses statistical overlap and lack of significance in interaction terms but does not assert a broad generalization that could be challenged by a counterexample. There is no redefinition or narrowing of a term to exclude an exception, so neither subcondition of the \"No true Scotsman\" fallacy is met. The content is purely descriptive and statistical, lacking the structure required for such a fallacy.",
+      "no_true_scotsman_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 52.63554883003235
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "non_sequitur",
+    "result": {
+      "gap_exists_bounds": [
+        0.0,
+        0.1
+      ],
+      "gap_exists_location": "There was no evidence of interaction by diabetic status",
+      "explanation": "The conclusion does not fail to follow from the reasons; rather, the stated reason—overlap in HR confidence intervals and failure of the interaction test to reach significance—is directly relevant to the claim about lack of evidence for interaction. Each part of the reasoning supports the conclusion logically. There is no gap in logical connection.",
+      "non_sequitur_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 33.281819105148315
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "origin_attack",
+    "result": {
+      "origin_cited_bounds": [
+        0.0,
+        0.1
+      ],
+      "origin_cited_location": "not applicable",
+      "merits_unevaluated_bounds": [
+        0.0,
+        0.1
+      ],
+      "merits_unevaluated_location": "not applicable",
+      "explanation": "The rewritten statement does not dismiss or attack the original claim by referencing its origin; instead, it provides a statistical interpretation of the data. Neither the origin nor the merits of the original claim are addressed or evaluated in any way. There is no indication that the claim is being rejected based on source or provenance, and the new version directly engages with the data through statistical reporting. Thus, both subconditions are confidently scored low.",
+      "origin_attack_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 49.9369900226593
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "part_to_whole_mixup",
+    "result": {
+      "property_transferred_bounds": [
+        0.0,
+        0.1
+      ],
+      "property_transferred_location": "not applicable",
+      "transfer_unjustified_bounds": [
+        0.0,
+        0.1
+      ],
+      "transfer_unjustified_location": "not applicable",
+      "explanation": "The original quote does not involve a property transfer between parts and whole; it simply states there was no evidence of interaction by diabetic status. Neither the original nor the rephrased version suggests any assumption about properties of subgroups extending to the whole population or vice versa. There is no indication that a transfer of statistical properties (like hazard ratios) is being assumed without justification, so both scores are low due to lack of relevant structure in the argument. The content is descriptive rather than inferential, thus avoiding the conditions for part-to-whole mixup.",
+      "part_to_whole_mixup_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 56.041478872299194
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "personal_attack",
+    "result": {
+      "character_attacked_bounds": [
+        0.0,
+        0.1
+      ],
+      "character_attacked_location": "not applicable",
+      "argument_unaddressed_bounds": [
+        0.0,
+        0.1
+      ],
+      "argument_unaddressed_location": "not applicable",
+      "explanation": "The original quote does not mention any person or source, and the rephrased version provides a statistical explanation without attacking anyone's character or ignoring the actual argument. There is no indication of personal criticism or dismissal of the source's position, so both conditions for the fallacy are absent.",
+      "personal_attack_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 41.127032995224
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "red_herring",
+    "result": {
+      "irrelevant_topic_introduced_bounds": [
+        0.0,
+        0.1
+      ],
+      "irrelevant_topic_introduced_location": "not applicable",
+      "substitutes_for_real_question_bounds": [
+        0.0,
+        0.1
+      ],
+      "substitutes_for_real_question_location": "not applicable",
+      "explanation": "The original quote concerns the absence of evidence for interaction by diabetic status. The rewrite provides a statistical detail (HRs and confidence intervals) that directly addresses whether such an interaction exists, without introducing any irrelevant topic. There is no diversion or substitution of a different issue; instead, it clarifies and expands on the original point with relevant data. Thus, neither condition for red herring applies.",
+      "red_herring_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 49.18884778022766
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "rushed_conclusion",
+    "result": {
+      "narrow_evidence_bounds": [
+        0.1,
+        0.3
+      ],
+      "narrow_evidence_location": "There was no evidence of interaction by diabetic status",
+      "general_claim_bounds": [
+        0.0,
+        0.1
+      ],
+      "general_claim_location": "not applicable",
+      "explanation": "The phrase \"no evidence\" suggests a lack of strong or broad support, implying limited or atypical data, which justifies a moderate score for narrow_evidence. However, the absence of specific details about the sample size or context limits confidence in calling it highly narrow. For general_claim, there is no claim extending beyond the observed subgroup analysis; the statement remains descriptive and does not assert broader applicability, so the bounds are low.",
+      "rushed_conclusion_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 50.507925033569336
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "slippery_slope",
+    "result": {
+      "chain_claimed_bounds": [
+        0.0,
+        0.1
+      ],
+      "chain_claimed_location": "not applicable",
+      "links_unjustified_bounds": [
+        0.0,
+        0.1
+      ],
+      "links_unjustified_location": "not applicable",
+      "explanation": "The original and rewritten text discuss statistical results regarding hazard ratios and confidence intervals without suggesting any chain of consequences or implying that a small step leads to a larger outcome. There is no indication of a slippery slope structure. Both conditions for the fallacy are absent, so scores remain low and conservative.",
+      "slippery_slope_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 41.36744213104248
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "straw_man",
+    "result": {
+      "position_restated_bounds": [
+        0.0,
+        0.1
+      ],
+      "position_restated_location": "not applicable",
+      "restatement_weaker_bounds": [
+        0.0,
+        0.1
+      ],
+      "restatement_weaker_location": "not applicable",
+      "explanation": "The original quote makes a claim about the absence of evidence for interaction by diabetic status. The rewritten version provides statistical details about overlapping hazard ratios and a failed significance test, which does not restate the opposing position but instead offers a technical explanation. There is no clear restatement of an opposing view, nor is there a weaker or more extreme version of the original claim. Thus, both scores are low due to lack of relevant restatement.",
+      "straw_man_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 49.15177607536316
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "sunk_cost",
+    "result": {
+      "investment_cited_bounds": [
+        0.0,
+        0.1
+      ],
+      "investment_cited_location": "not applicable",
+      "used_to_justify_forward_bounds": [
+        0.0,
+        0.1
+      ],
+      "used_to_justify_forward_location": "not applicable",
+      "explanation": "The original and rewritten text do not mention any past investment in time, money, or effort. There is no reference to sunk costs or justification based on prior expenditures. Therefore, both conditions for the sunk cost fallacy are absent. The scores reflect genuine absence of relevant evidence.",
+      "sunk_cost_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 41.266746044158936
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "survivorship_bias",
+    "result": {
+      "only_survivors_examined_bounds": [
+        0.0,
+        0.1
+      ],
+      "only_survivors_examined_location": "not applicable\n",
+      "failures_ignored_bounds": [
+        0.0,
+        0.1
+      ],
+      "failures_ignored_location": "not applicable\n",
+      "explanation": "The original quote and its rewrite discuss hazard ratios (HR) for diabetic and non-diabetic subgroups without implying any selection of only surviving or successful cases. There is no indication that only certain outcomes were examined or that failures were omitted. Both conditions are not supported by the text, so scores remain low and uncertain, reflecting genuine lack of evidence for either subcondition.",
+      "survivorship_bias_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 48.0801362991333
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "texas_sharpshooter",
+    "result": {
+      "pattern_found_after_fact_bounds": [
+        0.0,
+        0.1
+      ],
+      "pattern_found_after_fact_location": "not applicable",
+      "framed_as_predicted_bounds": [
+        0.0,
+        0.1
+      ],
+      "framed_as_predicted_location": "not applicable",
+      "explanation": "The original quote and rewrite do not describe any pattern being identified after data existed or framed as a prior prediction. There is no indication of post-hoc pattern detection or retrospective framing. Both conditions lack the necessary elements to score above 0.1, so bounds are set at the low end reflecting absence of evidence for either subcondition.",
+      "texas_sharpshooter_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 44.18372464179993
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "tu_quoque",
+    "result": {
+      "inconsistency_pointed_out_bounds": [
+        0.0,
+        0.1
+      ],
+      "inconsistency_pointed_out_location": "not applicable",
+      "point_unaddressed_bounds": [
+        0.0,
+        0.1
+      ],
+      "point_unaddressed_location": "not applicable",
+      "explanation": "The original quote does not contain any claim that could be interpreted as inconsistent or hypocritical behavior by the opponent. There is no indication of a contradiction in stance or action being highlighted. Similarly, the rephrased statement focuses on statistical results and does not address or leave unaddressed an actual point made by the opponent. Both conditions for Tu quoque fallacy are absent, so scores remain low with minimal evidence supporting either subcondition.",
+      "tu_quoque_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 51.308364152908325
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "word_shift",
+    "result": {
+      "term_repeats_bounds": [
+        0.0,
+        0.1
+      ],
+      "term_repeats_location": "not applicable",
+      "meaning_shifts_bounds": [
+        0.0,
+        0.1
+      ],
+      "meaning_shifts_location": "not applicable",
+      "explanation": "The phrase \"diabetic\" does not repeat in the rewritten text; it appears only once as part of \"diabetic-subgroup\". There is no indication that its meaning changes across occurrences, since it appears only once and is used consistently in a medical context. Thus, both term repetition and meaning shift are absent or negligible.",
+      "word_shift_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 42.58408498764038
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "circular_argument",
+    "result": {
+      "premise_restated_bounds": [
+        0.0,
+        0.1
+      ],
+      "premise_restated_location": "not applicable",
+      "no_independent_support_bounds": [
+        0.0,
+        0.1
+      ],
+      "no_independent_support_location": "not applicable",
+      "explanation": "The original quote does not restate its conclusion as a premise in any form, nor is there evidence that the argument's conclusion appears within its premises. The e_prime_rewrite introduces new claims about prior studies and computational modeling but does not restatement of the conclusion (that the furin site is bizarre or unused) as a premise. There is no circularity; instead, it offers independent scientific reasoning based on published data and modeling. Thus, both subconditions lack sufficient support for scoring above 0.1.",
+      "circular_argument_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 53.9012508392334
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "appeal_to_authority",
+    "result": {
+      "authority_invoked_bounds": [
+        0.0,
+        0.1
+      ],
+      "authority_invoked_location": "not applicable",
+      "no_evidence_given_bounds": [
+        0.0,
+        0.1
+      ],
+      "no_evidence_given_location": "not applicable",
+      "explanation": "The argument does not invoke any authority by name or title, nor is there a reference to someone's credentials or status. Instead, it relies on scientific evidence such as published studies and computational modeling. There is no indication that the claim is being supported solely by an authority figure’s opinion without accompanying evidence. Thus, both conditions for the appeal to authority fallacy are absent.",
+      "appeal_to_authority_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 46.33566689491272
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "appeal_to_ignorance",
+    "result": {
+      "absence_as_proof_bounds": [
+        0.0,
+        0.1
+      ],
+      "absence_as_proof_location": "not applicable\n",
+      "absence_as_disproof_bounds": [
+        0.0,
+        0.1
+      ],
+      "absence_as_disproof_location": "not applicable\n",
+      "explanation": "The argument does not claim that the absence of disproof (e.g., no prior use of PRRAR) proves the furin cleavage site exists or functions as described. Nor does it treat lack of evidence against a claim as proof that the claim is false. Instead, it presents observed data and modeling results as support for the claim. There is no appeal to ignorance in either direction.",
+      "appeal_to_ignorance_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 50.055809020996094
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "appeal_to_nature",
+    "result": {
+      "called_natural_bounds": [
+        0.0,
+        0.1
+      ],
+      "called_natural_location": "not applicable",
+      "equated_with_good_bounds": [
+        0.0,
+        0.1
+      ],
+      "equated_with_good_location": "not applicable",
+      "explanation": "The original quote does not describe any element as natural in a way that would trigger an appeal to nature fallacy. There is no claim equating the furin cleavage site's structure with safety or goodness. The e_prime_rewrite reframes the issue scientifically without invoking naturalness or implying inherent benefit from being \"natural.\" Thus, neither condition for the appeal to nature fallacy is met.",
+      "appeal_to_nature_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 47.29588508605957
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "bandwagon",
+    "result": {
+      "popularity_cited_bounds": [
+        0.0,
+        0.1
+      ],
+      "popularity_cited_location": "not applicable",
+      "popularity_as_proof_bounds": [
+        0.0,
+        0.1
+      ],
+      "popularity_as_proof_location": "not applicable",
+      "explanation": "The original quote does not mention or cite any popularity of the claim, nor is there any reference to widespread acceptance. The rewritten version discusses scientific modeling and prior research but does not reference popularity as a basis for truth. Therefore, neither condition for the Bandwagon fallacy is met. Both scores are low due to absence of any indication that popularity is cited or used as evidence.",
+      "bandwagon_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 47.12942171096802
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "double_counting",
+    "result": {
+      "shared_premise_bounds": [
+        0.0,
+        0.1
+      ],
+      "shared_premise_location": "not applicable",
+      "treated_as_independent_bounds": [
+        0.0,
+        0.1
+      ],
+      "treated_as_independent_location": "not applicable",
+      "explanation": "The original quote and its rewrite focus on the biological properties of the furin cleavage site without indicating any shared underlying premise that supports multiple conclusions. There is no evidence of two conclusions deriving from a common source or being treated as independently corroborating each other. Thus, both conditions for double-counting are not met.",
+      "double_counting_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 44.9120991230011
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "false_cause",
+    "result": {
+      "correlation_established_bounds": [
+        0.0,
+        0.1
+      ],
+      "correlation_established_location": "not applicable\n",
+      "causation_asserted_bounds": [
+        0.0,
+        0.1
+      ],
+      "causation_asserted_location": "not applicable\n",
+      "explanation": "There is no stated correlation between two phenomena in the original quote or its rewrite. The claim focuses on the biological properties of a furin cleavage site and expectations about its function, without asserting that one event co-occurs with another. Therefore, correlation is not established. Similarly, no assertion is made that one thing causes another; instead, the discussion centers on expected functionality and prior absence of use. No causal link is asserted, so causation is not claimed. Both scores are low due to lack of evidence for either correlation or causation.",
+      "false_cause_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 59.43712902069092
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "false_choice",
+    "result": {
+      "only_two_presented_bounds": [
+        0.0,
+        0.1
+      ],
+      "only_two_presented_location": "not applicable\n",
+      "more_options_exist_bounds": [
+        0.0,
+        0.1
+      ],
+      "more_options_exist_location": "not applicable\n",
+      "explanation": "The original quote and rewrite discuss the furin cleavage site of SARS-CoV-2 in scientific terms but do not present or imply any binary choice between options. There is no framing that suggests only two possibilities exist as exhaustive. Similarly, no additional options are acknowledged or excluded. The content is descriptive and factual without constructing a false dichotomy. Thus, both subconditions lack sufficient evidence to score above 0.1.",
+      "false_choice_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 50.362390995025635
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "false_equivalence",
+    "result": {
+      "shared_trait_identified_bounds": [
+        0.3,
+        0.6
+      ],
+      "shared_trait_identified_location": "a bizarre furin cleavage site which no human has ever used before",
+      "differences_ignored_bounds": [
+        0.0,
+        0.1
+      ],
+      "differences_ignored_location": "not applicable",
+      "explanation": "The argument identifies a shared trait—the furin cleavage site—between COVID and prior human viruses, but does so in a way that is not clearly framed as a comparison between two things being equated. The trait is acknowledged, though the context suggests it's a feature of the virus rather than a shared characteristic with another entity. There is no indication that the argument treats two distinct things as equivalent while ignoring relevant differences; thus, differences_ignored remains low. The score for shared_trait_identified reflects moderate confidence due to ambiguity in whether this trait is being used to imply equivalence between entities.",
+      "false_equivalence_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 62.36389493942261
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "gamblers_fallacy",
+    "result": {
+      "past_outcomes_cited_bounds": [
+        0.0,
+        0.1
+      ],
+      "past_outcomes_cited_location": "not applicable",
+      "future_probability_claim_bounds": [
+        0.0,
+        0.1
+      ],
+      "future_probability_claim_location": "not applicable",
+      "explanation": "The output does not reference a string of past independent outcomes, nor does it make any claim that prior events affect the probability of future independent outcomes. There is no sequence of results or probabilistic assertion based on previous trials. Thus, both subconditions for the gambler's fallacy are absent.",
+      "gamblers_fallacy_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 42.798115253448486
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "ignoring_base_rate",
+    "result": {
+      "vivid_example_relied_on_bounds": [
+        0.0,
+        0.1
+      ],
+      "vivid_example_relied_on_location": "not applicable",
+      "base_rate_ignored_bounds": [
+        0.9,
+        1.0
+      ],
+      "base_rate_ignored_location": "No published gain-of-function study used the PRRAR sequence before COVID's emergence; computational modeling after COVID's emergence found PRRAR functions adequately as a furin cleavage site, a finding unavailable to any engineer working before 2019.",
+      "explanation": "The original quote relies on a vivid but ungrounded description of the furin cleavage site as \"bizarre\" and unused in humans, which is not directly supported by evidence. However, the rephrased version does not present a vivid example; instead, it emphasizes absence of prior use and computational findings. The key fallacy lies in ignoring the base rate: the known biological reality that furin cleavage sites are common in viruses (e.g., SARS, MERS), making the claim that this one is \"unprecedented\" or \"bizarre\" statistically implausible without evidence. Thus, the base rate of functional furin sites in coronaviruses is ignored, justifying a high score for base_rate_ignored.",
+      "ignoring_base_rate_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 83.26061916351318
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "motte_and_bailey",
+    "result": {
+      "bold_claim_advanced_bounds": [
+        0.3,
+        0.6
+      ],
+      "bold_claim_advanced_location": "a bizarre furin cleavage site which virologists expected to work poorly",
+      "retreats_under_challenge_bounds": [
+        0.0,
+        0.1
+      ],
+      "retreats_under_challenge_location": "not applicable",
+      "explanation": "The original quote contains a bold claim about the furin cleavage site being \"bizarre\" and \"expected to work poorly,\" suggesting an unusual or problematic feature, but it does not explicitly assert a strong, definitive claim that would constitute a clear motte. The rephrased version downplays this by framing the finding as post-hoc computational modeling, which avoids asserting anything about prior expectations or biological impossibility. There is no indication of retreat to a weaker claim when challenged; instead, it reframes rather than retreats. Thus, the motte-and-bailey fallacy does not clearly manifest.",
+      "motte_and_bailey_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 64.42363214492798
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "no_true_scotsman",
+    "result": {
+      "counterexample_presented_bounds": [
+        0.0,
+        0.1
+      ],
+      "counterexample_presented_location": "not applicable\n",
+      "definition_narrowed_bounds": [
+        0.0,
+        0.1
+      ],
+      "definition_narrowed_location": "not applicable\n",
+      "explanation": "No counterexample to a general claim is presented in the text. The original quote makes a claim about the furin cleavage site being unusual and expected to work poorly, but no instance of a contrary example (e.g., a known case where such a site functions well) is offered or refuted. Therefore, there is no counterexample that appears. Similarly, the rephrased version does not narrow its definition in response to any counterexample—instead, it provides background on prior research and modeling without adjusting the claim's scope or excluding an example ad hoc. Thus, neither condition of the \"No true Scotsman\" fallacy is met.",
+      "no_true_scotsman_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 64.20595216751099
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "non_sequitur",
+    "result": {
+      "gap_exists_bounds": [
+        0.0,
+        0.1
+      ],
+      "gap_exists_location": "a bizarre furin cleavage site which virologists expected to work poorly",
+      "explanation": "The conclusion that the furin cleavage site is \"bizarre\" and \"expected to work poorly\" follows from the premise about its absence in prior human use and computational modeling results. Each reason provided is logically connected to the claim, and there is no gap in reasoning. The statement does not introduce an unrelated or disconnected idea. Thus, the non sequitur condition is absent.",
+      "non_sequitur_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 39.21598482131958
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "origin_attack",
+    "result": {
+      "origin_cited_bounds": [
+        0.8,
+        0.9
+      ],
+      "origin_cited_location": "No published gain-of-function study used the PRRAR sequence before COVID's emergence",
+      "merits_unevaluated_bounds": [
+        0.0,
+        0.1
+      ],
+      "merits_unevaluated_location": "computational modeling after COVID's emergence found PRRAR functions adequately as a furin cleavage site",
+      "explanation": "The argument directly references the absence of prior published studies and cites computational modeling post-emergence, clearly addressing the origin of the claim. This constitutes a strong dismissal based on proven evidence, hence high confidence in origin_cited. The actual scientific merits of PRRAR functioning as a furin cleavage site are evaluated through computational modeling, so the claim's merits are not left unevaluated. Thus, merits_unevaluated is low.",
+      "origin_attack_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 60.41989803314209
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "part_to_whole_mixup",
+    "result": {
+      "property_transferred_bounds": [
+        0.0,
+        0.1
+      ],
+      "property_transferred_location": "not applicable",
+      "transfer_unjustified_bounds": [
+        0.0,
+        0.1
+      ],
+      "transfer_unjustified_location": "not applicable",
+      "explanation": "The original quote discusses the biological properties of a furin cleavage site without asserting that such a property must or should transfer from parts to the whole. There is no explicit assumption about transferring a property from components to the whole organism. Similarly, the rewrite does not make an unjustified leap in reasoning—instead, it grounds its claim in prior research and computational modeling, providing context and justification. Thus, neither subcondition strongly applies, warranting low scores with minimal confidence.",
+      "part_to_whole_mixup_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 51.921236991882324
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "personal_attack",
+    "result": {
+      "character_attacked_bounds": [
+        0.0,
+        0.1
+      ],
+      "character_attacked_location": "not applicable",
+      "argument_unaddressed_bounds": [
+        0.0,
+        0.1
+      ],
+      "argument_unaddressed_location": "not applicable",
+      "explanation": "The original quote does not attack the character or person of any source; it describes a scientific observation about the furin cleavage site. The rewritten version responds to the claim by providing evidence from published studies and computational modeling, directly addressing the scientific basis of the original statement without personalizing or discrediting the source. There is no indication that either condition for the fallacy holds.",
+      "personal_attack_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 46.46446084976196
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "red_herring",
+    "result": {
+      "irrelevant_topic_introduced_bounds": [
+        0.0,
+        0.1
+      ],
+      "irrelevant_topic_introduced_location": "not applicable",
+      "substitutes_for_real_question_bounds": [
+        0.0,
+        0.1
+      ],
+      "substitutes_for_real_question_location": "not applicable",
+      "explanation": "The original quote discusses the furin cleavage site of SARS-CoV-2 and its biological properties, which is directly relevant to virology and the question of viral function. The rewrite focuses on computational modeling and prior scientific work related to PRRAR sequence functionality, staying within the domain of virological inquiry. No irrelevant topic is introduced, nor does any element substitute for addressing the real question about the furin cleavage site's feasibility or origin. Both scores are low due to absence of deviation from the central issue.",
+      "red_herring_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 57.75733995437622
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "rushed_conclusion",
+    "result": {
+      "narrow_evidence_bounds": [
+        0.3,
+        0.6
+      ],
+      "narrow_evidence_location": "No published gain-of-function study used the PRRAR sequence before COVID's emergence",
+      "general_claim_bounds": [
+        0.7,
+        0.9
+      ],
+      "general_claim_location": "PRRAR functions adequately as a furin cleavage site, a finding unavailable to any engineer working before 2019",
+      "explanation": "The evidence cited is specific to a single sequence (PRRAR) and lacks broad empirical support, suggesting narrow evidence. However, the claim that this finding was unavailable prior to 2019 implies general applicability in virological engineering contexts, supporting a strong general claim. The confidence in both aspects is moderate to high due to the specificity of the case and the implication of broader scientific relevance.",
+      "rushed_conclusion_bounds": [
+        0.3,
+        0.6
+      ],
+      "state": "unknown",
+      "review_priority": "high"
+    },
+    "elapsed_s": 57.45471787452698
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "slippery_slope",
+    "result": {
+      "chain_claimed_bounds": [
+        0.0,
+        0.1
+      ],
+      "chain_claimed_location": "not applicable\n",
+      "links_unjustified_bounds": [
+        0.0,
+        0.1
+      ],
+      "links_unjustified_location": "not applicable\n",
+      "explanation": "The original quote does not present a chain of consequences from one small step to a long sequence of outcomes, so the slippery slope structure is absent. There is no indication that a single action or feature leads to a series of escalating implications. Similarly, the rewritten version focuses on factual claims about prior studies and computational modeling without asserting any unproven cascade of effects. Therefore, neither subcondition for slippery slope is met.",
+      "slippery_slope_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 49.67018222808838
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "straw_man",
+    "result": {
+      "position_restated_bounds": [
+        0.0,
+        0.1
+      ],
+      "position_restated_location": "not applicable",
+      "restatement_weaker_bounds": [
+        0.0,
+        0.1
+      ],
+      "restatement_weaker_location": "not applicable",
+      "explanation": "The original quote discusses the unusual nature of the furin cleavage site in COVID-19 and implies it is biologically unexpected. The e_prime_rewrite does not restate the opposing position but instead introduces new claims about computational modeling and prior research, shifting focus away from the original claim. There is no clear restatement of an opposing view, so both scores are low. The rewrite neither weakens nor strengthens the original argument in a way that constitutes a straw man; it presents a different factual basis without misrepresenting the opposition.",
+      "straw_man_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 55.07176876068115
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "sunk_cost",
+    "result": {
+      "investment_cited_bounds": [
+        0.0,
+        0.1
+      ],
+      "investment_cited_location": "not applicable",
+      "used_to_justify_forward_bounds": [
+        0.0,
+        0.1
+      ],
+      "used_to_justify_forward_location": "not applicable",
+      "explanation": "Neither the original quote nor the rewritten version mentions any past investment in time, money, or effort. There is no indication that a prior commitment is being used to justify current decisions. The argument focuses on scientific expectations and computational findings post-emergence, which are forward-looking and not grounded in sunk costs. Thus, both subconditions are absent.",
+      "sunk_cost_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 45.84267807006836
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "survivorship_bias",
+    "result": {
+      "only_survivors_examined_bounds": [
+        0.0,
+        0.1
+      ],
+      "only_survivors_examined_location": "not applicable\n",
+      "failures_ignored_bounds": [
+        0.0,
+        0.1
+      ],
+      "failures_ignored_location": "not applicable\n",
+      "explanation": "The original quote and rewrite discuss the furin cleavage site of SARS-CoV-2 without referencing or examining failed cases or non-functional sequences. There is no indication that only successful or surviving cases are being considered. Similarly, there is no mention of omitted failures or non-working variants. Thus, both subconditions lack clear evidence to score above 0.1; the absence of any discussion about negative or non-functional outcomes means uncertainty remains low but not high. The content focuses on a single observed feature (PRRAR function) rather than a comparative analysis including failures.",
+      "survivorship_bias_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 59.98639512062073
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "texas_sharpshooter",
+    "result": {
+      "pattern_found_after_fact_bounds": [
+        0.9,
+        1.0
+      ],
+      "pattern_found_after_fact_location": "No published gain-of-function study used the PRRAR sequence before COVID's emergence; computational modeling after COVID's emergence found PRRAR functions adequately as a furin cleavage site",
+      "framed_as_predicted_bounds": [
+        0.0,
+        0.1
+      ],
+      "framed_as_predicted_location": "not applicable",
+      "explanation": "The pattern (PRRAR functioning as a furin cleavage site) was identified only after the data existed, specifically through computational modeling post-COVID emergence, indicating strong evidence that the pattern was found retroactively. There is no framing suggesting this was predicted in advance; instead, it's presented as a retrospective discovery based on existing data. Thus, the \"framed_as_predicted\" score is low because no language implies prior expectation or prediction.",
+      "texas_sharpshooter_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 60.36304807662964
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "tu_quoque",
+    "result": {
+      "inconsistency_pointed_out_bounds": [
+        0.0,
+        0.1
+      ],
+      "inconsistency_pointed_out_location": "not applicable",
+      "point_unaddressed_bounds": [
+        0.0,
+        0.1
+      ],
+      "point_unaddressed_location": "not applicable",
+      "explanation": "The original quote does not point to any hypocrisy or inconsistency in the opponent's position; it merely presents a scientific observation about the furin cleavage site. The rephrased version offers a technical explanation based on post-emergence modeling but does not directly challenge or expose an inconsistency in the opponent’s claims. Neither subcondition is clearly met, so both scores are low and conservative, reflecting no evidence of hypocrisy or unaddressed points.",
+      "tu_quoque_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 52.218140840530396
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "word_shift",
+    "result": {
+      "term_repeats_bounds": [
+        0.0,
+        0.1
+      ],
+      "term_repeats_location": "not applicable",
+      "meaning_shifts_bounds": [
+        0.0,
+        0.1
+      ],
+      "meaning_shifts_location": "not applicable",
+      "explanation": "Neither the original nor the rewritten text contains a repeated key phrase in a way that would constitute a word-shift fallacy. The term \"furin cleavage site\" appears once in the original and is not repeated with a different meaning. In the rewrite, \"furin cleavage site\" also appears only once, and no semantic shift between occurrences is present. There is no evidence of repetition or shifting meaning, so both scores are low due to absence of the conditions required for word-shift.",
+      "word_shift_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 52.01635980606079
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "circular_argument",
+    "result": {
+      "premise_restated_bounds": [
+        0.0,
+        0.1
+      ],
+      "premise_restated_location": "not applicable",
+      "no_independent_support_bounds": [
+        0.0,
+        0.2
+      ],
+      "no_independent_support_location": "not applicable",
+      "explanation": "The original quote does not restate its conclusion in any of its premises; the claim about black holes having no time to accrete matter is derived from theoretical predictions, but not restated as a premise. There is no clear restatement of the conclusion within the argument structure. Similarly, while the second sentence introduces new theoretical content (Hawking radiation and sub-accretion timescales), it does not offer independent support that directly validates or proves the original claim—rather, it expands on related predictions. However, since the connection between the prediction and the conclusion is not circular in form, and no premise explicitly rephrases the conclusion, both scores remain low with minimal confidence in either component.",
+      "circular_argument_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 63.0910918712616
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "appeal_to_authority",
+    "result": {
+      "authority_invoked_bounds": [
+        0.0,
+        0.1
+      ],
+      "authority_invoked_location": "not applicable",
+      "no_evidence_given_bounds": [
+        0.0,
+        0.1
+      ],
+      "no_evidence_given_location": "not applicable",
+      "explanation": "Neither the original quote nor the rewritten version invokes any specific authority by title, status, or credentials. There is no mention of a person or expert source being cited to support the claim. Therefore, both conditions for an appeal to authority are absent, and the scores reflect genuine absence of such elements.",
+      "appeal_to_authority_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 41.36610007286072
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "appeal_to_ignorance",
+    "result": {
+      "absence_as_proof_bounds": [
+        0.0,
+        0.1
+      ],
+      "absence_as_proof_location": "not applicable",
+      "absence_as_disproof_bounds": [
+        0.0,
+        0.1
+      ],
+      "absence_as_disproof_location": "not applicable",
+      "explanation": "The output does not claim that the absence of evidence for black holes or their effects proves they don't exist, nor does it treat lack of disproof as proof of existence. There is no appeal to ignorance in either direction; instead, the argument relies on theoretical predictions about particle behavior and evaporation timescales. Both conditions are absent, so scores remain low and conservative.",
+      "appeal_to_ignorance_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 46.7998480796814
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "appeal_to_nature",
+    "result": {
+      "called_natural_bounds": [
+        0.0,
+        0.1
+      ],
+      "called_natural_location": "not applicable",
+      "equated_with_good_bounds": [
+        0.0,
+        0.1
+      ],
+      "equated_with_good_location": "not applicable",
+      "explanation": "The original quote and its rewrite do not mention anything about naturalness or equate any phenomenon with being safe or good. There is no reference to nature as a source of truth or inherent goodness in the argument. Both conditions are absent, so scores remain low and conservative.",
+      "appeal_to_nature_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 39.96889305114746
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "bandwagon",
+    "result": {
+      "popularity_cited_bounds": [
+        0.0,
+        0.1
+      ],
+      "popularity_cited_location": "not applicable",
+      "popularity_as_proof_bounds": [
+        0.0,
+        0.1
+      ],
+      "popularity_as_proof_location": "not applicable",
+      "explanation": "The output does not mention or reference any popular claim, theory, or widespread acceptance of a particular idea. There is no indication that popularity is cited or used as evidence. Therefore, both conditions for the Bandwagon fallacy are absent.",
+      "bandwagon_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 38.66724872589111
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "double_counting",
+    "result": {
+      "shared_premise_bounds": [
+        0.9,
+        1.0
+      ],
+      "shared_premise_location": "\"The same extra-dimension theoretical framework predicting microscopic black hole formation also predicts Hawking-radiation evaporation on a sub-accretion timescale.\"\n",
+      "treated_as_independent_bounds": [
+        0.9,
+        1.0
+      ],
+      "treated_as_independent_location": "The same extra-dimension theoretical framework predicting microscopic black hole formation also predicts Hawking-radiation evaporation on a sub-accretion timescale.\n",
+      "explanation": "Both conclusions—microscopic black hole formation and Hawking radiation evaporation—are derived from the same underlying theoretical framework (the extra-dimensional model), indicating clear shared premises. The argument treats these as separate predictions that independently support the conclusion about rapid disintegration, without acknowledging their common origin. This constitutes a double-counting fallacy in both structure and treatment.",
+      "double_counting_bounds": [
+        0.9,
+        1.0
+      ],
+      "state": "known-true",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 61.74526596069336
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "false_cause",
+    "result": {
+      "correlation_established_bounds": [
+        0.0,
+        0.1
+      ],
+      "correlation_established_location": "not applicable\n",
+      "causation_asserted_bounds": [
+        0.0,
+        0.1
+      ],
+      "causation_asserted_location": "not applicable\n",
+      "explanation": "There is no stated correlation between two phenomena in the original quote or its rewrite. The passage discusses theoretical predictions about particle disintegration and black hole formation, but does not establish that two events co-occur. Similarly, no claim is made that one phenomenon causes another; instead, the text describes parallel theoretical outcomes without asserting causal links. Thus, both correlation and causation are absent, warranting low bounds with minimal confidence in either.",
+      "false_cause_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 52.56859493255615
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "false_choice",
+    "result": {
+      "only_two_presented_bounds": [
+        0.0,
+        0.1
+      ],
+      "only_two_presented_location": "not applicable\n",
+      "more_options_exist_bounds": [
+        0.0,
+        0.1
+      ],
+      "more_options_exist_location": "not applicable\n",
+      "explanation": "The original quote and rewrite do not present or compare any pair of options as if they exhaust all possibilities. There is no framing that limits choices to two alternatives. Therefore, the condition of presenting exactly two options is not met. No mention of alternative theories or mechanisms suggests additional options exist beyond what is discussed. Both subconditions are not triggered due to absence of a binary choice structure or enumeration of alternatives. The content focuses on theoretical predictions rather than offering a false dichotomy.",
+      "false_choice_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 51.7743558883667
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "false_equivalence",
+    "result": {
+      "shared_trait_identified_bounds": [
+        0.9,
+        1.0
+      ],
+      "shared_trait_identified_location": "The same extra-dimension theoretical framework predicting microscopic black hole formation also predicts Hawking-radiation evaporation on a sub-accretion timescale.",
+      "differences_ignored_bounds": [
+        0.8,
+        1.0
+      ],
+      "differences_ignored_location": "The same extra-dimension theoretical framework predicting microscopic black hole formation also predicts Hawking-radiation evaporation on a sub-accretion timescale.",
+      "explanation": "The argument clearly identifies the shared trait—the predictive power of the extra-dimensional framework—applying it to both microscopic black holes and Hawking radiation. However, it ignores critical differences in scale, behavior, and physical implications (e.g., accretion vs. evaporation, macroscopic effects vs. quantum-scale phenomena), treating them as equivalent without addressing these disparities. This constitutes a false equivalence due to the unaddressed contrasts.",
+      "false_equivalence_bounds": [
+        0.8,
+        1.0
+      ],
+      "state": "known-true",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 63.665082931518555
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "gamblers_fallacy",
+    "result": {
+      "past_outcomes_cited_bounds": [
+        0.0,
+        0.1
+      ],
+      "past_outcomes_cited_location": "not applicable",
+      "future_probability_claim_bounds": [
+        0.0,
+        0.1
+      ],
+      "future_probability_claim_location": "not applicable",
+      "explanation": "The original quote and its rewrite do not reference any string of past independent outcomes, nor is there a claim that previous events affect the probability of future ones. Both conditions for the gambler's fallacy are absent, as no sequence of outcomes is cited or implied. Therefore, both scores are low with minimal confidence in either direction.",
+      "gamblers_fallacy_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 44.10205817222595
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "ignoring_base_rate",
+    "result": {
+      "vivid_example_relied_on_bounds": [
+        0.0,
+        0.1
+      ],
+      "vivid_example_relied_on_location": "not applicable",
+      "base_rate_ignored_bounds": [
+        0.0,
+        0.1
+      ],
+      "base_rate_ignored_location": "not applicable",
+      "explanation": "The original quote does not rely on a vivid or exceptional example; it presents a general theoretical prediction. Similarly, there is no mention of a known base rate being contradicted or ignored—only a general claim about particle disintegration and accretion timescales. Both scores are low because the argument remains abstract and generic without relying on specific instances or overlooking statistical norms.",
+      "ignoring_base_rate_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 47.86191010475159
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "motte_and_bailey",
+    "result": {
+      "bold_claim_advanced_bounds": [
+        0.3,
+        0.6
+      ],
+      "bold_claim_advanced_location": "\"All these theories predict that these particles would disintegrate immediately.\"\n",
+      "retreats_under_challenge_bounds": [
+        0.1,
+        0.4
+      ],
+      "retreats_under_challenge_location": "\"The same extra-dimension theoretical framework predicting microscopic black hole formation also predicts Hawking-radiation evaporation on a sub-accretion timescale.\"\n",
+      "explanation": "The original quote makes a strong claim about immediate disintegration and the absence of accretion time, but it is presented as a general prediction without clear confidence or qualification. The rephrased version softens the claim by using \"sub-accretion timescale\" instead of \"immediately,\" suggesting a more cautious stance. There is no explicit retreat to a weaker claim that is then equated with the original; rather, the claim is reframed but not fundamentally downgraded in strength or scope. Thus, while there's some shift toward caution, it does not clearly constitute a motte-and-bailey structure where a bold claim is followed by a retreat treated as equivalent.",
+      "motte_and_bailey_bounds": [
+        0.1,
+        0.4
+      ],
+      "state": "unknown",
+      "review_priority": "high"
+    },
+    "elapsed_s": 75.25092816352844
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "no_true_scotsman",
+    "result": {
+      "counterexample_presented_bounds": [
+        0.0,
+        0.1
+      ],
+      "counterexample_presented_location": "not applicable\n",
+      "definition_narrowed_bounds": [
+        0.0,
+        0.1
+      ],
+      "definition_narrowed_location": "not applicable\n",
+      "explanation": "No counterexample to a general claim is presented in the text. The original quote makes a general prediction about particle disintegration and black holes lacking time to accrete matter, but the e_prime_rewrite introduces a different theoretical framework without contradicting or challenging that claim with an explicit counterexample. There is no indication of a shift in definition or ad hoc exclusion of a counterexample. Thus, both scores are low due to absence of relevant elements.",
+      "no_true_scotsman_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 51.50073504447937
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "non_sequitur",
+    "result": {
+      "gap_exists_bounds": [
+        0.0,
+        0.1
+      ],
+      "gap_exists_location": "Black holes, therefore, would have no time to start accreting matter and to cause macroscopic effects.",
+      "explanation": "The conclusion about black holes not having time to accrete matter follows plausibly from the premise that particles disintegrate immediately and evaporate on a sub-accretion timescale. While the connection is indirect, it remains logically grounded within theoretical physics contexts. There is no clear gap in reasoning; each part of the statement builds on established predictions of the theory. Thus, the fallacy of non sequitur is not present.",
+      "non_sequitur_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 42.464452266693115
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "origin_attack",
+    "result": {
+      "origin_cited_bounds": [
+        0.0,
+        0.1
+      ],
+      "origin_cited_location": "not applicable",
+      "merits_unevaluated_bounds": [
+        0.9,
+        1.0
+      ],
+      "merits_unevaluated_location": "The same extra-dimension theoretical framework predicting microscopic black hole formation also predicts Hawking-radiation evaporation on a sub-accretion timescale.",
+      "explanation": "The original quote does not cite an origin for the claim about particle disintegration or black holes, so there is no origin dismissal. Thus, origin_cited is scored low. The rewritten version introduces a theoretical framework but does not evaluate whether Hawking radiation or accretion timescales are valid—only asserts them as predicted. This leaves the actual scientific merits unexamined, justifying a high score for merits_unevaluated.",
+      "origin_attack_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 57.33740186691284
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "part_to_whole_mixup",
+    "result": {
+      "property_transferred_bounds": [
+        0.8,
+        1.0
+      ],
+      "property_transferred_location": "All these theories predict that these particles would disintegrate immediately. Black holes, therefore, would have no time to start accreting matter and to cause macroscopic effects.",
+      "transfer_unjustified_bounds": [
+        0.9,
+        1.0
+      ],
+      "transfer_unjustified_location": "The same extra-dimension theoretical framework predicting microscopic black hole formation also predicts Hawking-radiation evaporation on a sub-accretion timescale.",
+      "explanation": "The argument assumes that because particles disintegrate immediately in theory, black holes cannot accrete matter—this transfers the property of immediate disintegration (a part-level behavior) to the whole (black hole behavior), indicating a strong part-to-whole mixup. This transfer is not justified by any separate reasoning; the claim about Hawking radiation and evaporation is presented as a direct consequence without explicit justification, making the transfer unjustified.",
+      "part_to_whole_mixup_bounds": [
+        0.8,
+        1.0
+      ],
+      "state": "known-true",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 65.26166725158691
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "personal_attack",
+    "result": {
+      "character_attacked_bounds": [
+        0.0,
+        0.1
+      ],
+      "character_attacked_location": "not applicable",
+      "argument_unaddressed_bounds": [
+        0.0,
+        0.1
+      ],
+      "argument_unaddressed_location": "not applicable",
+      "explanation": "The output does not attack the source's character or person, nor does it leave the source's argument unaddressed. Instead, it rephrases and expands on the theoretical predictions in a technical manner without personal criticism or evasion of the original claim. Both subconditions are clearly satisfied by absence of any personal or character-based targeting or failure to engage with the reasoning.",
+      "personal_attack_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 45.15352511405945
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "red_herring",
+    "result": {
+      "irrelevant_topic_introduced_bounds": [
+        0.0,
+        0.1
+      ],
+      "irrelevant_topic_introduced_location": "not applicable",
+      "substitutes_for_real_question_bounds": [
+        0.0,
+        0.1
+      ],
+      "substitutes_for_real_question_location": "not applicable",
+      "explanation": "The rewritten quote focuses on theoretical predictions related to black hole formation and evaporation, which are directly connected to the original discussion of accretion and macroscopic effects. No clearly irrelevant topic is introduced, nor does any element substitute for addressing the core question about whether black holes can accrete matter over time. Both scores remain low due to the continuity and relevance of the content to the original argument.",
+      "red_herring_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 49.26040983200073
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "rushed_conclusion",
+    "result": {
+      "narrow_evidence_bounds": [
+        0.1,
+        0.3
+      ],
+      "narrow_evidence_location": "microscopic black hole formation",
+      "general_claim_bounds": [
+        0.9,
+        1.0
+      ],
+      "general_claim_location": "Black holes, therefore, would have no time to start accreting matter and to cause macroscopic effects",
+      "explanation": "The evidence cited (\"microscopic black hole formation\") is specific and limited in scope, not a broad or typical case, justifying a moderate score for narrow_evidence. However, the conclusion extends this to all black holes and their inability to accrete matter macroscopically, making it a strong general claim beyond the narrow context of microscopic cases. The reasoning assumes universal applicability from a limited theoretical prediction, which constitutes a rushed conclusion.",
+      "rushed_conclusion_bounds": [
+        0.1,
+        0.3
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 54.87209486961365
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "slippery_slope",
+    "result": {
+      "chain_claimed_bounds": [
+        0.0,
+        0.1
+      ],
+      "chain_claimed_location": "not applicable",
+      "links_unjustified_bounds": [
+        0.0,
+        0.1
+      ],
+      "links_unjustified_location": "not applicable",
+      "explanation": "The original quote does not present a chain of consequences from one small step to a long series of outcomes, so the slippery slope structure is absent. Neither the original nor the rephrased version outlines a sequence where one event leads to multiple subsequent ones in an unproven cascade. Therefore, both conditions for the slippery slope fallacy are not met, and no justification gaps exist in the causal chain presented.",
+      "slippery_slope_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 47.92147707939148
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "straw_man",
+    "result": {
+      "position_restated_bounds": [
+        0.1,
+        0.3
+      ],
+      "position_restated_location": "Black holes, therefore, would have no time to start accreting matter and to cause macroscopic effects.",
+      "restatement_weaker_bounds": [
+        0.2,
+        0.5
+      ],
+      "restatement_weaker_location": "The same extra-dimension theoretical framework predicting microscopic black hole formation also predicts Hawking-radiation evaporation on a sub-accretion timescale.",
+      "explanation": "The original quote asserts that black holes would disintegrate immediately and thus not accrete matter or produce macroscopic effects. The rewrite does not directly restate this position but instead introduces a different theoretical framework and focuses on Hawking radiation and sub-accretion timescales, which is a shift in focus rather than a restatement. This suggests only partial alignment, hence the low score for position restated. The rewritten claim about evaporation occurring on a \"sub-accretion timescale\" is less extreme than the original's assertion of immediate disintegration, implying it weakens the opposing view—thus supporting a moderate score for weaker restatement.",
+      "straw_man_bounds": [
+        0.1,
+        0.3
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 72.40519404411316
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "sunk_cost",
+    "result": {
+      "investment_cited_bounds": [
+        0.0,
+        0.1
+      ],
+      "investment_cited_location": "not applicable",
+      "used_to_justify_forward_bounds": [
+        0.0,
+        0.1
+      ],
+      "used_to_justify_forward_location": "not applicable",
+      "explanation": "Neither the original quote nor the rewritten version mentions any past investment in time, money, or effort. There is no reference to sunk costs, and thus both conditions for the fallacy are absent. The discussion focuses on theoretical predictions and timescales, not on justifying current decisions based on prior commitments.",
+      "sunk_cost_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 42.59538698196411
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "survivorship_bias",
+    "result": {
+      "only_survivors_examined_bounds": [
+        0.0,
+        0.1
+      ],
+      "only_survivors_examined_location": "not applicable\n",
+      "failures_ignored_bounds": [
+        0.0,
+        0.1
+      ],
+      "failures_ignored_location": "not applicable\n",
+      "explanation": "The original quote and its rewrite discuss theoretical predictions about black hole behavior, including disintegration and evaporation, but do not selectively examine only surviving or successful cases. There is no indication that only successful outcomes are considered or that failures are ignored. Therefore, both subconditions lack clear evidence to score above 0.1. The content is general in nature and does not involve a selection bias toward survivors or omission of failures.",
+      "survivorship_bias_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 50.994378089904785
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "texas_sharpshooter",
+    "result": {
+      "pattern_found_after_fact_bounds": [
+        0.0,
+        0.1
+      ],
+      "pattern_found_after_fact_location": "not applicable",
+      "framed_as_predicted_bounds": [
+        0.9,
+        1.0
+      ],
+      "framed_as_predicted_location": "The same extra-dimension theoretical framework predicting microscopic black hole formation also predicts Hawking-radiation evaporation on a sub-accretion timescale.",
+      "explanation": "There is no indication that any pattern was identified after the data existed; all claims are based on prior theoretical predictions. Thus, the first condition does not apply. The second condition holds strongly because the argument explicitly frames the prediction of Hawking radiation and sub-accretion timescales as part of a pre-existing theoretical framework, presenting them as foreseen rather than discovered post hoc. This constitutes a clear case of Texas sharpshooter fallacy framing.",
+      "texas_sharpshooter_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 57.13968801498413
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "tu_quoque",
+    "result": {
+      "inconsistency_pointed_out_bounds": [
+        0.0,
+        0.1
+      ],
+      "inconsistency_pointed_out_location": "not applicable",
+      "point_unaddressed_bounds": [
+        0.0,
+        0.1
+      ],
+      "point_unaddressed_location": "not applicable",
+      "explanation": "The output does not point to any hypocrisy or inconsistency in the opponent's position. It instead introduces a different theoretical prediction (Hawking radiation and sub-accretion timescale) without directly challenging or exposing an inconsistency in the original claim. There is no unaddressed core argument from the opponent, as the response reframes rather than refutes. Thus, neither condition for Tu quoque applies with confidence.",
+      "tu_quoque_bounds": [
+        0.0,
+        0.1
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 49.35004782676697
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "word_shift",
+    "result": {
+      "term_repeats_bounds": [
+        0.1,
+        0.3
+      ],
+      "term_repeats_location": "theoretical framework",
+      "meaning_shifts_bounds": [
+        0.7,
+        0.9
+      ],
+      "meaning_shifts_location": "theoretical framework",
+      "explanation": "The phrase \"theoretical framework\" appears once in the original and is used differently in the rewrite—originally referring to particle disintegration predictions, while in the rewrite it refers to extra-dimensions and Hawking radiation. This indicates a meaningful shift in meaning despite repetition. However, the term does not appear twice in the rewritten text, so repetition is minimal and not strongly present. Thus, term_repeats is low due to lack of duplication, while meaning_shifts is high because the same phrase is used with distinct scientific implications.",
+      "word_shift_bounds": [
+        0.1,
+        0.3
+      ],
+      "state": "known-false",
+      "review_priority": "standard"
+    },
+    "elapsed_s": 54.41688394546509
+  }
+]

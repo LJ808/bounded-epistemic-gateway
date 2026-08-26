@@ -1,0 +1,77 @@
+[
+  {
+    "claim_id": "eggs-003",
+    "category": "false_choice",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "appeal_to_nature",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "false_cause",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "false_choice",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "motte_and_bailey",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "slippery_slope",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "survivorship_bias",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "false_cause",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "ignoring_base_rate",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "non_sequitur",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "part_to_whole_mixup",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "red_herring",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "rushed_conclusion",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "straw_man",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "survivorship_bias",
+    "state": "unknown"
+  }
+]

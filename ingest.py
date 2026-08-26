@@ -1425,6 +1425,46 @@ def iterative_argument_refinement(
     }
 
 
+def _quote_unsafe_colon_values(text: str) -> str:
+    """Eighth pass -- wraps a top-level key's plain (unquoted) scalar
+    value in double quotes when that value itself contains a colon-space
+    sequence, which YAML's plain-scalar parser reads as the start of a
+    nested mapping and breaks on. Real failure mode, found 2026-08-24 in
+    two independent Qwen3-4B-Instruct-2507 runs against the identical
+    call (covid-003/ignoring_base_rate) -- deterministic decoding
+    (temperature 0.0, this script's own setting) reproduced the exact
+    same break twice, byte for byte. The model wrote
+    'explanation: <prose>...ignoring the base rate: the known biological
+    reality...' as one unquoted inline value; the embedded ': ' after
+    'base rate' reads as a second mapping key to PyYAML, not as content.
+
+    Only touches single-line 'key: value' entries where the value isn't
+    already quoted, isn't a block-scalar marker ('|'/'>'), and isn't a
+    list/flow value ('[' or '{') -- a value with no problem colon passes
+    through completely unchanged. Runs last, after the seventh pass
+    above, since that pass can itself produce new single-line values
+    (merged continuation paragraphs) that this pass then needs to check."""
+    key_value_re = re.compile(r"^([A-Za-z_][A-Za-z0-9_]*):[ \t]+(.*)$")
+    lines = text.split("\n")
+    fixed = []
+    for line in lines:
+        m = key_value_re.match(line)
+        if not m:
+            fixed.append(line)
+            continue
+        key, value = m.group(1), m.group(2)
+        stripped_value = value.strip()
+        if not stripped_value or stripped_value in ("|", ">") or stripped_value[0] in "\"'[{":
+            fixed.append(line)
+            continue
+        if ": " in stripped_value or stripped_value.endswith(":"):
+            escaped = stripped_value.replace("\\", "\\\\").replace('"', '\\"')
+            fixed.append(f'{key}: "{escaped}"')
+        else:
+            fixed.append(line)
+    return "\n".join(fixed)
+
+
 def strip_markdown_fences(text: str) -> str:
     """Defensively strip a fenced-code wrapper (triple backtick + optional yaml tag)
     if the model adds one despite the prompt explicitly forbidding it. No-op on
@@ -1597,6 +1637,8 @@ def strip_markdown_fences(text: str) -> str:
         merged.append(line)
         i += 1
     text = "\n".join(merged)
+
+    text = _quote_unsafe_colon_values(text)
 
     return text.strip()
 

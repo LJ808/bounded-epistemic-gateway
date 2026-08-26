@@ -47,18 +47,59 @@ from ingest import (
     strip_markdown_fences,
 )
 
+import os
+
 RKLLAMA_URL = "http://172.16.100.11:8080/v1/chat/completions"
-RKLLAMA_MODEL = "Qwen2.5-14B-Instruct-rk3588-w8a8-opt-1-hybrid-ratio-0.0"  # confirmed via GET /v1/models, 2026-08-17
-TIMEOUT_SECONDS = 200  # raised from 120, 2026-08-18 -- appeal_to_ignorance/covid-003
+# RKLLAMA_MODEL and OUTPUT_SUFFIX both read from environment, falling back
+# to the original single-model defaults -- 2026-08-22, added so two models
+# can run through this same script without one overwriting the other's
+# progress file. The old default (bare env vars unset) reproduces the
+# exact original behavior byte for byte.
+RKLLAMA_MODEL = os.environ.get(
+    "RKLLAMA_MODEL",
+    "Qwen2.5-14B-Instruct-rk3588-w8a8-opt-1-hybrid-ratio-0.0",  # confirmed via GET /v1/models, 2026-08-17
+)
+OUTPUT_SUFFIX = os.environ.get("OUTPUT_SUFFIX", "")  # e.g. "-deepseek14b", "-nextcoder7b"
+MAX_TOKENS = int(os.environ.get("MAX_TOKENS", "1000"))  # real fix, 2026-08-22
+# -- DeepSeek 14B's appeal_to_ignorance failure this run was genuine
+# truncation (raw text cut off mid-word, no </think>, no answer), not a
+# preview artifact -- confirmed via the full-text failed_raw file. Its
+# reasoning traces run measurably longer than Qwen's or Phi-3's before
+# even reaching the YAML answer. Env-driven so Qwen/Phi-3 keep their
+# already-clean 1000-token default; DeepSeek runs pass MAX_TOKENS=3000.
+TIMEOUT_SECONDS = int(os.environ.get("TIMEOUT_SECONDS", "200"))  # raised from 120, 2026-08-18 -- appeal_to_ignorance/covid-003
 # needed 365s across two dead 120s waits before a real response landed on
 # attempt 3; RKLLama itself confirmed alive and responsive throughout via
 # systemctl log, not hung. 200s gives real headroom above the slowest clean
 # call observed tonight (108s) without matching this run's proven worst case.
 
 OUTPUT_DIR = Path(__file__).parent / "NEURO_SYMBOLIC_RUNS"
+FAILED_RAW_DIR = OUTPUT_DIR / "failed_raw"  # real fix, 2026-08-22 -- ported
+# from cross_family_comparison_rkllama.py's proven pattern (2026-08-19).
+# The YAML-error print below only ever showed the first 500 characters of
+# a failed response -- a display truncation in this script's own print
+# statement, not evidence of where the model's real output actually
+# stopped. Every failed call's FULL raw text now writes to its own file
+# here, tagged by claim_id/category/model suffix, so real content is
+# available for honest diagnosis instead of a guessed-at snippet.
 
 
-def call_rkllama(prompt: str, max_retries: int = 3) -> dict:
+def _save_failed_raw(fail_tag: str, raw_text: str, error_note: str) -> None:
+    """Writes a failed call's FULL raw response to its own file. Never
+    raises on its own failure (a logging problem shouldn't crash a real
+    run); prints a warning to stderr instead."""
+    try:
+        FAILED_RAW_DIR.mkdir(parents=True, exist_ok=True)
+        path = FAILED_RAW_DIR / f"{fail_tag}.txt"
+        path.write_text(
+            f"error: {error_note}\n\n--- full raw response below ---\n\n{raw_text}",
+            encoding="utf-8",
+        )
+    except OSError as e:
+        print(f"    (couldn't write full raw response to disk: {e})", file=sys.stderr)
+
+
+def call_rkllama(prompt: str, max_retries: int = 3, fail_tag: str = "unknown") -> dict:
     """Same contract as ingest.py's _call_model() -- takes a prompt, returns
     a parsed dict. Hits RKLLama's OpenAI-compatible chat completions
     endpoint on Board 2 instead of the Anthropic API.
@@ -72,7 +113,7 @@ def call_rkllama(prompt: str, max_retries: int = 3) -> dict:
     payload = {
         "model": RKLLAMA_MODEL,
         "messages": [{"role": "user", "content": prompt}],
-        "max_tokens": 1000,
+        "max_tokens": MAX_TOKENS,
         "temperature": 0.0,
     }
 
@@ -95,26 +136,39 @@ def call_rkllama(prompt: str, max_retries: int = 3) -> dict:
         return None
     data = resp.json()
     text = data["choices"][0]["message"]["content"]
+    # Real fix, 2026-08-22 -- DeepSeek-R1-Distill writes a reasoning trace
+    # with no opening <think> tag but a bare closing </think> right before
+    # its real answer (confirmed via full-text diagnostic, finish_reason
+    # 'stop', genuinely complete response). Same shape moe_router.py's
+    # _strip_think_tags() already fixed once (2026-08-20) for this same
+    # model family -- strip everything up to and including the first
+    # </think> regardless of whether a matching opening tag exists, rather
+    # than requiring a matched pair. No-op, zero cost, for Qwen/Phi-3
+    # responses that never contain this tag at all.
+    if "</think>" in text:
+        text = text.split("</think>", 1)[1].strip()
     cleaned = strip_markdown_fences(text)
     try:
         parsed = yaml.safe_load(cleaned)
     except yaml.YAMLError as e:
         print(f"    YAML parse error: {e}", file=sys.stderr)
-        print(f"    Raw response: {text[:500]}", file=sys.stderr)
+        print(f"    Raw response (first 500 chars, see failed_raw/ for full text): {text[:500]}", file=sys.stderr)
+        _save_failed_raw(fail_tag, text, str(e))
         return None
     if not isinstance(parsed, dict):
         print(f"    Parsed but not a dict: {type(parsed).__name__}", file=sys.stderr)
+        _save_failed_raw(fail_tag, text, f"parsed to {type(parsed).__name__}, not a dict")
         return None
     return parsed
 
 
-def run_circular_argument(claim_id: str, ingestion_output: dict) -> dict:
+def run_circular_argument(claim_id: str, ingestion_output: dict, fail_tag: str = "unknown") -> dict:
     prompt = CIRCULAR_ARGUMENT_PROMPT.format(
         original_quote=ingestion_output["original_quote"],
         e_prime_rewrite=ingestion_output["e_prime_rewrite"],
         reference_passage_section="",
     )
-    result = call_rkllama(prompt)
+    result = call_rkllama(prompt, fail_tag=fail_tag)
     if result is None:
         return None
     combined = combine_bounds_and(
@@ -126,10 +180,10 @@ def run_circular_argument(claim_id: str, ingestion_output: dict) -> dict:
     return result
 
 
-def run_shape_category(category_key: str, claim_id: str, ingestion_output: dict) -> dict:
+def run_shape_category(category_key: str, claim_id: str, ingestion_output: dict, fail_tag: str = "unknown") -> dict:
     entry = FALLACY_SHAPE_DATA[category_key]
     prompt = build_bounds_prompt(category_key, ingestion_output)
-    result = call_rkllama(prompt)
+    result = call_rkllama(prompt, fail_tag=fail_tag)
     if result is None:
         return None
     subs = entry["subconditions"]
@@ -170,7 +224,7 @@ def main():
     # instead of starting a fresh timestamped one every time. Rename it
     # yourself once the run finishes if you want it archived under a
     # timestamp.
-    output_path = OUTPUT_DIR / "all-26-rkllama-progress.json"
+    output_path = OUTPUT_DIR / f"all-26-rkllama-progress{OUTPUT_SUFFIX}.json"
 
     all_results = []
     done = set()
@@ -205,7 +259,7 @@ def main():
             call_num += 1
             print(f"  [{call_num}/{total_calls}] circular_argument...", file=sys.stderr)
             t0 = time.time()
-            result = run_circular_argument(claim_id, ingestion_output)
+            result = run_circular_argument(claim_id, ingestion_output, fail_tag=f"{claim_id}_circular_argument{OUTPUT_SUFFIX}")
             elapsed = time.time() - t0
             state = result["state"] if result else "CALL_FAILED"
             print(f"    -> {state}  ({elapsed:.1f}s)", file=sys.stderr)
@@ -218,7 +272,7 @@ def main():
             call_num += 1
             print(f"  [{call_num}/{total_calls}] {category_key}...", file=sys.stderr)
             t0 = time.time()
-            result = run_shape_category(category_key, claim_id, ingestion_output)
+            result = run_shape_category(category_key, claim_id, ingestion_output, fail_tag=f"{claim_id}_{category_key}{OUTPUT_SUFFIX}")
             elapsed = time.time() - t0
             state = result["state"] if result else "CALL_FAILED"
             print(f"    -> {state}  ({elapsed:.1f}s)", file=sys.stderr)
