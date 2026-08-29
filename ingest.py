@@ -1425,6 +1425,9 @@ def iterative_argument_refinement(
     }
 
 
+_FULLY_QUOTED_RE = re.compile(r'^"([^"\\]|\\.)*"$|^\'([^\'\\]|\\.)*\'$')
+
+
 def _quote_unsafe_colon_values(text: str) -> str:
     """Eighth pass -- wraps a top-level key's plain (unquoted) scalar
     value in double quotes when that value itself contains a colon-space
@@ -1443,7 +1446,20 @@ def _quote_unsafe_colon_values(text: str) -> str:
     list/flow value ('[' or '{') -- a value with no problem colon passes
     through completely unchanged. Runs last, after the seventh pass
     above, since that pass can itself produce new single-line values
-    (merged continuation paragraphs) that this pass then needs to check."""
+    (merged continuation paragraphs) that this pass then needs to check.
+
+    Real fix, 2026-08-26: the 'already quoted' skip used to check only
+    the value's FIRST character. A merge (seventh pass above) can glue
+    unquoted trailing content -- an echoed prompt fragment, confirmed
+    real, Qwen2.5-7B-Instruct/covid-003/straw_man this same session --
+    onto the tail of an already-closed quoted _location value, producing
+    `key: \"quoted text\" trailing junk:`. The old check saw the leading
+    quote and skipped the whole line, leaving the trailing junk (with its
+    own embedded colon) to break the parser right after the closing
+    quote. Now checks the FULL stripped value against _FULLY_QUOTED_RE --
+    only a genuinely complete, properly closed quoted scalar gets
+    skipped; anything else, including a quote-prefixed value with
+    unquoted trailing content, gets escaped and re-quoted whole."""
     key_value_re = re.compile(r"^([A-Za-z_][A-Za-z0-9_]*):[ \t]+(.*)$")
     lines = text.split("\n")
     fixed = []
@@ -1454,10 +1470,14 @@ def _quote_unsafe_colon_values(text: str) -> str:
             continue
         key, value = m.group(1), m.group(2)
         stripped_value = value.strip()
-        if not stripped_value or stripped_value in ("|", ">") or stripped_value[0] in "\"'[{":
+        if not stripped_value or stripped_value in ("|", ">"):
             fixed.append(line)
             continue
-        if ": " in stripped_value or stripped_value.endswith(":"):
+        if stripped_value[0] in "[{" or _FULLY_QUOTED_RE.match(stripped_value):
+            fixed.append(line)
+            continue
+        starts_with_broken_quote = stripped_value[0] in "\"'"
+        if ": " in stripped_value or stripped_value.endswith(":") or starts_with_broken_quote:
             escaped = stripped_value.replace("\\", "\\\\").replace('"', '\\"')
             fixed.append(f'{key}: "{escaped}"')
         else:
@@ -1637,6 +1657,55 @@ def strip_markdown_fences(text: str) -> str:
         merged.append(line)
         i += 1
     text = "\n".join(merged)
+
+    # Ninth pass -- absorb an orphaned trailing paragraph following a
+    # block-sequence list into the list itself. Real failure found
+    # 2026-08-26, both blackhole-002 cases, Qwen2.5-7B-Instruct:
+    # "explanation:" opens as a bare key (empty inline value) with a
+    # markdown-style bulleted list ("- item one\n- item two") as valid
+    # YAML block-sequence content underneath it -- then the model appends
+    # one more unindented, un-keyed summary paragraph after the list,
+    # with no "-" marker and no key of its own. YAML can't place it: not
+    # a new list item, not a new mapping key, not a continuation of
+    # anything -- "could not find expected ':'" on both real runs.
+    # Detects a run of "- "-prefixed lines (a live block sequence), then
+    # a following non-blank line that is NOT itself a new list item, NOT
+    # a real top-level key, and NOT blank -- converts that trailing line
+    # into one more list item ("- " + content) so it parses as a genuine
+    # (if slightly odd) extra sequence entry, preserving the model's real
+    # content instead of silently dropping it or crashing on it.
+    key_start_re_seq = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*:")
+    list_item_re = re.compile(r"^[ \t]*-[ \t]")
+    lines = text.split("\n")
+    absorbed = []
+    i = 0
+    in_sequence = False
+    while i < len(lines):
+        line = lines[i]
+        if list_item_re.match(line):
+            in_sequence = True
+            absorbed.append(line)
+            i += 1
+            continue
+        if in_sequence and line.strip() == "":
+            j = i + 1
+            while j < len(lines) and lines[j].strip() == "":
+                j += 1
+            if j < len(lines) and not key_start_re_seq.match(lines[j]) and not list_item_re.match(lines[j]):
+                i += 1
+                continue
+            in_sequence = False
+            absorbed.append(line)
+            i += 1
+            continue
+        if in_sequence and line.strip() and not key_start_re_seq.match(line):
+            absorbed.append("- " + line.strip())
+            i += 1
+            continue
+        in_sequence = False
+        absorbed.append(line)
+        i += 1
+    text = "\n".join(absorbed)
 
     text = _quote_unsafe_colon_values(text)
 

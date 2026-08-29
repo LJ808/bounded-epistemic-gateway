@@ -1,0 +1,26 @@
+[
+  {
+    "claim_id": "eggs-003",
+    "category": "circular_argument",
+    "result": null,
+    "elapsed_s": 30.125345706939697
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "appeal_to_authority",
+    "result": null,
+    "elapsed_s": 30.46818995475769
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "appeal_to_ignorance",
+    "result": null,
+    "elapsed_s": 30.417670249938965
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "appeal_to_nature",
+    "result": null,
+    "elapsed_s": 30.406371116638184
+  }
+]

@@ -1,0 +1,222 @@
+[
+  {
+    "claim_id": "eggs-003",
+    "category": "appeal_to_ignorance",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "double_counting",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "false_equivalence",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "motte_and_bailey",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "non_sequitur",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "origin_attack",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "part_to_whole_mixup",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "red_herring",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "rushed_conclusion",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "straw_man",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "survivorship_bias",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "texas_sharpshooter",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "eggs-003",
+    "category": "word_shift",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "circular_argument",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "appeal_to_ignorance",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "double_counting",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "false_cause",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "ignoring_base_rate",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "motte_and_bailey",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "no_true_scotsman",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "origin_attack",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "part_to_whole_mixup",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "red_herring",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "rushed_conclusion",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "slippery_slope",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "straw_man",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "survivorship_bias",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "texas_sharpshooter",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "tu_quoque",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "covid-003",
+    "category": "word_shift",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "circular_argument",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "appeal_to_ignorance",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "double_counting",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "false_equivalence",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "motte_and_bailey",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "no_true_scotsman",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "non_sequitur",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "part_to_whole_mixup",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "rushed_conclusion",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "slippery_slope",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "straw_man",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "survivorship_bias",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "texas_sharpshooter",
+    "state": "unknown"
+  },
+  {
+    "claim_id": "blackhole-002",
+    "category": "word_shift",
+    "state": "unknown"
+  }
+]
