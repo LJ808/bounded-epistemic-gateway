@@ -1,0 +1,10 @@
+error: mapping values are not allowed here
+  in "<unicode string>", line 3, column 30:
+    Looking at the original quote: "COVID's furin cleavage site i ... 
+                                 ^
+
+--- full raw response below ---
+
+Alright, so I'm trying to figure out if there's a non sequitur fallacy in the given quotes. Non sequitur is when the conclusion doesn't logically follow from the premises, even if each premise might seem true on its own.
+
+Looking at the original quote: "COVID's furin cleavage site is a mess... a bizarre furin cleavage site which no human has ever used before, and which virologists expected to work poorly." It seems like it's saying that COVID has an unusual furin cleavage

@@ -1,0 +1,9 @@
+error: parsed to str, not a dict
+
+--- full raw response below ---
+
+Okay, so I'm trying to figure out how to score this Ingestion Layer output. Let me read through it carefully.
+
+First, the original quote says there's no evidence of interaction by diabetic status. The rewritten text mentions the HR for diabetics and non-diabetics with confidence intervals (CIs). It also talks about overlapping enough that the formal test failed to reach significance. 
+
+Hmm, so in the rewritten, they're talking about the same kind of evidence as the original

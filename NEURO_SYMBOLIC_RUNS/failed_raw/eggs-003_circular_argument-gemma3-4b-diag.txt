@@ -1,0 +1,18 @@
+error: while scanning for the next token
+found character '`' that cannot start any token
+  in "<unicode string>", line 1, column 1:
+    ```yaml
+    ^
+
+--- full raw response below ---
+
+```yaml
+premise_restated_bounds: [0.6, 0.8]
+
+premise_restated_location: |
+  "The diabetic-subgroup HR ... failed to reach significance."
+
+no_independent_support_bounds: [0.7, 0.9]
+
+no_independent_support_location: |
+  "The diabetic-subgroup HR (1.33, CI 0.72-2.4

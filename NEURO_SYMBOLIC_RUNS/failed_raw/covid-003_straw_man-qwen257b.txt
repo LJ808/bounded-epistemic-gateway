@@ -1,0 +1,22 @@
+error: while parsing a block mapping
+  in "<unicode string>", line 1, column 1:
+    position_restated_bounds: [0.65, ... 
+    ^
+expected <block end>, but found '<scalar>'
+  in "<unicode string>", line 9, column 197:
+     ...  engineer working before 2019." In this case, the restated posit ... 
+                                         ^
+
+--- full raw response below ---
+
+position_restated_bounds: [0.65, 0.75]
+
+restatement_weaker_bounds: [0.45, 0.55]
+
+explanation: The original quote suggests that the furin cleavage site of SARS-CoV-2 is unusual and expected to function poorly. The rewritten statement implies that a specific sequence (PRRAR) was not used before COVID's emergence and now functions as a furin cleavage site, which is a finding only available post-emergence. This restatement weakens the original argument by suggesting that the sequence was not previously known or considered for this function.
+
+position_restated_location: "No published gain-of-function study used the PRRAR sequence before COVID's emergence"
+
+restatement_weaker_location: "computational modeling after COVID's emergence found PRRAR functions adequately as a furin cleavage site, a finding unavailable to any engineer working before 2019."
+
+In this case, the restated position is weaker because it introduces new information that was not present in the original quote. The statement suggests that the sequence (PRRAR) was only discovered post-emergence and now functions as expected, which could be seen as a more extreme claim than what was originally stated about the unusual nature of the furin cleavage site.

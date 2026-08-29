@@ -1,0 +1,19 @@
+error: while scanning for the next token
+found character '`' that cannot start any token
+  in "<unicode string>", line 1, column 1:
+    ```yaml
+    ^
+
+--- full raw response below ---
+
+```yaml
+absence_as_proof_bounds: [0.5, 0.8]
+
+absence_as_proof_location: "There was no evidence of interaction by diabetic status"
+
+absence_as_disproof_bounds: [0.2, 0.6]
+
+absence_as_disproof_location: "The formal interaction test failed to reach significance."
+
+explanation: |
+  The score for absence as proof reflects that the argument treats the lack

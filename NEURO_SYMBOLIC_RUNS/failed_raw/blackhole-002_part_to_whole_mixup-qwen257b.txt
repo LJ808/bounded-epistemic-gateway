@@ -1,0 +1,22 @@
+error: while scanning a simple key
+  in "<unicode string>", line 11, column 1:
+    Given the lack of clear evidence ... 
+    ^
+could not find expected ':'
+  in "<unicode string>", line 11, column 135:
+     ... set to reflect this uncertainty.
+                                         ^
+
+--- full raw response below ---
+
+property_transferred_bounds: [0.4, 0.6]
+property_transferred_location: not applicable
+
+transfer_unjustified_bounds: [0.5, 0.7]
+transfer_unjustified_location: not applicable
+
+explanation: 
+- The original quote suggests that the properties of particles (immediate disintegration) are assumed to hold for black holes as a whole, leading to the conclusion about their behavior without providing justification for this transfer. However, there is no explicit statement transferring a property from parts to the whole, making it difficult to pinpoint a specific phrase.
+- The e_prime rewrite introduces new information about an extra-dimension theoretical framework predicting both microscopic black hole formation and Hawking-radiation evaporation on a sub-accretion timescale. This does not explicitly justify the transfer of properties between different components without further explanation.
+
+Given the lack of clear evidence for either property transfer or unjustified transfer, the bounds are set to reflect this uncertainty.
