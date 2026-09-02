@@ -2,9 +2,10 @@
 synthesis_type: literature_engagement_addendum
 addendum_to: [insight-contribution-v1, two-layer-architecture-v1, structure-layer-mapping-v1, literature-engagement-addendum-v4]
 trigger: poisoning-attacks-arxiv-2510.07192-2026-08-31
-claims_tested: 4
+claims_tested: 7
 date_executed: "2026-08-31"
-status: addendum — Extension 6 run for real across four claims (2026-08-31 session 5 + 2026-09-01 continuation), see Results section below. Paper's real findings and defense taxonomy summarized directly from its own text.
+date_executed_round2: "2026-09-01"
+status: addendum — Extension 6 run for real across seven claims total (2026-08-31 session 5 + 2026-09-01 continuation + 2026-09-01 tier-gap round), see Results sections below. Paper's real findings and defense taxonomy summarized directly from its own text.
 written_in_e_prime: true
 tags: [architecture, literature-review, resilience]
 ---
@@ -82,6 +83,24 @@ Four claims ran through the test this addendum proposed, each producing a baseli
 **Real limits, unchanged from the original framing above:** this stays an assessment-layer sensitivity test, not a poisoning defense, and not proof the pattern generalizes past appeal-to-authority or past this one 14B model. A fifth and sixth claim, run against a different fallacy category or a different model, would strengthen this further; not yet attempted.
 
 Full call transcripts: `~/ext6_more/run.log` on Board 2 (Claims 2-4); the original session transcript covers Claim 1 (CFR).
+
+---
+
+## Extension 6 — Real Results, Tier-Gap Round (Three More Claims)
+
+Three more claims ran through the same test, chosen specifically to fill gaps the original four-claim spread left in the sampled epistemic-tier spectrum: journalism (untested tier), an academic source carrying an explicit ideological commitment opposite Claim 3's, and a claim drawn from a specifically contested portion of an otherwise uncontested academic source. Same model, same fallacy category (`appeal_to_authority`), same baseline-vs-source-tier-stated structure.
+
+**Claim 5 — "Enemy Within" doctrine claim, Regime Change (2026, journalism).** Baseline read lands `unknown` (bounds [0.6, 0.9]); stating the journalism tier (deep-background, newsroom-fact-checked, not peer-reviewed) pulls the bounds down to [0.3, 0.7] — real, meaningful movement toward less fallacy-suspicious, staying inside `unknown` on both sides. No state-level shift.
+
+**Claim 6 — cultural-hegemony claim, Prison Notebooks (Gramsci, foundational academic theory carrying an explicit Marxist commitment).** Baseline `unknown` (bounds [0.6, 0.9]); stating the academic tier and its explicit ideological commitment pulls the bounds to [0.3, 0.6] — real movement in the same direction as Claim 5, again staying inside `unknown`. No state-level shift.
+
+**Claim 7 — party-gatekeeping-broke-down-in-2016 claim, How Democracies Die (Levitsky/Ziblatt, mainstream academic, this specific claim flagged in the project's own summary as disputed on specifics).** Baseline `unknown` (bounds [0.3, 0.7]); stating the academic tier alongside the claim's contested status shifts the read decisively to `known-false` (bounds [0.0, 0.3]) — a real state-level shift, matching Claim 3's direction.
+
+**Finding, tier-gap round.** One of three claims crosses a state boundary; the other two show real, consistent sub-threshold movement in the same direction without crossing it. Combined with the original four, **4 of 7 claims tested now show a confirmed state-level shift, and every shift observed across all seven runs points the same two ways the original batch established** — movement-propaganda framing toward more fallacy-suspicious, legitimate-tier framing (peer-reviewed academic, or a specifically-flagged-as-disputed claim within an academic source) toward less fallacy-suspicious. Journalism and an ideologically-loaded-but-still-academic source both moved in the legitimate-tier direction without crossing the state boundary — worth reading as the same underlying sensitivity operating at lower magnitude on these two tiers specifically, not as an absence of the effect. No claim run so far produces a shift running against this project's own credibility ranking.
+
+**Real limits, unchanged.** Still an assessment-layer sensitivity test, not a poisoning defense. Still one fallacy category (`appeal_to_authority`) and one 14B model — the standing open question about whether the pattern holds against a different fallacy category or a different model stays exactly as open as the original addendum left it.
+
+Full call transcript: `/tmp/extension6_tier_gaps.log` on Board 2, and `run_extension6_tier_gaps.py` at the repo root.
 
 ---
 
